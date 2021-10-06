@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.luasoftware.test.MainActivity">
+
+    <item
+        android:id="@+id/overflowMenu"
+        android:icon="@drawable/ic_3_menu"
+        android:title=""
+        app:showAsAction="always">
+        <menu>
+            <item
+                android:id="@+id/btn_new_game"
+                android:orderInCategory="100"
+                android:title="@string/new_game"
+                app:showAsAction="ifRoom" />
+
+            <item
+                android:id="@+id/btn_edit_main_time"
+                android:orderInCategory="100"
+                android:title="@string/main_time"
+                app:showAsAction="ifRoom" />
+
+            <item
+                android:id="@+id/btn_edit_shotclock"
+                android:orderInCategory="100"
+                android:title="@string/shotclock"
+                app:showAsAction="ifRoom" />
+        </menu>
+    </item>
+</menu>

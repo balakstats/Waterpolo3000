@@ -1,0 +1,92 @@
+<resources>
+    <string name="app_name">waterpolo 3000</string>
+
+    <string name="tab_1">Spiel</string>
+    <string name="tab_2">Protokoll</string>
+    <string name="tab_3">Anzeige</string>
+
+    <string name="B1">B1</string>
+    <string name="B2">B2</string>
+    <string name="B3">B3</string>
+    <string name="B4">B4</string>
+    <string name="B5">B5</string>
+    <string name="B6">B6</string>
+    <string name="B7">B7</string>
+    <string name="B8">B8</string>
+    <string name="B9">B9</string>
+    <string name="B10">B10</string>
+    <string name="B11">B11</string>
+    <string name="B12">B12</string>
+    <string name="B13">B13</string>
+
+    <string name="W1">W1</string>
+    <string name="W2">W2</string>
+    <string name="W3">W3</string>
+    <string name="W4">W4</string>
+    <string name="W5">W5</string>
+    <string name="W6">W6</string>
+    <string name="W7">W7</string>
+    <string name="W8">W8</string>
+    <string name="W9">W9</string>
+    <string name="W10">W10</string>
+    <string name="W11">W11</string>
+    <string name="W12">W12</string>
+    <string name="W13">W13</string>
+
+    <string name="zeroSimple">0</string>
+    <string name="zeroDouble">00</string>
+    <string name="start_stop">Start/Stop</string>
+    <string name="shotclock_small">20</string>
+    <string name="shotclock_big">30</string>
+    <string name="exclusion">Ausschluss</string>
+    <string name="penalty">Penalty</string>
+    <string name="rolle">Rolle</string>
+    <string name="rot_4_min">Rot(4 min.)</string>
+    <string name="zeroResult">0 : 0</string>
+    <string name="game_section">1</string>
+
+    <string name="colonSeparator">:</string>
+    <string name="dotSeparator">.</string>
+    <string name="whitespaceSeparator">\u0020</string>
+    <string name="dashSeparatorBig"> - </string>
+
+    <string name="fragment_1_title">Spiel</string>
+    <string name="fragment_2_title">Protokoll</string>
+    <string name="fragment_3_title">LED Boards</string>
+    <string name="fragment_4_title">Einstellungen</string>
+    <string name="protocol_table_row_nr">Nr</string>
+    <string name="protocol_table_row_name">Name</string>
+    <string name="protocol_table_row_p2">P2</string>
+    <string name="protocol_table_row_p1">P1</string>
+    <string name="protocol_table_row_p3">P3</string>
+    <string name="protocol_table_row_t">T</string>
+    <string name="protocol_Team">Mannschaft:</string>
+    <string name="protocol_trainer">Trainer:</string>
+    <string name="goal">Tor (Spiel)</string>
+    <string name="goalFreethrow">Tor (Freiw.)</string>
+    <string name="goalManUp">Tor (Mann+)</string>
+    <string name="goalManDown">Tor (Mann-)</string>
+    <string name="goalPenalty">Tor (Penalty)</string>
+    <string name="firstQuarter">1. Viertel</string>
+    <string name="secondQuarter">2. Viertel</string>
+    <string name="thirdQuarter">3. Viertel</string>
+    <string name="fourthQuarter">4. Viertel</string>
+    <string name="result">Ergebnis</string>
+    <string name="finalResult">Endergebnis</string>
+
+    <string name="deviceNotFound">Kein Gerät gefunden</string>
+    <string name="notFound"> - </string>
+    <string name="connect">Verbinden</string>
+    <string name="connected">Verbunden</string>
+    <string name="search">paired Geräte anzeigen</string>
+    <string name="mainBoard">Haupt Anzeige</string>
+    <string name="shotclock1">Shotclock 1</string>
+    <string name="shotclock2">Shotclock 2</string>
+    <string name="shotclock3">Shotclock 3</string>
+    <string name="shotclock4">Shotclock 4</string>
+
+    <string name="noPairedDeviceFound">kein gepaartes Gerät gefunden</string>
+    <string name="new_game">Neues Spiel</string>
+    <string name="main_time">Hauptzeit</string>
+    <string name="shotclock">Angriffszeit</string>
+</resources>

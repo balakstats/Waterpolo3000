@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="com.example.waterpolo3000.utilities.ConstantsKt" />
+<!--        <import type="android.view.View"/>-->
+
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="protocolTeam"
+            type="com.example.waterpolo3000.data.ProtocolTeam" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20sp"
+        android:onClick="@{clickListener}">
+
+        <TextView
+            android:id="@+id/protocol_item_number"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingEnd="10sp"
+            android:text="@{protocolTeam.number}"
+            android:textStyle="bold"
+            android:minEms="2"
+            android:maxEms="2"
+            android:textAlignment="viewEnd"
+            app:layout_constraintEnd_toStartOf="@+id/protocol_item_player"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text=" 1"
+            android:textColor="@{protocolTeam.cap.equalsIgnoreCase(ConstantsKt.WHITE) ? @color/black : @color/white}"/>
+
+        <TextView
+            android:id="@+id/protocol_item_player"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{protocolTeam.playerFirstName.concat(@string/whitespaceSeparator).concat(protocolTeam.playerLastName.substring(0,1))}"
+            android:textStyle="bold"
+            android:minEms="6"
+            android:maxEms="6"
+            android:lines="1"
+            app:layout_constraintEnd_toStartOf="@+id/protocol_item_p1"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Firstname L"
+            android:paddingEnd="10sp"
+            android:textColor="@{protocolTeam.cap.equalsIgnoreCase(ConstantsKt.WHITE) ? @color/black : @color/white}"/>
+
+        <TextView
+            android:id="@+id/protocol_item_p1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{protocolTeam.p1}"
+            android:textStyle="bold"
+            android:minEms="2"
+            android:maxEms="2"
+            android:lines="1"
+            app:layout_constraintEnd_toStartOf="@+id/protocol_item_p2"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="A"
+            android:paddingEnd="10sp"
+            android:textColor="@{protocolTeam.cap.equalsIgnoreCase(ConstantsKt.WHITE) ? @color/black : @color/white}"/>
+
+        <TextView
+            android:id="@+id/protocol_item_p2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{protocolTeam.p2}"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/protocol_item_p3"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="A"
+            android:minEms="2"
+            android:maxEms="2"
+            android:lines="1"
+            android:paddingEnd="10sp"
+            android:textColor="@{protocolTeam.cap.equalsIgnoreCase(ConstantsKt.WHITE) ? @color/black : @color/white}"/>
+
+        <TextView
+            android:id="@+id/protocol_item_p3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{protocolTeam.p3}"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/protocol_item_goals"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="A"
+            android:minEms="2"
+            android:maxEms="2"
+            android:lines="1"
+            android:paddingEnd="10sp"
+            android:textColor="@{protocolTeam.cap.equalsIgnoreCase(ConstantsKt.WHITE) ? @color/black : @color/white}"/>
+
+        <TextView
+            android:id="@+id/protocol_item_goals"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{protocolTeam.tore}"
+            android:textStyle="bold"
+            android:textAlignment="viewEnd"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="0"
+            android:minEms="2"
+            android:maxEms="2"
+            android:lines="1"
+            android:paddingEnd="10sp"
+            android:textColor="@{protocolTeam.cap.equalsIgnoreCase(ConstantsKt.WHITE) ? @color/black : @color/white}"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

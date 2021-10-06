@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="com.example.waterpolo3000.utilities.ConstantsKt" />
+        <!--        <import type="android.view.View"/>-->
+
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="protocolGoalType"
+            type="com.example.waterpolo3000.data.ProtocolGoalType" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{clickListener}">
+
+        <TextView
+            android:id="@+id/goal_item_time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingEnd="10sp"
+            android:text="@{protocolGoalType.timeString}"
+            android:textStyle="bold"
+            android:minEms="5"
+            android:maxEms="5"
+            android:maxLines="1"
+            app:layout_constraintEnd_toStartOf="@+id/goal_item_white"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Zeit" />
+
+        <TextView
+            android:id="@+id/goal_item_white"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{protocolGoalType.numberWhite}"
+            android:textStyle="bold"
+            android:minEms="2"
+            android:maxEms="2"
+            app:layout_constraintEnd_toStartOf="@+id/goal_item_blue"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="W"
+            android:paddingEnd="10sp"/>
+
+        <TextView
+            android:id="@+id/goal_item_blue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{protocolGoalType.numberBlue}"
+            android:textStyle="bold"
+            android:minEms="2"
+            android:maxEms="2"
+            app:layout_constraintEnd_toStartOf="@+id/goal_item_type"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="B"
+            android:paddingEnd="10sp"/>
+
+        <TextView
+            android:id="@+id/goal_item_type"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{protocolGoalType.type}"
+            android:textStyle="bold"
+            android:minEms="2"
+            android:maxEms="2"
+            app:layout_constraintEnd_toStartOf="@+id/goal_item_goal_white"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Art"
+            android:paddingEnd="10sp"/>
+
+        <TextView
+            android:id="@+id/goal_item_goal_white"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{protocolGoalType.goalWhite}"
+            android:textStyle="bold"
+            android:minEms="2"
+            android:maxEms="2"
+            app:layout_constraintEnd_toStartOf="@+id/goal_item_goal_blue"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="W"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:id="@+id/goal_item_goal_blue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{protocolGoalType.goalBlue}"
+            android:textStyle="bold"
+            android:minEms="2"
+            android:maxEms="2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="B"
+            android:textAlignment="center"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

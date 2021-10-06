@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.example.waterpolo3000.utilities.ConstantsKt" />
+
+        <variable
+            name="clickListener1"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="clickListener2"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="clickListener3"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="gameEvent"
+            type="com.example.waterpolo3000.data.GameEventView" />
+
+        <variable
+            name="edit"
+            type="boolean" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/myLayout"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@{gameEvent.gameEventType&lt;=ConstantsKt.GOAL_TYPE_MAXIMUM &amp;&amp; gameEvent.gameEventType>=ConstantsKt.GOAL_TYPE_MINIMUM ? @color/green : (gameEvent.gameEventType&lt;=ConstantsKt.EXCLUSION_TYPE_MAXIMUM &amp;&amp; gameEvent.gameEventType>=ConstantsKt.EXCLUSION_TYPE_MINIMUM ? @color/red : (gameEvent.gameEventType==ConstantsKt.TIMEOUT ? @color/green_2 : @color/white))}"
+        android:onClick="@{clickListener1}"
+        android:layout_marginBottom="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+
+        <TextView
+            android:id="@+id/game_event_item_gameSection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@{gameEvent.gameSection}"
+            android:textStyle="bold"
+            tools:text="gamesection"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="@+id/myLayout"
+            app:layout_constraintStart_toStartOf="@+id/myLayout"
+            app:layout_constraintTop_toTopOf="@+id/myLayout" />
+
+        <TextView
+            android:id="@+id/game_event_item_time"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="@{gameEvent.timeString.concat(@string/whitespaceSeparator).concat(@string/dashSeparatorBig).concat(@string/whitespaceSeparator)}"
+            android:gravity="center_horizontal"
+            android:textStyle="bold"
+            android:autoSizeMinTextSize="@dimen/gameEventTextSize"
+            android:autoSizeTextType="uniform"
+            tools:text="time - "
+            android:lines="1"
+            android:textColor="@color/black"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/game_event_item_gameSection"
+            app:layout_constraintEnd_toStartOf="@+id/game_event_item_number"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/game_event_item_number"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="@{gameEvent.number}"
+            android:autoSizeMinTextSize="@dimen/gameEventTextSize"
+            android:autoSizeTextType="uniform"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:background="@{gameEvent.cap.equalsIgnoreCase(ConstantsKt.WHITE) ? @color/white : @color/blue}"
+            tools:text="13 - "
+            android:lines="1"
+            app:layout_constraintStart_toEndOf="@+id/game_event_item_time"
+            app:layout_constraintTop_toBottomOf="@id/game_event_item_gameSection"
+            app:layout_constraintEnd_toStartOf="@+id/game_event_item_type"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/game_event_item_type"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="@{gameEvent.gameEventTypeString}"
+            android:background="@{gameEvent.cap.equalsIgnoreCase(ConstantsKt.WHITE) ? @color/white : @color/blue}"
+            android:autoSizeMinTextSize="@dimen/gameEventTextSize"
+            android:autoSizeTextType="uniform"
+            android:gravity="center"
+            android:textStyle="bold"
+            tools:text="goal free throw"
+            android:lines="1"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toEndOf="@id/game_event_item_number"
+            app:layout_constraintTop_toBottomOf="@id/game_event_item_gameSection"
+            app:layout_constraintEnd_toStartOf="@+id/btn_delete"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <ImageButton
+            android:id="@+id/btn_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{clickListener2}"
+            android:src="@drawable/ic_delete_game_event"
+            app:isGone="@{edit}"
+            app:layout_constraintEnd_toStartOf="@+id/btn_edit"
+            app:layout_constraintTop_toBottomOf="@+id/game_event_item_gameSection" />
+
+        <ImageButton
+            android:id="@+id/btn_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{clickListener3}"
+            android:src="@drawable/ic_edit_game_event"
+            app:isGone="@{edit}"
+            app:layout_constraintEnd_toEndOf="@+id/myLayout"
+            app:layout_constraintTop_toBottomOf="@+id/game_event_item_gameSection"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

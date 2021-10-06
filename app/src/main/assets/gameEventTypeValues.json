@@ -1,0 +1,107 @@
+[
+  {
+    "id": 100,
+    "name": "Tor Spiel",
+    "nameShort": "1"
+  },
+  {
+    "id": 101,
+    "name": "Tor Freiwurf",
+    "nameShort": "1"
+  },
+  {
+    "id": 102,
+    "name": "Tor Mann mehr",
+    "nameShort": "2"
+  },
+  {
+    "id": 103,
+    "name": "Tor Mann weniger",
+    "nameShort": "3"
+  },
+  {
+    "id": 104,
+    "name": "Tor Penalty",
+    "nameShort": "5"
+  },
+  {
+    "id": 200,
+    "name": "Ausschluss",
+    "nameShort": "H"
+  },
+  {
+    "id": 201,
+    "name": "Penalty",
+    "nameShort": "5"
+  },
+  {
+    "id": 202,
+    "name": "Ausschluss mit Ersatz",
+    "nameShort": "A"
+  },
+  {
+    "id": 203,
+    "name": "Ausschluss ohne Ersatz",
+    "nameShort": "O"
+  },
+  {
+    "id": 1,
+    "name": "neuer Angriff 20",
+    "nameShort": ""
+  },
+  {
+    "id": 2,
+    "name": "neuer Angriff 30",
+    "nameShort": ""
+  },
+  {
+    "id": 3,
+    "name": "start Zeit",
+    "nameShort": ""
+  },
+  {
+    "id": 4,
+    "name": "stop Zeit",
+    "nameShort": ""
+  },
+  {
+    "id": 5,
+    "name": "Angriff abgelaufen",
+    "nameShort": ""
+  },
+  {
+    "id": 6,
+    "name": "Hauptzeit abgelaufen",
+    "nameShort": ""
+  },
+  {
+    "id": 7,
+    "name": "Spielstart",
+    "nameShort": ""
+  },
+  {
+    "id": 8,
+    "name": "Spielende",
+    "nameShort": ""
+  },
+  {
+    "id": 9,
+    "name": "Timeout",
+    "nameShort": ""
+  },
+  {
+    "id": 10,
+    "name": "Timeout unberechtigt",
+    "nameShort": ""
+  },
+  {
+    "id": 11,
+    "name": "Penalty-Schiessen",
+    "nameShort": ""
+  },
+  {
+    "id": 12,
+    "name": "Verlängerung",
+    "nameShort": ""
+  }
+]

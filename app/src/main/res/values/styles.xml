@@ -1,0 +1,46 @@
+<resources>
+<!--    -->
+    <!-- To see how these attributes are used, please visit https://material.io/develop/android/theming/color/ -->
+<!--    <style name="Base.Theme.Waterpolo3000" parent="Theme.MaterialComponents.DayNight.NoActionBar">-->
+    <style name="Base.Theme.Waterpolo3000" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="colorPrimary">@color/green_500</item>
+        <item name="colorOnPrimary">@color/yellow_500</item>
+        <item name="colorPrimaryDark">@color/green_700</item>
+        <item name="colorOnSurface">@color/black</item>
+        <item name="colorAccent">@color/green_700</item>
+        <item name="colorSurface">@color/gray_50</item>
+        <item name="colorSecondary">@color/yellow_500</item>
+        <item name="android:colorBackground">@color/green_500</item>
+    </style>
+
+    <style name="Theme.Waterpolo3000" parent="Base.Theme.Waterpolo3000"/>
+
+<!--    <style name="Theme.Waterpolo3000.NoActionBar">-->
+<!--        <item name="windowActionBar">false</item>-->
+<!--        <item name="windowNoTitle">true</item>-->
+<!--    </style>-->
+
+    <style name="Theme.Waterpolo3000.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar"/>
+
+    <style name="TextAppearance.Waterpolo3000.Toolbar.Text" parent="TextAppearance.MaterialComponents.Headline5" >
+        <item name="android:textColor">?attr/colorOnSurface</item>
+    </style>
+
+    <style name="MyButtonTheme_1" parent="Widget.MaterialComponents.Button">
+        <item name="materialThemeOverlay">@style/ButtonStyleTextColor_1</item>
+    </style>
+
+    <style name="MyButtonTheme_2" parent="Widget.MaterialComponents.Button">
+        <item name="materialThemeOverlay">@style/ButtonStyleTextColor_2</item>
+    </style>
+
+    <style name="ButtonStyleTextColor_1">
+        <item name="colorPrimary">@color/blue</item>
+    </style>
+
+    <style name="ButtonStyleTextColor_2">
+        <item name="colorPrimary">@color/gray_50_a600</item>
+    </style>
+
+
+</resources>

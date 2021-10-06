@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "name": "goalkeeper"
+  },
+  {
+    "id": 2,
+    "name": "field player"
+  },
+  {
+    "id": 3,
+    "name": "coach"
+  },
+  {
+    "id": 4,
+    "name": "player coach"
+  },
+  {
+    "id": 5,
+    "name": "goalkeeper coach"
+  },
+  {
+    "id": 6,
+    "name": "referee"
+  },
+  {
+    "id": 7,
+    "name": "other"
+  }
+]
