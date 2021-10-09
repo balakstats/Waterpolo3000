@@ -1,6 +1,8 @@
 package com.example.waterpolo3000
 
+import android.app.AlertDialog
 import android.app.Dialog
+import android.bluetooth.BluetoothAdapter
 import android.content.ContentValues.TAG
 import android.content.Context
 import android.graphics.Color
@@ -25,6 +27,7 @@ import com.example.waterpolo3000.databinding.FragmentGameBinding
 import com.example.waterpolo3000.game.GameControl
 import com.example.waterpolo3000.utilities.*
 import com.example.waterpolo3000.viewmodels.GameViewModel
+import com.google.android.material.slider.Slider
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -32,7 +35,6 @@ class GameFragment : Fragment() {
 
     private lateinit var binding: FragmentGameBinding
     private val viewModel: GameViewModel by viewModels()
-    private val viewModely: GameViewModel by viewModels()
 
     private lateinit var v: View
 
@@ -59,7 +61,6 @@ class GameFragment : Fragment() {
         ExclResult("", "", ""),
         ExclResult("", "", "")
     )
-
     private val exclusionResultBlue = mutableListOf<ExclResult>(
         ExclResult("", "", ""),
         ExclResult("", "", ""),
@@ -80,6 +81,13 @@ class GameFragment : Fragment() {
     lateinit var bindingButtonsWhite: List<Button>
     lateinit var playerBtnStringsWhite: List<Int>
     lateinit var playerBtnStringsBlue: List<Int>
+
+    lateinit var mainBoardMenuIcon: MenuItem
+    lateinit var shotclockMenuIcon: MenuItem
+    lateinit var shotclock1MenuIcon: MenuItem
+    lateinit var shotclock2MenuIcon: MenuItem
+    lateinit var shotclock3MenuIcon: MenuItem
+    lateinit var shotclock4MenuIcon: MenuItem
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -310,14 +318,115 @@ class GameFragment : Fragment() {
         subscribeUi(adapter, binding)
     }
 
+    override fun onStart() {
+        super.onStart()
+        binding.bluetoothConnectionProgressBar.visibility = View.VISIBLE
+        binding.bluetoothConnectionTextview.visibility = View.VISIBLE
+        binding.bluetoothConnectionTest.visibility = View.VISIBLE
+
+        Thread(Runnable {
+            var mainBoardConnected = false
+            var shotclock1Connected = false
+            var shotclock2Connected = false
+            var shotclock3Connected = false
+            var shotclock4Connected = false
+            val btHandler = ProcessBT(activity)
+            btHandler.searchAllDevice()
+
+            if (!ProcessBT.mainBoardConnected) {
+                mainBoardConnected = btHandler.connectMainBoard()
+            }
+            if (!ProcessBT.shotclock1Connected) {
+                shotclock1Connected = btHandler.connectShotclock1()
+                if (shotclock1Connected) {
+                    shotclock1MenuIcon.icon = activity?.let {
+                        ContextCompat.getDrawable(
+                            it,
+                            R.drawable.ic_shotclock_connected
+                        )
+                    }
+                }
+            }
+            if (!ProcessBT.shotclock2Connected) {
+                shotclock2Connected = btHandler.connectShotclock2()
+                if (shotclock2Connected) {
+                    shotclock2MenuIcon.icon = activity?.let {
+                        ContextCompat.getDrawable(
+                            it,
+                            R.drawable.ic_shotclock_connected
+                        )
+                    }
+                }
+            }
+            if (!ProcessBT.shotclock3Connected) {
+                shotclock3Connected = btHandler.connectShotclock3()
+                if (shotclock3Connected) {
+                    shotclock3MenuIcon.icon = activity?.let {
+                        ContextCompat.getDrawable(
+                            it,
+                            R.drawable.ic_shotclock_connected
+                        )
+                    }
+                }
+            }
+
+            activity?.runOnUiThread(java.lang.Runnable {
+                Log.d(TAG, "ENTER runOnUiThread")
+                binding.bluetoothConnectionProgressBar.visibility = View.GONE
+                binding.bluetoothConnectionTextview.visibility = View.GONE
+                binding.bluetoothConnectionTest.visibility = View.GONE
+
+                if (mainBoardConnected) {
+                    mainBoardMenuIcon.icon = activity?.let {
+                        ContextCompat.getDrawable(
+                            it,
+                            R.drawable.ic_mainboard_connected
+                        )
+                    }
+                    mainBoardMenuIcon.isEnabled = true
+                }
+                var shotclockConnectedCounter = if (shotclock1Connected) 1 else 0
+                shotclockConnectedCounter += if (shotclock2Connected) 1 else 0
+                shotclockConnectedCounter += if (shotclock3Connected) 1 else 0
+                shotclockConnectedCounter += if (shotclock4Connected) 1 else 0
+                if (shotclock1Connected || shotclock2Connected || shotclock3Connected || shotclock4Connected) {
+                    shotclockMenuIcon.icon = activity?.let {
+                        ContextCompat.getDrawable(
+                            it, (
+                                    when (shotclockConnectedCounter) {
+                                        1 -> R.drawable.ic_one_shotclock_connected
+                                        2 -> R.drawable.ic_two_shotclocks_connected
+                                        3 -> R.drawable.ic_three_shotclocks_connected
+                                        4 -> R.drawable.ic_four_shotclocks_connected
+                                        else -> R.drawable.ic_one_shotclock_connected
+                                    }
+                                    )
+                        )
+                    }
+                    shotclockMenuIcon.isEnabled = true
+                } else {
+                    shotclockMenuIcon.icon = activity?.let {
+                        ContextCompat.getDrawable(it, (R.drawable.ic_no_shotclock_connected))
+                    }
+                }
+            })
+        }).start()
+    }
+
     private fun myVibrate() {
         val vibrator = context?.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-        vibrator.vibrate(VibrationEffect.createOneShot(50, VibrationEffect.DEFAULT_AMPLITUDE))
+        vibrator.vibrate(VibrationEffect.createOneShot(40, VibrationEffect.DEFAULT_AMPLITUDE))
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.menu_game, menu);
+        inflater.inflate(R.menu.menu_game, menu)
         super.onCreateOptionsMenu(menu, inflater)
+        mainBoardMenuIcon = menu.findItem(R.id.mainBoard_Icon)
+        shotclockMenuIcon = menu.findItem(R.id.shotclock_menu)
+        shotclock1MenuIcon = menu.findItem(R.id.shotclock_1_Icon)
+        shotclock2MenuIcon = menu.findItem(R.id.shotclock_2_Icon)
+        shotclock3MenuIcon = menu.findItem(R.id.shotclock_3_Icon)
+        shotclock4MenuIcon = menu.findItem(R.id.shotclock_4_Icon)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -424,6 +533,21 @@ class GameFragment : Fragment() {
                 dialog.show()
                 true
             }
+            R.id.brigthness_mainboard -> {
+                val dialog = Dialog(requireContext())
+                dialog.setContentView(R.layout.dialog_brightness)
+                val brightnessText = "brightness%"
+                val slider = dialog.findViewById<Slider>(R.id.slider_brightness)
+                slider.value = viewModel.mainboardBrightness.toFloat()
+                slider.addOnChangeListener() { _, value, _ ->
+                    val output = "$brightnessText${value.toInt()}"
+                    Log.d(TAG, "output: $value")
+                    ProcessBT.sendMessageToMainBoard(output)
+                    viewModel.mainboardBrightness = value.toInt()
+                }
+                dialog.show()
+                true
+            }
             else ->
                 super.onOptionsItemSelected(item)
         })
@@ -453,6 +577,12 @@ class GameFragment : Fragment() {
                 ProcessBT.sendMessageToMainBoard("gameSection%$newValue")
             }
         }
+        val bluetoothProgressObserver = Observer<Boolean> { newValue ->
+            binding.bluetoothConnectionProgressBar.visibility =
+                if (newValue) View.VISIBLE else View.GONE
+            binding.bluetoothConnectionTextview.visibility =
+                if (newValue) View.VISIBLE else View.GONE
+        }
         // Observe the LiveData, passing in this activity as the LifecycleOwner and the observer.
         viewModel.mainMinutes.observe(viewLifecycleOwner, mainMinutesObserver)
         viewModel.mainSeconds.observe(viewLifecycleOwner, mainSecondsObserver)
@@ -460,6 +590,7 @@ class GameFragment : Fragment() {
         viewModel.shotclockSeconds.observe(viewLifecycleOwner, shotclockSecondsObserver)
         viewModel.shotclockSecondsSmall.observe(viewLifecycleOwner, shotclockSecondsSmallObserver)
         viewModel.currentGameSection.observe(viewLifecycleOwner, currentGameSectionObserver)
+        viewModel.bluetoothProgress.observe(viewLifecycleOwner, bluetoothProgressObserver)
 
         val timeClickableObserver = Observer<Boolean> { newValue ->
             binding.btnTimeStartStop.isClickable = newValue
@@ -475,10 +606,15 @@ class GameFragment : Fragment() {
             val value2 = newValue.split(":")[1].split(".")[1].toInt()
             val cap = player.split("_")[1]
             val index = player.split("_")[2]
-            val btn = if(cap == "W") bindingButtonsWhite[index.toInt()-1] else bindingButtonsBlue[index.toInt()-1]
-            val textColor = if (value1 < 1 && value2 < 1) (if(cap == "W") "#FF000000"/*black*/ else "#FFFFFFFF"/*white*/) else "#E91E63"/*red*/
+            val btn =
+                if (cap == "W") bindingButtonsWhite[index.toInt() - 1] else bindingButtonsBlue[index.toInt() - 1]
+            val textColor =
+                if (value1 < 1 && value2 < 1) (if (cap == "W") "#FF000000"/*black*/ else "#FFFFFFFF"/*white*/) else "#E91E63"/*red*/
             // btn_W_1:20
-            btn.text = if(value1 < 1 && value2 < 1) (if(cap == "W") getString(playerBtnStringsWhite[index.toInt()-1]) else getString(playerBtnStringsBlue[index.toInt()-1])) else ((if(value1 < 1) "$value1.$value2" else value1).toString())
+            btn.text =
+                if (value1 < 1 && value2 < 1) (if (cap == "W") getString(playerBtnStringsWhite[index.toInt() - 1]) else getString(
+                    playerBtnStringsBlue[index.toInt() - 1]
+                )) else ((if (value1 < 1) "$value1.$value2" else value1).toString())
             btn.setTextColor(Color.parseColor(textColor))
         }
         viewModel.exclusionTime.observe(viewLifecycleOwner, exclusionTimeObserver)
@@ -634,7 +770,6 @@ class GameFragment : Fragment() {
             exclusionResult[index].e2 != result.e2 ||
             exclusionResult[index].e3 != result.e3
         ) {
-            Log.d(TAG, "CHANGE")
             exclusionResult[index] = result
             var numberOfExclusions = 0
             numberOfExclusions = if (
@@ -647,8 +782,6 @@ class GameFragment : Fragment() {
                 result.e1.length + result.e2.length + result.e3.length
             }
             ProcessBT.sendMessageToMainBoard("player%$cap%${index + 1}%$numberOfExclusions")
-        } else {
-            Log.d(TAG, "NO CHANGE")
         }
     }
 

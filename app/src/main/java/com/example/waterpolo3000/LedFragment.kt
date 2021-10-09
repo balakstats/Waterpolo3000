@@ -48,7 +48,7 @@ class LedFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        ProcessBT.viewModel = viewModel
+//        ProcessBT.viewModel = viewModel
         val myBThandler = ProcessBT(activity)
         myBThandler.searchAllDevice()
         viewModel.btHandler = myBThandler

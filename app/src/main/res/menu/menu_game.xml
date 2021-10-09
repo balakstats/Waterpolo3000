@@ -5,10 +5,65 @@
     tools:context="com.luasoftware.test.MainActivity">
 
     <item
+        android:id="@+id/mainBoard_Icon"
+        android:icon="@drawable/ic_mainboard_disconnected"
+        android:title="@string/mainBoard"
+        app:showAsAction="ifRoom"
+        android:enabled="false" >
+
+        <menu>
+            <item
+                android:id="@+id/brigthness_mainboard"
+                android:icon="@drawable/ic_baseline_settings_brightness_24"
+                android:title="Helligkeit"
+                app:showAsAction="ifRoom"/>
+        </menu>
+
+    </item>
+
+    <item
+        android:id="@+id/shotclock_menu"
+        android:icon="@drawable/ic_no_shotclock_connected"
+        android:title="sh"
+        app:showAsAction="ifRoom" >
+
+        <menu>
+            <item
+                android:id="@+id/shotclock_1_Icon"
+                android:icon="@drawable/ic_shotclock_disconnected"
+                android:title="sh1"
+                app:showAsAction="ifRoom"
+                android:enabled="false"/>
+
+            <item
+                android:id="@+id/shotclock_2_Icon"
+                android:icon="@drawable/ic_shotclock_disconnected"
+                android:title="sh2"
+                app:showAsAction="ifRoom"
+                android:enabled="false"/>
+
+            <item
+                android:id="@+id/shotclock_3_Icon"
+                android:icon="@drawable/ic_shotclock_disconnected"
+                android:title="sh3"
+                app:showAsAction="ifRoom"
+                android:enabled="false"/>
+
+            <item
+                android:id="@+id/shotclock_4_Icon"
+                android:icon="@drawable/ic_shotclock_disconnected"
+                android:title="sh4"
+                app:showAsAction="ifRoom"
+                android:enabled="false"/>
+        </menu>
+    </item>
+
+    <item
         android:id="@+id/overflowMenu"
         android:icon="@drawable/ic_3_menu"
         android:title=""
-        app:showAsAction="always">
+        app:showAsAction="ifRoom">
+
         <menu>
             <item
                 android:id="@+id/btn_new_game"

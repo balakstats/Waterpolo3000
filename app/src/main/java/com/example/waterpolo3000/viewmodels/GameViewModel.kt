@@ -21,6 +21,8 @@ class GameViewModel @Inject internal constructor(
     gameEventRepository: GameEventRepository
 ) : ViewModel() {
     lateinit var db: AppDatabase
+    var mainboardBrightness = 80
+    var shotclockBrightness = 80
 
     // set the recyclreview for the gameEvents
     val gameEvents: LiveData<List<GameEventView>> = gameEventRepository.getGameEvents().asLiveData()
@@ -68,6 +70,7 @@ class GameViewModel @Inject internal constructor(
     val currentGameSection: MutableLiveData<String> by lazy { MutableLiveData<String>() }
     val timeClickable: MutableLiveData<Boolean> by lazy { MutableLiveData<Boolean>() }
     val exclusionTime: MutableLiveData<String> by lazy { MutableLiveData<String>() }
+    val bluetoothProgress: MutableLiveData<Boolean> by lazy { MutableLiveData<Boolean>() }
 
 //    fun setExclusionTime(player: String, value: Int){
 //        Log.d(TAG, "ExclusionTime for $player: $value")
@@ -251,5 +254,15 @@ class GameViewModel @Inject internal constructor(
 
     fun newGame(){
         GameControl.newGame()
+    }
+
+    fun enableProgressBar(){
+        Log.d(TAG, "ENABLE")
+        bluetoothProgress.value = true
+    }
+
+    fun disableProgressBar(){
+        Log.d(TAG, "DISABLE")
+        bluetoothProgress.value = false
     }
 }

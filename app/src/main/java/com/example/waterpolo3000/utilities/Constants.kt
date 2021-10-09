@@ -53,3 +53,5 @@ const val SHOTCLOCK_1_BT_NAME = "sh1"
 const val SHOTCLOCK_2_BT_NAME = "sh2"
 const val SHOTCLOCK_3_BT_NAME = "sh3"
 const val SHOTCLOCK_4_BT_NAME = "sh4"
+
+//const val LED_BOARD_BRIGHTNESS = 10
