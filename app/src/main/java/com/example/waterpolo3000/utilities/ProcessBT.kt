@@ -16,16 +16,24 @@ import java.util.*
 class ProcessBT(val myActivity: FragmentActivity?) {
     companion object {
         var btSocketMainBoard: BluetoothSocket? = null
-        var btSocketShotclock1: BluetoothSocket? = null
-        var btSocketShotclock2: BluetoothSocket? = null
-        var btSocketShotclock3: BluetoothSocket? = null
-        var btSocketShotclock4: BluetoothSocket? = null
+//        var btSocketShotclock1: BluetoothSocket? = null
+//        var btSocketShotclock2: BluetoothSocket? = null
+//        var btSocketShotclock3: BluetoothSocket? = null
+//        var btSocketShotclock4: BluetoothSocket? = null
+        val btSocketsShotclocks = mutableListOf<BluetoothSocket?>(
+            null,
+            null,
+            null,
+            null
+        )
 
         var mainBoardConnected = false
-        var shotclock1Connected = false
-        var shotclock2Connected = false
-        var shotclock3Connected = false
-        var shotclock4Connected = false
+        val shotclocksConnected = mutableListOf(
+            false,
+            false,
+            false,
+            false
+        )
 
         const val REQUEST_ENABLE_BT = 1
 
@@ -39,51 +47,22 @@ class ProcessBT(val myActivity: FragmentActivity?) {
             }
         }
 
-        fun sendMessageToShotclock1(text: String) {
-            if (shotclock1Connected) {
+        fun sendMessageToShotclock(text: String, index: Int) {
+            if (shotclocksConnected[index]) {
+                Log.d(ContentValues.TAG, "Index: $index")
+                Log.d(ContentValues.TAG, "Index: $index")
                 val textTemp = "$text%"
-                val check = btSocketShotclock1?.let { sendMessage(textTemp, it) }
-                if (!check!!) {
-                    shotclock1Connected = false
-                }
-            }
-        }
-
-        fun sendMessageToShotclock2(text: String) {
-            if (shotclock2Connected) {
-                val textTemp = "$text%"
-                val check = btSocketShotclock2?.let { sendMessage(textTemp, it) }
-                if (!check!!) {
-                    shotclock2Connected = false
-                }
-            }
-        }
-
-        fun sendMessageToShotclock3(text: String) {
-            if (shotclock3Connected) {
-                val textTemp = "$text%"
-                val check = btSocketShotclock3?.let { sendMessage(textTemp, it) }
-                if (!check!!) {
-                    shotclock3Connected = false
-                }
-            }
-        }
-
-        fun sendMessageToShotclock4(text: String) {
-            if (shotclock4Connected) {
-                val textTemp = "$text%"
-                val check = btSocketShotclock4?.let { sendMessage(textTemp, it) }
-                if (!check!!) {
-                    shotclock4Connected = false
+                val check = btSocketsShotclocks[index]?.let { sendMessage(textTemp, it) }
+                if (check == null || !check) {
+                    shotclocksConnected[index] = false
                 }
             }
         }
 
         fun sendMessageToAllShotclock(text: String) {
-            sendMessageToShotclock1(text)
-            sendMessageToShotclock2(text)
-            sendMessageToShotclock3(text)
-            sendMessageToShotclock4(text)
+            shotclocksConnected.forEachIndexed { index, _ ->
+                sendMessageToShotclock(text, index)
+            }
         }
 
         private fun sendMessage(text: String, socket: BluetoothSocket): Boolean {
@@ -96,44 +75,47 @@ class ProcessBT(val myActivity: FragmentActivity?) {
         }
     }
 
-    lateinit var mainBoard_myUUID: UUID
+    var mainBoard_myUUID: UUID? = null
     lateinit var myMainBoard: BluetoothDevice
     var remoteMainBoard: BluetoothDevice? = null
 
-    lateinit var shotclock1_myUUID: UUID
-    lateinit var shotclock1: BluetoothDevice
-    var remoteShotclock1: BluetoothDevice? = null
-
-    lateinit var shotclock2_myUUID: UUID
-    lateinit var shotclock2: BluetoothDevice
-    var remoteShotclock2: BluetoothDevice? = null
-
-    lateinit var shotclock3_myUUID: UUID
-    lateinit var shotclock3: BluetoothDevice
-    var remoteShotclock3: BluetoothDevice? = null
-
-    lateinit var shotclock4_myUUID: UUID
-    lateinit var shotclock4: BluetoothDevice
-    var remoteShotclock4: BluetoothDevice? = null
+    val localShotclocks = mutableListOf<BluetoothDevice?>(
+        null,
+        null,
+        null,
+        null
+    )
+    val remoteShotclocks = mutableListOf<BluetoothDevice?>(
+        null,
+        null,
+        null,
+        null
+    )
+    val shotclock_UUIDs = mutableListOf<UUID?>(
+        null,
+        null,
+        null,
+        null
+    )
 
     val bluetoothAdapter: BluetoothAdapter? = BluetoothAdapter.getDefaultAdapter()
 
-    fun connectMainBoard():Boolean {
+    fun connectMainBoard(): Boolean {
         if (bluetoothAdapter != null) {
             if (!bluetoothAdapter.isEnabled) {
                 requestBTPermisson()
             }
             if (bluetoothAdapter.isEnabled) {
                 if (remoteMainBoard != null) {
-                    connectToDevice(remoteMainBoard!!, mainBoard_myUUID)
-                    if(mainBoardConnected) {
+                    mainBoard_myUUID?.let { connectToDevice(remoteMainBoard!!, it) }
+                    if (mainBoardConnected) {
                         Log.d(ContentValues.TAG, "connected")
                         val textMain = initMainBoardAfterConnection()
                         sendMessageToMainBoard(textMain)
                         Thread.sleep(1000)
                         sendMessageToMainBoard("gameSection%1")
                         return true
-                    }else{
+                    } else {
                         Log.d(ContentValues.TAG, "mainboard not connected")
                     }
                 }
@@ -142,102 +124,105 @@ class ProcessBT(val myActivity: FragmentActivity?) {
         return false
     }
 
-    fun connectShotclock1():Boolean {
+    fun connectShotclock(index: Int): Boolean {
+        Log.d(ContentValues.TAG, "yo0: $index")
         if (bluetoothAdapter != null) {
             if (!bluetoothAdapter.isEnabled) {
                 requestBTPermisson()
             }
-            if (bluetoothAdapter.isEnabled) {
-                if (remoteShotclock1 != null) {
-                    connectToDevice(remoteShotclock1!!, shotclock1_myUUID)
-                    if(shotclock1Connected) {
-                        Log.d(ContentValues.TAG, "connected")
-                        val textMain = initShotclocksAfterConnection("main")
-                        val textShot = initShotclocksAfterConnection("shotclock")
-                        sendMessageToShotclock1(textMain)
-                        Thread.sleep(1000)
-                        sendMessageToShotclock1(textShot)
-                        return true
-                    }else{
-                        Log.d(ContentValues.TAG, "shotclock1 not connected")
-                    }
+            Log.d(ContentValues.TAG, "yo1: $index")
+            Log.d(ContentValues.TAG, remoteShotclocks[index].toString())
+            if (bluetoothAdapter.isEnabled && remoteShotclocks[index] != null) {
+                Log.d(ContentValues.TAG, "yo2: $index")
+                shotclock_UUIDs[index]?.let { connectToDevice(remoteShotclocks[index]!!, it) }
+                Log.d(ContentValues.TAG, "yo3: $index")
+                if (shotclocksConnected[index]) {
+                    Log.d(ContentValues.TAG, "connected")
+                    val textMain = initShotclocksAfterConnection("main")
+                    val textShot = initShotclocksAfterConnection("shotclock")
+                    sendMessageToShotclock(textMain, index)
+                    Thread.sleep(1000)
+                    sendMessageToShotclock(textShot, index)
+                    return true
+                } else {
+                    Log.d(ContentValues.TAG, "shotclock1 not connected")
                 }
             }
         }
         return false
     }
 
-    fun connectShotclock2():Boolean {
-        if (bluetoothAdapter != null) {
-            if (!bluetoothAdapter.isEnabled) {
-                requestBTPermisson()
-            }
-            if (bluetoothAdapter.isEnabled) {
-                if (remoteShotclock2 != null) {
-                    connectToDevice(remoteShotclock2!!, shotclock2_myUUID)
-                    if(shotclock2Connected) {
-                        val textMain = initShotclocksAfterConnection("main")
-                        val textShot = initShotclocksAfterConnection("shotclock")
-                        sendMessageToShotclock2(textMain)
-                        Thread.sleep(1000)
-                        sendMessageToShotclock2(textShot)
-                        return true
-                    } else{
-                        Log.d(ContentValues.TAG, "shotclock2 not connected")
-                    }
-                }
-            }
-        }
-        return false
-    }
-
-    fun connectShotclock3():Boolean {
-        if (bluetoothAdapter != null) {
-            if (!bluetoothAdapter.isEnabled) {
-                requestBTPermisson()
-            }
-            if (bluetoothAdapter.isEnabled) {
-                if (remoteShotclock3 != null) {
-                    connectToDevice(remoteShotclock3!!, shotclock3_myUUID)
-                    if(shotclock3Connected) {
-                        val textMain = initShotclocksAfterConnection("main")
-                        val textShot = initShotclocksAfterConnection("shotclock")
-                        sendMessageToShotclock3(textMain)
-                        Thread.sleep(1000)
-                        sendMessageToShotclock3(textShot)
-                        return true
-                    } else{
-                        Log.d(ContentValues.TAG, "shotclock3 not connected")
-                    }
-                }
-            }
-        }
-        return false
-    }
-
-    fun connectShotclock4():Boolean {
-        if (bluetoothAdapter != null) {
-            if (!bluetoothAdapter.isEnabled) {
-                requestBTPermisson()
-            }
-            if (bluetoothAdapter.isEnabled) {
-                if (remoteShotclock4 != null) {
-                    connectToDevice(remoteShotclock4!!, shotclock4_myUUID)
-                    if(shotclock4Connected) {
-                        val textMain = initShotclocksAfterConnection("main")
-                        val textShot = initShotclocksAfterConnection("shotclock")
-                        sendMessageToShotclock4(textMain)
-                        Thread.sleep(1000)
-                        sendMessageToShotclock4(textShot)
-                        return true
-                    } else{
-                        Log.d(ContentValues.TAG, "shotclock4 not connected")
-                    }
-                }
-            }
-        }
-        return false
-    }
+//    fun connectShotclock2():Boolean {
+//        if (bluetoothAdapter != null) {
+//            if (!bluetoothAdapter.isEnabled) {
+//                requestBTPermisson()
+//            }
+//            if (bluetoothAdapter.isEnabled) {
+//                if (remoteShotclock2 != null) {
+//                    connectToDevice(remoteShotclock2!!, shotclock2_myUUID)
+//                    if(shotclock2Connected) {
+//                        val textMain = initShotclocksAfterConnection("main")
+//                        val textShot = initShotclocksAfterConnection("shotclock")
+//                        sendMessageToShotclock2(textMain)
+//                        Thread.sleep(1000)
+//                        sendMessageToShotclock2(textShot)
+//                        return true
+//                    } else{
+//                        Log.d(ContentValues.TAG, "shotclock2 not connected")
+//                    }
+//                }
+//            }
+//        }
+//        return false
+//    }
+//
+//    fun connectShotclock3():Boolean {
+//        if (bluetoothAdapter != null) {
+//            if (!bluetoothAdapter.isEnabled) {
+//                requestBTPermisson()
+//            }
+//            if (bluetoothAdapter.isEnabled) {
+//                if (remoteShotclock3 != null) {
+//                    connectToDevice(remoteShotclock3!!, shotclock3_myUUID)
+//                    if(shotclock3Connected) {
+//                        val textMain = initShotclocksAfterConnection("main")
+//                        val textShot = initShotclocksAfterConnection("shotclock")
+//                        sendMessageToShotclock3(textMain)
+//                        Thread.sleep(1000)
+//                        sendMessageToShotclock3(textShot)
+//                        return true
+//                    } else{
+//                        Log.d(ContentValues.TAG, "shotclock3 not connected")
+//                    }
+//                }
+//            }
+//        }
+//        return false
+//    }
+//
+//    fun connectShotclock4():Boolean {
+//        if (bluetoothAdapter != null) {
+//            if (!bluetoothAdapter.isEnabled) {
+//                requestBTPermisson()
+//            }
+//            if (bluetoothAdapter.isEnabled) {
+//                if (remoteShotclock4 != null) {
+//                    connectToDevice(remoteShotclock4!!, shotclock4_myUUID)
+//                    if(shotclock4Connected) {
+//                        val textMain = initShotclocksAfterConnection("main")
+//                        val textShot = initShotclocksAfterConnection("shotclock")
+//                        sendMessageToShotclock4(textMain)
+//                        Thread.sleep(1000)
+//                        sendMessageToShotclock4(textShot)
+//                        return true
+//                    } else{
+//                        Log.d(ContentValues.TAG, "shotclock4 not connected")
+//                    }
+//                }
+//            }
+//        }
+//        return false
+//    }
 
     private fun initMainBoardAfterConnection(): String {
         val currCountdown = GameControl.currentCountdown
@@ -271,12 +256,12 @@ class ProcessBT(val myActivity: FragmentActivity?) {
     }
 
     fun manageMyConnectedSocket(socket: BluetoothSocket, mode: String) {
-        when(mode){
+        when (mode) {
             MAIN_BOARD_BT_NAME -> btSocketMainBoard = socket
-            SHOTCLOCK_1_BT_NAME -> btSocketShotclock1 = socket
-            SHOTCLOCK_2_BT_NAME -> btSocketShotclock2 = socket
-            SHOTCLOCK_3_BT_NAME -> btSocketShotclock3 = socket
-            SHOTCLOCK_4_BT_NAME -> btSocketShotclock4 = socket
+            SHOTCLOCK_1_BT_NAME -> btSocketsShotclocks[0] = socket
+            SHOTCLOCK_2_BT_NAME -> btSocketsShotclocks[1] = socket
+            SHOTCLOCK_3_BT_NAME -> btSocketsShotclocks[2] = socket
+            SHOTCLOCK_4_BT_NAME -> btSocketsShotclocks[3] = socket
         }
     }
 
@@ -320,28 +305,28 @@ class ProcessBT(val myActivity: FragmentActivity?) {
                         if (!mainBoardConnected && (device == remoteMainBoard)) {
                             mainBoardConnected = true
                             manageMyConnectedSocket(newSocket, device.name)
-                        } else if (!shotclock1Connected && (device == remoteShotclock1)) {
-                            shotclock1Connected = true
+                        } else if (!shotclocksConnected[0] && (device == remoteShotclocks[0])) {
+                            shotclocksConnected[0] = true
                             manageMyConnectedSocket(newSocket, device.name)
-                        } else if (!shotclock2Connected && (device == remoteShotclock2)) {
-                            shotclock2Connected = true
+                        } else if (!shotclocksConnected[1] && (device == remoteShotclocks[1])) {
+                            shotclocksConnected[1] = true
                             manageMyConnectedSocket(newSocket, device.name)
-                        } else if (!shotclock3Connected && (device == remoteShotclock3)) {
-                            shotclock3Connected = true
+                        } else if (!shotclocksConnected[2] && (device == remoteShotclocks[2])) {
+                            shotclocksConnected[2] = true
                             manageMyConnectedSocket(newSocket, device.name)
-                        } else if (!shotclock4Connected && (device == remoteShotclock4)) {
-                            shotclock4Connected = true
+                        } else if (!shotclocksConnected[3] && (device == remoteShotclocks[3])) {
+                            shotclocksConnected[3] = true
                             manageMyConnectedSocket(newSocket, device.name)
                         }
                     }
                 } catch (e1: IOException) {
                     Log.d(ContentValues.TAG, "Fallback failed. Cancelling: ", e1)
-                    when(device.name){
+                    when (device.name) {
                         MAIN_BOARD_BT_NAME -> mainBoardConnected = false
-                        SHOTCLOCK_1_BT_NAME -> shotclock1Connected = false
-                        SHOTCLOCK_2_BT_NAME -> shotclock2Connected = false
-                        SHOTCLOCK_3_BT_NAME -> shotclock3Connected = false
-                        SHOTCLOCK_4_BT_NAME -> shotclock4Connected = false
+                        SHOTCLOCK_1_BT_NAME -> shotclocksConnected[0] = false
+                        SHOTCLOCK_2_BT_NAME -> shotclocksConnected[1] = false
+                        SHOTCLOCK_3_BT_NAME -> shotclocksConnected[2] = false
+                        SHOTCLOCK_4_BT_NAME -> shotclocksConnected[3] = false
                     }
                 }
             }
@@ -374,34 +359,48 @@ class ProcessBT(val myActivity: FragmentActivity?) {
                             remoteMainBoard = bluetoothAdapter.getRemoteDevice(myMainBoard.address)
                             mainBoard_myUUID = myMainBoard.uuids[0].uuid
                         }
-
-                        if (device.name == SHOTCLOCK_1_BT_NAME) {
-                            Log.d(ContentValues.TAG, "paired device: shotclock1")
-                            shotclock1 = device
-                            remoteShotclock1 = bluetoothAdapter.getRemoteDevice(shotclock1.address)
-                            shotclock1_myUUID = shotclock1.uuids[0].uuid
+                        val nameArray = arrayOf(SHOTCLOCK_1_BT_NAME,SHOTCLOCK_2_BT_NAME,SHOTCLOCK_3_BT_NAME,SHOTCLOCK_4_BT_NAME)
+                        nameArray.forEachIndexed { index, s ->
+                            if (device.name == s) {
+                                Log.d(ContentValues.TAG, "paired device: shotclock ${index+1}")
+                                localShotclocks[index] = device
+                                remoteShotclocks[index] = bluetoothAdapter.getRemoteDevice(
+                                    localShotclocks[index]?.address
+                                )
+                                shotclock_UUIDs[index] = localShotclocks[index]?.uuids?.get(0)?.uuid
+                            }
                         }
-
-                        if (device.name == SHOTCLOCK_2_BT_NAME) {
-                            Log.d(ContentValues.TAG, "paired device: shotclock2")
-                            shotclock2 = device
-                            remoteShotclock2 = bluetoothAdapter.getRemoteDevice(shotclock2.address)
-                            shotclock2_myUUID = shotclock2.uuids[0].uuid
-                        }
-
-                        if (device.name == SHOTCLOCK_3_BT_NAME) {
-                            Log.d(ContentValues.TAG, "paired device: shotclock3")
-                            shotclock3 = device
-                            remoteShotclock3 = bluetoothAdapter.getRemoteDevice(shotclock3.address)
-                            shotclock3_myUUID = shotclock3.uuids[0].uuid
-                        }
-
-                        if (device.name == SHOTCLOCK_4_BT_NAME) {
-                            Log.d(ContentValues.TAG, "paired device: shotclock4")
-                            shotclock4 = device
-                            remoteShotclock4 = bluetoothAdapter.getRemoteDevice(shotclock4.address)
-                            shotclock4_myUUID = shotclock4.uuids[0].uuid
-                        }
+//                        if (device.name == SHOTCLOCK_1_BT_NAME) {
+//                            val index = 0
+//                            Log.d(ContentValues.TAG, "paired device: shotclock1")
+//                            shotclock1 = device
+//                            remoteShotclocks[index] = bluetoothAdapter.getRemoteDevice(shotclock1.address)
+//                            shotclock_UUIDs[index] = shotclock1.uuids[0].uuid
+//                        }
+//
+//                        if (device.name == SHOTCLOCK_2_BT_NAME) {
+//                            val index = 1
+//                            Log.d(ContentValues.TAG, "paired device: shotclock2")
+//                            shotclock2 = device
+//                            remoteShotclocks[index] = bluetoothAdapter.getRemoteDevice(shotclock2.address)
+//                            shotclock_UUIDs[index] = shotclock2.uuids[0].uuid
+//                        }
+//
+//                        if (device.name == SHOTCLOCK_3_BT_NAME) {
+//                            val index = 2
+//                            Log.d(ContentValues.TAG, "paired device: shotclock3")
+//                            shotclock3 = device
+//                            remoteShotclocks[index] = bluetoothAdapter.getRemoteDevice(shotclock3.address)
+//                            shotclock_UUIDs[index] = shotclock3.uuids[0].uuid
+//                        }
+//
+//                        if (device.name == SHOTCLOCK_4_BT_NAME) {
+//                            val index = 3
+//                            Log.d(ContentValues.TAG, "paired device: shotclock4")
+//                            shotclock4 = device
+//                            remoteShotclocks[index] = bluetoothAdapter.getRemoteDevice(shotclock4.address)
+//                            shotclock_UUIDs[index] = shotclock4.uuids[0].uuid
+//                        }
                     }
                 }
             }
@@ -417,7 +416,7 @@ class ProcessBT(val myActivity: FragmentActivity?) {
                 }
             }
         } else {
-            Toast.makeText(myActivity, "this device does not support bluetooth", Toast.LENGTH_LONG)
+            Toast.makeText(myActivity, "This device does not support bluetooth", Toast.LENGTH_LONG)
                 .show()
         }
     }

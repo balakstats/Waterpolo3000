@@ -2,7 +2,6 @@ package com.example.waterpolo3000
 
 import android.app.AlertDialog
 import android.app.Dialog
-import android.bluetooth.BluetoothAdapter
 import android.content.ContentValues.TAG
 import android.content.Context
 import android.graphics.Color
@@ -33,6 +32,10 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class GameFragment : Fragment() {
 
+    companion object {
+        var searchForBluetooth = false
+    }
+
     private lateinit var binding: FragmentGameBinding
     private val viewModel: GameViewModel by viewModels()
 
@@ -46,7 +49,7 @@ class GameFragment : Fragment() {
     private var tempCurrentCountdown: Long = 0
 
     val myArray = arrayOf("A", "O")
-    private val exclusionResultWhite = mutableListOf<ExclResult>(
+    private val exclusionResultWhite = mutableListOf(
         ExclResult("", "", ""),
         ExclResult("", "", ""),
         ExclResult("", "", ""),
@@ -61,7 +64,7 @@ class GameFragment : Fragment() {
         ExclResult("", "", ""),
         ExclResult("", "", "")
     )
-    private val exclusionResultBlue = mutableListOf<ExclResult>(
+    private val exclusionResultBlue = mutableListOf(
         ExclResult("", "", ""),
         ExclResult("", "", ""),
         ExclResult("", "", ""),
@@ -82,12 +85,28 @@ class GameFragment : Fragment() {
     lateinit var playerBtnStringsWhite: List<Int>
     lateinit var playerBtnStringsBlue: List<Int>
 
-    lateinit var mainBoardMenuIcon: MenuItem
-    lateinit var shotclockMenuIcon: MenuItem
-    lateinit var shotclock1MenuIcon: MenuItem
-    lateinit var shotclock2MenuIcon: MenuItem
-    lateinit var shotclock3MenuIcon: MenuItem
-    lateinit var shotclock4MenuIcon: MenuItem
+    var mainBoardMenuItem: MenuItem? = null
+    var LedBoardMenuItem: MenuItem? = null
+    val shotclockMenuItems = mutableListOf<MenuItem?>(
+        null,
+        null,
+        null,
+        null
+    )
+    var mainBoardConnectItem: MenuItem? = null
+    val shotclockConnectItems = mutableListOf<MenuItem?>(
+        null,
+        null,
+        null,
+        null
+    )
+    var brightnessAllItem: MenuItem? = null
+    var brightnessShotclocks = mutableListOf<MenuItem?>(
+        null,
+        null,
+        null,
+        null
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -171,7 +190,7 @@ class GameFragment : Fragment() {
 
         val adapter = GameEventAdapter()
         adapter.viewModelOut = viewModel
-        // scroll always the top item(last inserted) in recyclerview
+        // scroll always to the top item(last inserted) in recyclerview
         adapter.registerAdapterDataObserver(object : RecyclerView.AdapterDataObserver() {
             override fun onItemRangeInserted(positionStart: Int, itemCount: Int) {
                 binding.gameEventRecyclerview.smoothScrollToPosition(0)
@@ -316,101 +335,89 @@ class GameFragment : Fragment() {
 
         initObservers()
         subscribeUi(adapter, binding)
-    }
 
-    override fun onStart() {
-        super.onStart()
-        binding.bluetoothConnectionProgressBar.visibility = View.VISIBLE
-        binding.bluetoothConnectionTextview.visibility = View.VISIBLE
-        binding.bluetoothConnectionTest.visibility = View.VISIBLE
+        // execute only once at app start
+        if (!searchForBluetooth) {
+            searchForBluetooth = true
 
-        Thread(Runnable {
-            var mainBoardConnected = false
-            var shotclock1Connected = false
-            var shotclock2Connected = false
-            var shotclock3Connected = false
-            var shotclock4Connected = false
-            val btHandler = ProcessBT(activity)
-            btHandler.searchAllDevice()
-
-            if (!ProcessBT.mainBoardConnected) {
-                mainBoardConnected = btHandler.connectMainBoard()
+            val builder = AlertDialog.Builder(view.context)
+            builder.setCancelable(false)
+            builder.setTitle("LED Tafel")
+            builder.setMessage("LED Tafel verbinden?")
+            builder.setIcon(R.drawable.ic_bluetooth)
+            builder.setPositiveButton("Verbinden") { _, _ ->
+                bluetoothConnectAll()
             }
-            if (!ProcessBT.shotclock1Connected) {
-                shotclock1Connected = btHandler.connectShotclock1()
-                if (shotclock1Connected) {
-                    shotclock1MenuIcon.icon = activity?.let {
-                        ContextCompat.getDrawable(
-                            it,
-                            R.drawable.ic_shotclock_connected
-                        )
-                    }
-                }
-            }
-            if (!ProcessBT.shotclock2Connected) {
-                shotclock2Connected = btHandler.connectShotclock2()
-                if (shotclock2Connected) {
-                    shotclock2MenuIcon.icon = activity?.let {
-                        ContextCompat.getDrawable(
-                            it,
-                            R.drawable.ic_shotclock_connected
-                        )
-                    }
-                }
-            }
-            if (!ProcessBT.shotclock3Connected) {
-                shotclock3Connected = btHandler.connectShotclock3()
-                if (shotclock3Connected) {
-                    shotclock3MenuIcon.icon = activity?.let {
-                        ContextCompat.getDrawable(
-                            it,
-                            R.drawable.ic_shotclock_connected
-                        )
-                    }
-                }
-            }
-
-            activity?.runOnUiThread(java.lang.Runnable {
-                Log.d(TAG, "ENTER runOnUiThread")
+            builder.setNegativeButton("Cancel") { _, _ ->
                 binding.bluetoothConnectionProgressBar.visibility = View.GONE
                 binding.bluetoothConnectionTextview.visibility = View.GONE
-                binding.bluetoothConnectionTest.visibility = View.GONE
+                setOptionsMenu()
+            }
+            builder.show()
+        } else {
+            binding.bluetoothConnectionProgressBar.visibility = View.GONE
+            binding.bluetoothConnectionTextview.visibility = View.GONE
+            setOptionsMenu()
+        }
+    }
 
-                if (mainBoardConnected) {
-                    mainBoardMenuIcon.icon = activity?.let {
-                        ContextCompat.getDrawable(
-                            it,
-                            R.drawable.ic_mainboard_connected
-                        )
-                    }
-                    mainBoardMenuIcon.isEnabled = true
-                }
-                var shotclockConnectedCounter = if (shotclock1Connected) 1 else 0
-                shotclockConnectedCounter += if (shotclock2Connected) 1 else 0
-                shotclockConnectedCounter += if (shotclock3Connected) 1 else 0
-                shotclockConnectedCounter += if (shotclock4Connected) 1 else 0
-                if (shotclock1Connected || shotclock2Connected || shotclock3Connected || shotclock4Connected) {
-                    shotclockMenuIcon.icon = activity?.let {
-                        ContextCompat.getDrawable(
-                            it, (
-                                    when (shotclockConnectedCounter) {
-                                        1 -> R.drawable.ic_one_shotclock_connected
-                                        2 -> R.drawable.ic_two_shotclocks_connected
-                                        3 -> R.drawable.ic_three_shotclocks_connected
-                                        4 -> R.drawable.ic_four_shotclocks_connected
-                                        else -> R.drawable.ic_one_shotclock_connected
-                                    }
-                                    )
-                        )
-                    }
-                    shotclockMenuIcon.isEnabled = true
-                } else {
-                    shotclockMenuIcon.icon = activity?.let {
-                        ContextCompat.getDrawable(it, (R.drawable.ic_no_shotclock_connected))
-                    }
-                }
+    private fun bluetoothConnectAll() {
+        Thread(Runnable {
+            activity?.runOnUiThread(java.lang.Runnable {
+                binding.bluetoothConnectionTextview.text =
+                    getString(R.string.wait_for_connection).plus("(1/5): Haupt Tafel")
+            })
+            connectMainBoard()
+            activity?.runOnUiThread(java.lang.Runnable {
+                binding.bluetoothConnectionTextview.text =
+                    getString(R.string.wait_for_connection).plus("(2/5): shotclock 1")
+            })
+            connectShotclock(1)
+            activity?.runOnUiThread(java.lang.Runnable {
+                binding.bluetoothConnectionTextview.text =
+                    getString(R.string.wait_for_connection).plus("(3/5): shotclock 2")
+            })
+            connectShotclock(2)
+            activity?.runOnUiThread(java.lang.Runnable {
+                binding.bluetoothConnectionTextview.text =
+                    getString(R.string.wait_for_connection).plus("(4/5): shotclock 3")
+            })
+            connectShotclock(3)
+            activity?.runOnUiThread(java.lang.Runnable {
+                binding.bluetoothConnectionTextview.text =
+                    getString(R.string.wait_for_connection).plus("(5/5): shotclock 4")
+            })
+            connectShotclock(4)
+            activity?.runOnUiThread(java.lang.Runnable {
+                binding.bluetoothConnectionProgressBar.visibility = View.GONE
+                binding.bluetoothConnectionTextview.visibility = View.GONE
             })
         }).start()
+    }
+
+    private fun connectMainBoard() {
+        val btHandler = ProcessBT(activity)
+        btHandler.searchAllDevice()
+
+        if (!ProcessBT.mainBoardConnected) {
+//            activity?.runOnUiThread(java.lang.Runnable {
+//                binding.bluetoothConnectionTextview.text =
+//                    getString(R.string.wait_for_connection).plus("(1/5): Haupt Tafel")
+//            })
+            btHandler.connectMainBoard()
+        }
+    }
+
+    private fun connectShotclock(myIndex: Int) {
+        val btHandler = ProcessBT(activity)
+        btHandler.searchAllDevice()
+
+        ProcessBT.shotclocksConnected.forEachIndexed { index, b ->
+            Log.d(TAG, "Hey: $b")
+            if (!b && ((myIndex == 0) || ((myIndex-1) == index))) {
+                btHandler.connectShotclock(index)
+            }
+        }
     }
 
     private fun myVibrate() {
@@ -421,17 +428,28 @@ class GameFragment : Fragment() {
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_game, menu)
         super.onCreateOptionsMenu(menu, inflater)
-        mainBoardMenuIcon = menu.findItem(R.id.mainBoard_Icon)
-        shotclockMenuIcon = menu.findItem(R.id.shotclock_menu)
-        shotclock1MenuIcon = menu.findItem(R.id.shotclock_1_Icon)
-        shotclock2MenuIcon = menu.findItem(R.id.shotclock_2_Icon)
-        shotclock3MenuIcon = menu.findItem(R.id.shotclock_3_Icon)
-        shotclock4MenuIcon = menu.findItem(R.id.shotclock_4_Icon)
+        LedBoardMenuItem = menu.findItem(R.id.led_boards_menu)
+        mainBoardMenuItem = menu.findItem(R.id.mainBoard_item)
+        shotclockMenuItems[0] = menu.findItem(R.id.shotclock_1_item)
+        shotclockMenuItems[1] = menu.findItem(R.id.shotclock_2_item)
+        shotclockMenuItems[2] = menu.findItem(R.id.shotclock_3_item)
+        shotclockMenuItems[3] = menu.findItem(R.id.shotclock_4_item)
+        mainBoardConnectItem = menu.findItem(R.id.mainboard_connect_item)
+        shotclockConnectItems[0] = menu.findItem(R.id.shotclock1_connect_item)
+        shotclockConnectItems[1] = menu.findItem(R.id.shotclock2_connect_item)
+        shotclockConnectItems[2] = menu.findItem(R.id.shotclock3_connect_item)
+        shotclockConnectItems[3] = menu.findItem(R.id.shotclock4_connect_item)
+        brightnessAllItem = menu.findItem(R.id.brigthness_all_item)
+        brightnessShotclocks[0] = menu.findItem(R.id.brigthness_shotclock_1_item)
+        brightnessShotclocks[1] = menu.findItem(R.id.brigthness_shotclock_2_item)
+        brightnessShotclocks[2] = menu.findItem(R.id.brigthness_shotclock_3_item)
+        brightnessShotclocks[3] = menu.findItem(R.id.brigthness_shotclock_4_item)
+        setOptionsMenu()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return (when (item.itemId) {
-            R.id.btn_new_game -> {
+            R.id.item_new_game -> {
                 val dialog = Dialog(requireContext())
                 dialog.setContentView(R.layout.dialog_edit_settings)
 
@@ -467,7 +485,7 @@ class GameFragment : Fragment() {
                 dialog.show()
                 true
             }
-            R.id.btn_edit_main_time -> {
+            R.id.item_edit_main_time -> {
                 val dialog = Dialog(requireContext())
                 dialog.setContentView(R.layout.dialog_edit_time)
 
@@ -502,7 +520,7 @@ class GameFragment : Fragment() {
                 dialog.show()
                 true
             }
-            R.id.btn_edit_shotclock -> {
+            R.id.item_edit_shotclock -> {
                 val dialog = Dialog(requireContext())
                 dialog.setContentView(R.layout.dialog_edit_shotclock)
 
@@ -533,7 +551,7 @@ class GameFragment : Fragment() {
                 dialog.show()
                 true
             }
-            R.id.brigthness_mainboard -> {
+            R.id.mainboard_brigthness_item -> {
                 val dialog = Dialog(requireContext())
                 dialog.setContentView(R.layout.dialog_brightness)
                 val brightnessText = "brightness%"
@@ -548,9 +566,184 @@ class GameFragment : Fragment() {
                 dialog.show()
                 true
             }
+            R.id.brigthness_all_item -> {
+                val dialog = Dialog(requireContext())
+                dialog.setContentView(R.layout.dialog_brightness)
+                val brightnessText = "brightness%"
+                val slider = dialog.findViewById<Slider>(R.id.slider_brightness)
+                slider.value = viewModel.allBrightness.toFloat()
+                slider.addOnChangeListener() { _, value, _ ->
+                    val output = "$brightnessText${value.toInt()}"
+                    Log.d(TAG, "output: $value")
+                    ProcessBT.sendMessageToMainBoard(output)
+                    ProcessBT.sendMessageToAllShotclock(output)
+                    viewModel.allBrightness = value.toInt()
+                }
+                dialog.show()
+                true
+            }
+            R.id.mainboard_connect_item -> {
+                binding.bluetoothConnectionProgressBar.visibility = View.VISIBLE
+                binding.bluetoothConnectionTextview.visibility = View.VISIBLE
+                Thread(Runnable {
+                    activity?.runOnUiThread(java.lang.Runnable {
+                        binding.bluetoothConnectionTextview.text =
+                            getString(R.string.wait_for_connection).plus(": Haupt Tafel")
+                    })
+                    connectMainBoard()
+                    activity?.runOnUiThread(java.lang.Runnable {
+                        binding.bluetoothConnectionProgressBar.visibility = View.GONE
+                        binding.bluetoothConnectionTextview.visibility = View.GONE
+                        setOptionsMenu()
+                    })
+                }).start()
+                true
+            }
+            R.id.shotclock1_connect_item -> {
+                binding.bluetoothConnectionProgressBar.visibility = View.VISIBLE
+                binding.bluetoothConnectionTextview.visibility = View.VISIBLE
+                Thread(Runnable {
+                    activity?.runOnUiThread(java.lang.Runnable {
+                        binding.bluetoothConnectionTextview.text =
+                            getString(R.string.wait_for_connection).plus(": Shotclock 1")
+                    })
+                    connectShotclock(1)
+                    activity?.runOnUiThread(java.lang.Runnable {
+                        binding.bluetoothConnectionProgressBar.visibility = View.GONE
+                        binding.bluetoothConnectionTextview.visibility = View.GONE
+                        setOptionsMenu()
+                    })
+                }).start()
+                true
+            }
+            R.id.shotclock2_connect_item -> {
+                binding.bluetoothConnectionProgressBar.visibility = View.VISIBLE
+                binding.bluetoothConnectionTextview.visibility = View.VISIBLE
+                Thread(Runnable {
+                    activity?.runOnUiThread(java.lang.Runnable {
+                        binding.bluetoothConnectionTextview.text =
+                            getString(R.string.wait_for_connection).plus(": Shotclock 2")
+                    })
+                    connectShotclock(2)
+                    activity?.runOnUiThread(java.lang.Runnable {
+                        binding.bluetoothConnectionProgressBar.visibility = View.GONE
+                        binding.bluetoothConnectionTextview.visibility = View.GONE
+                        setOptionsMenu()
+                    })
+                }).start()
+                true
+            }
+            R.id.shotclock3_connect_item -> {
+                binding.bluetoothConnectionProgressBar.visibility = View.VISIBLE
+                binding.bluetoothConnectionTextview.visibility = View.VISIBLE
+                Thread(Runnable {
+                    activity?.runOnUiThread(java.lang.Runnable {
+                        binding.bluetoothConnectionTextview.text =
+                            getString(R.string.wait_for_connection).plus(": Shotclock 3")
+                    })
+                    connectShotclock(3)
+                    activity?.runOnUiThread(java.lang.Runnable {
+                        binding.bluetoothConnectionProgressBar.visibility = View.GONE
+                        binding.bluetoothConnectionTextview.visibility = View.GONE
+                        setOptionsMenu()
+                    })
+                }).start()
+                true
+            }
+            R.id.shotclock4_connect_item -> {
+                binding.bluetoothConnectionProgressBar.visibility = View.VISIBLE
+                binding.bluetoothConnectionTextview.visibility = View.VISIBLE
+                Thread(Runnable {
+                    activity?.runOnUiThread(java.lang.Runnable {
+                        binding.bluetoothConnectionTextview.text =
+                            getString(R.string.wait_for_connection).plus(": Shotclock 4")
+                    })
+                    connectShotclock(4)
+                    activity?.runOnUiThread(java.lang.Runnable {
+                        binding.bluetoothConnectionProgressBar.visibility = View.GONE
+                        binding.bluetoothConnectionTextview.visibility = View.GONE
+                        setOptionsMenu()
+                    })
+                }).start()
+                true
+            }
             else ->
                 super.onOptionsItemSelected(item)
         })
+    }
+
+    private fun setOptionsMenu() {
+        val connectedDevicesCounter =
+            (if (ProcessBT.mainBoardConnected) 1 else 0) + (if (ProcessBT.shotclocksConnected[0]) 1 else 0) + (if (ProcessBT.shotclocksConnected[1]) 1 else 0) + (if (ProcessBT.shotclocksConnected[2]) 1 else 0) + (if (ProcessBT.shotclocksConnected[3]) 1 else 0)
+        if (LedBoardMenuItem != null) {
+            when (connectedDevicesCounter) {
+                1 -> {
+                    LedBoardMenuItem!!.icon = activity?.let {
+                        ContextCompat.getDrawable(
+                            it,
+                            R.drawable.ic_one_device_connected
+                        )
+                    }
+                }
+                2 -> {
+                    LedBoardMenuItem!!.icon = activity?.let {
+                        ContextCompat.getDrawable(
+                            it,
+                            R.drawable.ic_two_devices_connected
+                        )
+                    }
+                }
+                3 -> {
+                    LedBoardMenuItem!!.icon = activity?.let {
+                        ContextCompat.getDrawable(
+                            it,
+                            R.drawable.ic_three_devices_connected
+                        )
+                    }
+                }
+                4 -> {
+                    LedBoardMenuItem!!.icon = activity?.let {
+                        ContextCompat.getDrawable(
+                            it,
+                            R.drawable.ic_four_devices_connected
+                        )
+                    }
+                }
+                5 -> {
+                    LedBoardMenuItem!!.icon = activity?.let {
+                        ContextCompat.getDrawable(
+                            it,
+                            R.drawable.ic_all_devices_connected
+                        )
+                    }
+                }
+            }
+            if(connectedDevicesCounter>0 && brightnessAllItem != null){
+                brightnessAllItem!!.isEnabled = true
+            }
+        }
+        if (mainBoardMenuItem != null) {
+            mainBoardMenuItem!!.icon = activity?.let {
+                ContextCompat.getDrawable(
+                    it,
+                    if (ProcessBT.mainBoardConnected) R.drawable.ic_mainboard_connected else R.drawable.ic_mainboard_disconnected
+                )
+            }
+            mainBoardConnectItem?.isEnabled = !ProcessBT.mainBoardConnected
+        }
+        shotclockMenuItems.forEachIndexed { index, menuItem ->
+            Log.d(TAG, "MenuItem-$index: ${menuItem!=null}")
+            if (menuItem != null) {
+                menuItem.icon = activity?.let {
+                    ContextCompat.getDrawable(
+                        it,
+                        if (ProcessBT.shotclocksConnected[index]) R.drawable.ic_shotclock_connected else R.drawable.ic_shotclock_disconnected
+                    )
+                }
+                shotclockConnectItems[index]?.isEnabled = !ProcessBT.shotclocksConnected[index]
+                brightnessShotclocks[index]?.isEnabled = !ProcessBT.shotclocksConnected[index]
+            }
+        }
     }
 
     private fun initObservers() {
@@ -577,12 +770,12 @@ class GameFragment : Fragment() {
                 ProcessBT.sendMessageToMainBoard("gameSection%$newValue")
             }
         }
-        val bluetoothProgressObserver = Observer<Boolean> { newValue ->
-            binding.bluetoothConnectionProgressBar.visibility =
-                if (newValue) View.VISIBLE else View.GONE
-            binding.bluetoothConnectionTextview.visibility =
-                if (newValue) View.VISIBLE else View.GONE
-        }
+//        val bluetoothProgressObserver = Observer<Boolean> { newValue ->
+//            binding.bluetoothConnectionProgressBar.visibility =
+//                if (newValue) View.VISIBLE else View.GONE
+//            binding.bluetoothConnectionTextview.visibility =
+//                if (newValue) View.VISIBLE else View.GONE
+//        }
         // Observe the LiveData, passing in this activity as the LifecycleOwner and the observer.
         viewModel.mainMinutes.observe(viewLifecycleOwner, mainMinutesObserver)
         viewModel.mainSeconds.observe(viewLifecycleOwner, mainSecondsObserver)
@@ -590,7 +783,7 @@ class GameFragment : Fragment() {
         viewModel.shotclockSeconds.observe(viewLifecycleOwner, shotclockSecondsObserver)
         viewModel.shotclockSecondsSmall.observe(viewLifecycleOwner, shotclockSecondsSmallObserver)
         viewModel.currentGameSection.observe(viewLifecycleOwner, currentGameSectionObserver)
-        viewModel.bluetoothProgress.observe(viewLifecycleOwner, bluetoothProgressObserver)
+//        viewModel.bluetoothProgress.observe(viewLifecycleOwner, bluetoothProgressObserver)
 
         val timeClickableObserver = Observer<Boolean> { newValue ->
             binding.btnTimeStartStop.isClickable = newValue

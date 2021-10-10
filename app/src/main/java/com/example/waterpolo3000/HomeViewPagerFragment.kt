@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayoutMediator
 import com.example.waterpolo3000.adapters.GAME_PAGE_INDEX
-import com.example.waterpolo3000.adapters.LED_BOARD_PAGE_INDEX
+//import com.example.waterpolo3000.adapters.LED_BOARD_PAGE_INDEX
 import com.example.waterpolo3000.adapters.PROTOCOL_PAGE_INDEX
 import com.example.waterpolo3000.adapters.WaterpoloPagerAdapter
 import com.example.waterpolo3000.databinding.FragmentViewPagerBinding
@@ -42,7 +42,7 @@ class HomeViewPagerFragment : Fragment() {
         return when (position) {
             GAME_PAGE_INDEX -> R.drawable.game_tab_selector
             PROTOCOL_PAGE_INDEX -> R.drawable.protocol_tab_selector
-            LED_BOARD_PAGE_INDEX -> R.drawable.led_tab_selector
+//            LED_BOARD_PAGE_INDEX -> R.drawable.led_tab_selector
             else -> throw IndexOutOfBoundsException()
         }
     }
@@ -51,7 +51,7 @@ class HomeViewPagerFragment : Fragment() {
         return when (position) {
             GAME_PAGE_INDEX -> getString(R.string.tab_1)
             PROTOCOL_PAGE_INDEX -> getString(R.string.tab_2)
-            LED_BOARD_PAGE_INDEX -> getString(R.string.tab_3)
+//            LED_BOARD_PAGE_INDEX -> getString(R.string.tab_3)
             else -> null
         }
     }

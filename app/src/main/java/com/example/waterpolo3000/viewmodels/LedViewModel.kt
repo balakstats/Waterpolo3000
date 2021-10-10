@@ -29,11 +29,11 @@ class LedViewModel@Inject internal constructor(
         btHandler.connectMainBoard()
     }
 
-    fun connectShotclock1(){
-        btHandler.connectShotclock1()
-    }
+//    fun connectShotclock1(){
+//        btHandler.connectShotclock1()
+//    }
 
-    fun connectShotclock2(){
-        btHandler.connectShotclock2()
-    }
+//    fun connectShotclock2(){
+//        btHandler.connectShotclock2()
+//    }
 }

@@ -8,7 +8,7 @@ import com.example.waterpolo3000.ProtocolFragment
 
 const val GAME_PAGE_INDEX = 0
 const val PROTOCOL_PAGE_INDEX = 1
-const val LED_BOARD_PAGE_INDEX = 2
+//const val LED_BOARD_PAGE_INDEX = 2
 
 class WaterpoloPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
 
@@ -18,7 +18,7 @@ class WaterpoloPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment)
     private val tabFragmentsCreators: Map<Int, () -> Fragment> = mapOf(
         GAME_PAGE_INDEX to { GameFragment() },
         PROTOCOL_PAGE_INDEX to { ProtocolFragment() },
-        LED_BOARD_PAGE_INDEX to { LedFragment() }
+//        LED_BOARD_PAGE_INDEX to { LedFragment() }
     )
 
     override fun getItemCount() = tabFragmentsCreators.size

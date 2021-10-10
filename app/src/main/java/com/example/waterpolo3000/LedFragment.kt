@@ -56,10 +56,10 @@ class LedFragment : Fragment() {
             binding.btnConnectMainBoard.visibility = View.VISIBLE
             binding.textViewMainBoardStatus.visibility = View.GONE
         }
-        if(myBThandler.remoteShotclock1 != null){
-            binding.btnConnectShotclock1.visibility = View.VISIBLE
-            binding.textViewShotclock1Status.visibility = View.GONE
-        }
+//        if(myBThandler.remoteShotclock1 != null){
+//            binding.btnConnectShotclock1.visibility = View.VISIBLE
+//            binding.textViewShotclock1Status.visibility = View.GONE
+//        }
 
         // clickListener
         binding.btnConnectMainBoard.setOnClickListener() {
@@ -68,18 +68,18 @@ class LedFragment : Fragment() {
                 binding.btnConnectMainBoard.visibility = View.GONE
             }
         }
-        binding.btnConnectShotclock1.setOnClickListener() {
-            viewModel.connectShotclock1()
-            if(ProcessBT.shotclock1Connected){
-                binding.btnConnectShotclock1.visibility = View.GONE
-            }
-        }
-        binding.btnConnectShotclock2.setOnClickListener() {
-            viewModel.connectShotclock2()
-            if(ProcessBT.shotclock2Connected){
-                binding.btnConnectShotclock2.visibility = View.GONE
-            }
-        }
+//        binding.btnConnectShotclock1.setOnClickListener() {
+//            viewModel.connectShotclock1()
+//            if(ProcessBT.shotclock1Connected){
+//                binding.btnConnectShotclock1.visibility = View.GONE
+//            }
+//        }
+//        binding.btnConnectShotclock2.setOnClickListener() {
+//            viewModel.connectShotclock2()
+//            if(ProcessBT.shotclock2Connected){
+//                binding.btnConnectShotclock2.visibility = View.GONE
+//            }
+//        }
 
         binding.sliderMainBoard.addOnChangeListener() { _, value, _ ->
             val output = "$brightnessText${value.toInt()}"
@@ -87,17 +87,17 @@ class LedFragment : Fragment() {
             ProcessBT.sendMessageToMainBoard(output)
         }
 
-        binding.sliderShotclock1.addOnChangeListener() { _, value, _ ->
-            val output = "$brightnessText${value.toInt()}"
-            Log.d(TAG, "output: $output")
-            ProcessBT.sendMessageToShotclock1(output)
-        }
+//        binding.sliderShotclock1.addOnChangeListener() { _, value, _ ->
+//            val output = "$brightnessText${value.toInt()}"
+//            Log.d(TAG, "output: $output")
+//            ProcessBT.sendMessageToShotclock1(output)
+//        }
 
-        binding.sliderShotclock2.addOnChangeListener() { _, value, _ ->
-            val output = "$brightnessText${value.toInt()}"
-            Log.d(TAG, "output: $output")
-            ProcessBT.sendMessageToShotclock2(output)
-        }
+//        binding.sliderShotclock2.addOnChangeListener() { _, value, _ ->
+//            val output = "$brightnessText${value.toInt()}"
+//            Log.d(TAG, "output: $output")
+//            ProcessBT.sendMessageToShotclock2(output)
+//        }
 
 //        binding.test.setOnClickListener() {
 //            val input = "brightness%20"

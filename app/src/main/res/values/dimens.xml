@@ -6,16 +6,27 @@
     <dimen name="resultTextSize">16sp</dimen>
     <dimen name="mainTimeTextSize">45sp</dimen>
     <dimen name="shotclockTextSize">40sp</dimen>
-    <dimen name="playerBtnTextSize">8sp</dimen>
-    <dimen name="exclusionBtnTextSize">8sp</dimen>
-    <dimen name="goalBtnTextSize">6sp</dimen>
+    <dimen name="playerBtnTextSizeMin">8sp</dimen>
+    <dimen name="exclusionBtnTextSizeMin">8sp</dimen>
+    <dimen name="goalBtnTextSizeMin">8sp</dimen>
     <dimen name="gameEventTextSize">12sp</dimen>
 
-    <item name="mainTime_height" type="dimen" format="float">0.12</item>
-    <item name="exclusion_btn_height" type="dimen" format="float">0.12</item>
-    <item name="goal_btn_height" type="dimen" format="float">0.096</item>
-    <item name="game_result_height" type="dimen" format="float">0.07</item>
+    // landscape
     <item name="game_player_btn_height" type="dimen" format="float">0.12</item>
+    <item name="exclusion_btn_height" type="dimen" format="float">0.12</item>
+    <item name="mainTime_height" type="dimen" format="float">0.12</item>
+    <item name="game_result_height" type="dimen" format="float">0.07</item>
+    <item name="goal_btn_height" type="dimen" format="float">0.096</item>
+
+    // portrait
+    <item name="game_player_btn_height_port" type="dimen" format="float">0.06</item>
+    <item name="exclusion_btn_height_port" type="dimen" format="float">0.1</item>
+    <item name="mainTime_height_port" type="dimen" format="float">0.1</item>
+    <item name="game_result_height_port" type="dimen" format="float">0.04</item>
+    <item name="goal_btn_height_port" type="dimen" format="float">0.08</item>
+
+
+
 
     <dimen name="margin_normal">16dp</dimen>
 

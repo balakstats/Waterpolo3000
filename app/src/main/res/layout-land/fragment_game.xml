@@ -77,31 +77,27 @@
             android:layout_height="wrap_content"
             android:elevation="20dp"
             android:maxHeight="200dp"
-            android:minHeight="20dp"
+            android:minHeight="200dp"
             android:minWidth="200dp"
             android:maxWidth="200dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:visibility="gone"
-            />
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
             android:id="@+id/bluetooth_connection_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:elevation="21dp"
-            android:text="wait for bluetooth connection"
+            android:text="@string/wait_for_connection"
             android:textColor="@color/black"
             android:background="@color/white"
-            android:textSize="40sp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:textSize="30sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:visibility="gone"
-            />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
 <!--        <LinearLayout-->
 <!--            android:id="@+id/bluetooth_connection_test"-->
@@ -128,10 +124,10 @@
             android:text="@string/W1"
             android:textColor="@color/black"
             app:backgroundTint="@color/white"
-            app:layout_constraintHeight_percent="@dimen/game_player_btn_height_port"
+            app:layout_constraintHeight_percent="@dimen/game_player_btn_height"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btn_W_2"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.076" />
 
         <Button
             android:id="@+id/btn_W_2"
@@ -144,10 +140,10 @@
             android:text="@string/W2"
             android:textColor="@color/black"
             app:backgroundTint="@color/white"
+            app:layout_constraintHeight_percent="@dimen/game_player_btn_height"
             app:layout_constraintStart_toEndOf="@+id/btn_W_1"
-            app:layout_constraintEnd_toStartOf="@+id/btn_W_3"
-            app:layout_constraintTop_toTopOf="@+id/btn_W_1"
-            app:layout_constraintBottom_toBottomOf="@+id/btn_W_1"/>
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.076" />
 
         <Button
             android:id="@+id/btn_W_3"
@@ -160,10 +156,10 @@
             android:text="@string/W3"
             android:textColor="@color/black"
             app:backgroundTint="@color/white"
+            app:layout_constraintHeight_percent="@dimen/game_player_btn_height"
             app:layout_constraintStart_toEndOf="@+id/btn_W_2"
-            app:layout_constraintEnd_toStartOf="@+id/btn_W_4"
-            app:layout_constraintTop_toTopOf="@+id/btn_W_1"
-            app:layout_constraintBottom_toBottomOf="@+id/btn_W_1" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.076" />
 
         <Button
             android:id="@+id/btn_W_4"
@@ -176,10 +172,10 @@
             android:text="@string/W4"
             android:textColor="@color/black"
             app:backgroundTint="@color/white"
+            app:layout_constraintHeight_percent="@dimen/game_player_btn_height"
             app:layout_constraintStart_toEndOf="@+id/btn_W_3"
-            app:layout_constraintEnd_toStartOf="@+id/btn_W_5"
-            app:layout_constraintTop_toTopOf="@+id/btn_W_1"
-            app:layout_constraintBottom_toBottomOf="@+id/btn_W_1" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.076" />
 
         <Button
             android:id="@+id/btn_W_5"
@@ -192,10 +188,10 @@
             android:text="@string/W5"
             android:textColor="@color/black"
             app:backgroundTint="@color/white"
+            app:layout_constraintHeight_percent="@dimen/game_player_btn_height"
             app:layout_constraintStart_toEndOf="@+id/btn_W_4"
-            app:layout_constraintEnd_toStartOf="@+id/btn_W_6"
-            app:layout_constraintTop_toTopOf="@+id/btn_W_1"
-            app:layout_constraintBottom_toBottomOf="@+id/btn_W_1" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.076" />
 
         <Button
             android:id="@+id/btn_W_6"
@@ -208,10 +204,10 @@
             android:text="@string/W6"
             android:textColor="@color/black"
             app:backgroundTint="@color/white"
+            app:layout_constraintHeight_percent="@dimen/game_player_btn_height"
             app:layout_constraintStart_toEndOf="@+id/btn_W_5"
-            app:layout_constraintEnd_toStartOf="@+id/btn_W_7"
-            app:layout_constraintTop_toTopOf="@+id/btn_W_1"
-            app:layout_constraintBottom_toBottomOf="@+id/btn_W_1" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.076" />
 
         <Button
             android:id="@+id/btn_W_7"
@@ -224,101 +220,10 @@
             android:text="@string/W7"
             android:textColor="@color/black"
             app:backgroundTint="@color/white"
+            app:layout_constraintHeight_percent="@dimen/game_player_btn_height"
             app:layout_constraintStart_toEndOf="@+id/btn_W_6"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/btn_W_1"
-            app:layout_constraintBottom_toBottomOf="@+id/btn_W_1" />
-
-        <TextView
-            android:id="@+id/exclusion_W_1"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:autoSizeMinTextSize="12sp"
-            android:autoSizeTextType="uniform"
-            android:textAlignment="center"
-            android:textColor="@color/red"
-            app:layout_constraintHeight_percent="0.05"
-            app:layout_constraintStart_toStartOf="@+id/btn_W_1"
-            app:layout_constraintEnd_toEndOf="@+id/btn_W_1"
-            app:layout_constraintTop_toBottomOf="@+id/btn_W_1" />
-
-        <TextView
-            android:id="@+id/exclusion_W_2"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:autoSizeMinTextSize="12sp"
-            android:autoSizeTextType="uniform"
-            android:textAlignment="center"
-            android:textColor="@color/red"
-            app:layout_constraintStart_toStartOf="@+id/btn_W_2"
-            app:layout_constraintEnd_toEndOf="@+id/btn_W_2"
-            app:layout_constraintTop_toBottomOf="@+id/btn_W_2"
-            app:layout_constraintBottom_toBottomOf="@+id/exclusion_W_1" />
-
-        <TextView
-            android:id="@+id/exclusion_W_3"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:autoSizeMinTextSize="12sp"
-            android:autoSizeTextType="uniform"
-            android:textAlignment="center"
-            android:textColor="@color/red"
-            app:layout_constraintStart_toStartOf="@+id/btn_W_3"
-            app:layout_constraintEnd_toEndOf="@+id/btn_W_3"
-            app:layout_constraintTop_toBottomOf="@+id/btn_W_3"
-            app:layout_constraintBottom_toBottomOf="@+id/exclusion_W_1" />
-
-        <TextView
-            android:id="@+id/exclusion_W_4"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:autoSizeMinTextSize="12sp"
-            android:autoSizeTextType="uniform"
-            android:textAlignment="center"
-            android:textColor="@color/red"
-            app:layout_constraintStart_toStartOf="@+id/btn_W_4"
-            app:layout_constraintEnd_toEndOf="@+id/btn_W_4"
-            app:layout_constraintTop_toBottomOf="@+id/btn_W_4"
-            app:layout_constraintBottom_toBottomOf="@+id/exclusion_W_1" />
-
-        <TextView
-            android:id="@+id/exclusion_W_5"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:autoSizeMinTextSize="12sp"
-            android:autoSizeTextType="uniform"
-            android:textAlignment="center"
-            android:textColor="@color/red"
-            app:layout_constraintStart_toStartOf="@+id/btn_W_5"
-            app:layout_constraintEnd_toEndOf="@+id/btn_W_5"
-            app:layout_constraintTop_toBottomOf="@+id/btn_W_5"
-            app:layout_constraintBottom_toBottomOf="@+id/exclusion_W_1" />
-
-        <TextView
-            android:id="@+id/exclusion_W_6"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:autoSizeMinTextSize="12sp"
-            android:autoSizeTextType="uniform"
-            android:textAlignment="center"
-            android:textColor="@color/red"
-            app:layout_constraintStart_toStartOf="@+id/btn_W_6"
-            app:layout_constraintEnd_toEndOf="@+id/btn_W_6"
-            app:layout_constraintTop_toBottomOf="@+id/btn_W_6"
-            app:layout_constraintBottom_toBottomOf="@+id/exclusion_W_1" />
-
-        <TextView
-            android:id="@+id/exclusion_W_7"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:autoSizeMinTextSize="12sp"
-            android:autoSizeTextType="uniform"
-            android:textAlignment="center"
-            android:textColor="@color/red"
-            app:layout_constraintStart_toStartOf="@+id/btn_W_7"
-            app:layout_constraintEnd_toEndOf="@+id/btn_W_7"
-            app:layout_constraintTop_toBottomOf="@+id/btn_W_7"
-            app:layout_constraintBottom_toBottomOf="@+id/exclusion_W_1" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.076" />
 
         <Button
             android:id="@+id/btn_W_8"
@@ -331,10 +236,10 @@
             android:text="@string/W8"
             android:textColor="@color/black"
             app:backgroundTint="@color/white"
-            app:layout_constraintHeight_percent="@dimen/game_player_btn_height_port"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btn_W_9"
-            app:layout_constraintTop_toBottomOf="@+id/exclusion_W_1" />
+            app:layout_constraintHeight_percent="@dimen/game_player_btn_height"
+            app:layout_constraintStart_toEndOf="@+id/btn_W_7"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.076" />
 
         <Button
             android:id="@+id/btn_W_9"
@@ -347,10 +252,10 @@
             android:text="@string/W9"
             android:textColor="@color/black"
             app:backgroundTint="@color/white"
+            app:layout_constraintHeight_percent="@dimen/game_player_btn_height"
             app:layout_constraintStart_toEndOf="@+id/btn_W_8"
-            app:layout_constraintEnd_toStartOf="@+id/btn_W_10"
-            app:layout_constraintTop_toTopOf="@+id/btn_W_8"
-            app:layout_constraintBottom_toBottomOf="@+id/btn_W_8" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.076" />
 
         <Button
             android:id="@+id/btn_W_10"
@@ -361,13 +266,12 @@
             android:autoSizeTextType="uniform"
             android:onClick="@{clickListener}"
             android:text="@string/W10"
-            android:maxLines="2"
             android:textColor="@color/black"
             app:backgroundTint="@color/white"
+            app:layout_constraintHeight_percent="@dimen/game_player_btn_height"
             app:layout_constraintStart_toEndOf="@+id/btn_W_9"
-            app:layout_constraintEnd_toStartOf="@+id/btn_W_11"
-            app:layout_constraintTop_toTopOf="@+id/btn_W_8"
-            app:layout_constraintBottom_toBottomOf="@+id/btn_W_8" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.076" />
 
         <Button
             android:id="@+id/btn_W_11"
@@ -378,13 +282,12 @@
             android:autoSizeTextType="uniform"
             android:onClick="@{clickListener}"
             android:text="@string/W11"
-            android:maxLines="2"
             android:textColor="@color/black"
             app:backgroundTint="@color/white"
+            app:layout_constraintHeight_percent="@dimen/game_player_btn_height"
             app:layout_constraintStart_toEndOf="@+id/btn_W_10"
-            app:layout_constraintEnd_toStartOf="@+id/btn_W_12"
-            app:layout_constraintTop_toTopOf="@+id/btn_W_8"
-            app:layout_constraintBottom_toBottomOf="@+id/btn_W_8" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.076" />
 
         <Button
             android:id="@+id/btn_W_12"
@@ -395,13 +298,12 @@
             android:autoSizeTextType="uniform"
             android:onClick="@{clickListener}"
             android:text="@string/W12"
-            android:maxLines="2"
             android:textColor="@color/black"
             app:backgroundTint="@color/white"
+            app:layout_constraintHeight_percent="@dimen/game_player_btn_height"
             app:layout_constraintStart_toEndOf="@+id/btn_W_11"
-            app:layout_constraintEnd_toStartOf="@+id/btn_W_13"
-            app:layout_constraintTop_toTopOf="@+id/btn_W_8"
-            app:layout_constraintBottom_toBottomOf="@+id/btn_W_8" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.076" />
 
         <Button
             android:id="@+id/btn_W_13"
@@ -412,13 +314,103 @@
             android:autoSizeTextType="uniform"
             android:onClick="@{clickListener}"
             android:text="@string/W13"
-            android:maxLines="2"
             android:textColor="@color/black"
             app:backgroundTint="@color/white"
+            app:layout_constraintHeight_percent="@dimen/game_player_btn_height"
             app:layout_constraintStart_toEndOf="@+id/btn_W_12"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/btn_W_8"
-            app:layout_constraintBottom_toBottomOf="@+id/btn_W_8" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.076" />
+
+        <TextView
+            android:id="@+id/exclusion_W_1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeTextType="uniform"
+            android:textAlignment="center"
+            android:textColor="@color/red"
+            app:layout_constraintEnd_toEndOf="@+id/btn_W_1"
+            app:layout_constraintHeight_percent="0.05"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_W_1" />
+
+        <TextView
+            android:id="@+id/exclusion_W_2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeTextType="uniform"
+            android:textAlignment="center"
+            android:textColor="@color/red"
+            app:layout_constraintEnd_toEndOf="@+id/btn_W_2"
+            app:layout_constraintHeight_percent="0.05"
+            app:layout_constraintStart_toEndOf="@+id/exclusion_W_1"
+            app:layout_constraintTop_toBottomOf="@+id/btn_W_2" />
+
+        <TextView
+            android:id="@+id/exclusion_W_3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeTextType="uniform"
+            android:textAlignment="center"
+            android:textColor="@color/red"
+            app:layout_constraintEnd_toEndOf="@+id/btn_W_3"
+            app:layout_constraintHeight_percent="0.05"
+            app:layout_constraintStart_toEndOf="@+id/exclusion_W_2"
+            app:layout_constraintTop_toBottomOf="@+id/btn_W_3" />
+
+        <TextView
+            android:id="@+id/exclusion_W_4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeTextType="uniform"
+            android:textAlignment="center"
+            android:textColor="@color/red"
+            app:layout_constraintEnd_toEndOf="@+id/btn_W_4"
+            app:layout_constraintHeight_percent="0.05"
+            app:layout_constraintStart_toEndOf="@+id/exclusion_W_3"
+            app:layout_constraintTop_toBottomOf="@+id/btn_W_4" />
+
+        <TextView
+            android:id="@+id/exclusion_W_5"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeTextType="uniform"
+            android:textAlignment="center"
+            android:textColor="@color/red"
+            app:layout_constraintEnd_toEndOf="@+id/btn_W_5"
+            app:layout_constraintHeight_percent="0.05"
+            app:layout_constraintStart_toEndOf="@+id/exclusion_W_4"
+            app:layout_constraintTop_toBottomOf="@+id/btn_W_5" />
+
+        <TextView
+            android:id="@+id/exclusion_W_6"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeTextType="uniform"
+            android:textAlignment="center"
+            android:textColor="@color/red"
+            app:layout_constraintEnd_toEndOf="@+id/btn_W_6"
+            app:layout_constraintHeight_percent="0.05"
+            app:layout_constraintStart_toEndOf="@+id/exclusion_W_5"
+            app:layout_constraintTop_toBottomOf="@+id/btn_W_6" />
+
+        <TextView
+            android:id="@+id/exclusion_W_7"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeTextType="uniform"
+            android:textAlignment="center"
+            android:textColor="@color/red"
+            app:layout_constraintEnd_toEndOf="@+id/btn_W_7"
+            app:layout_constraintHeight_percent="0.05"
+            app:layout_constraintStart_toEndOf="@+id/exclusion_W_6"
+            app:layout_constraintTop_toBottomOf="@+id/btn_W_7" />
 
         <TextView
             android:id="@+id/exclusion_W_8"
@@ -428,9 +420,9 @@
             android:autoSizeTextType="uniform"
             android:textAlignment="center"
             android:textColor="@color/red"
-            app:layout_constraintHeight_percent="0.05"
-            app:layout_constraintStart_toStartOf="@+id/btn_W_8"
             app:layout_constraintEnd_toEndOf="@+id/btn_W_8"
+            app:layout_constraintHeight_percent="0.05"
+            app:layout_constraintStart_toEndOf="@+id/exclusion_W_7"
             app:layout_constraintTop_toBottomOf="@+id/btn_W_8" />
 
         <TextView
@@ -441,10 +433,10 @@
             android:autoSizeTextType="uniform"
             android:textAlignment="center"
             android:textColor="@color/red"
-            app:layout_constraintStart_toStartOf="@+id/btn_W_9"
             app:layout_constraintEnd_toEndOf="@+id/btn_W_9"
-            app:layout_constraintTop_toBottomOf="@+id/btn_W_9"
-            app:layout_constraintBottom_toBottomOf="@+id/exclusion_W_8" />
+            app:layout_constraintHeight_percent="0.05"
+            app:layout_constraintStart_toEndOf="@+id/exclusion_W_8"
+            app:layout_constraintTop_toBottomOf="@+id/btn_W_9" />
 
         <TextView
             android:id="@+id/exclusion_W_10"
@@ -454,10 +446,10 @@
             android:autoSizeTextType="uniform"
             android:textAlignment="center"
             android:textColor="@color/red"
-            app:layout_constraintStart_toStartOf="@+id/btn_W_10"
             app:layout_constraintEnd_toEndOf="@+id/btn_W_10"
-            app:layout_constraintTop_toBottomOf="@+id/btn_W_10"
-            app:layout_constraintBottom_toBottomOf="@+id/exclusion_W_8" />
+            app:layout_constraintHeight_percent="0.05"
+            app:layout_constraintStart_toEndOf="@+id/exclusion_W_9"
+            app:layout_constraintTop_toBottomOf="@+id/btn_W_10" />
 
         <TextView
             android:id="@+id/exclusion_W_11"
@@ -467,10 +459,10 @@
             android:autoSizeTextType="uniform"
             android:textAlignment="center"
             android:textColor="@color/red"
-            app:layout_constraintStart_toStartOf="@+id/btn_W_11"
             app:layout_constraintEnd_toEndOf="@+id/btn_W_11"
-            app:layout_constraintTop_toBottomOf="@+id/btn_W_11"
-            app:layout_constraintBottom_toBottomOf="@+id/exclusion_W_8" />
+            app:layout_constraintHeight_percent="0.05"
+            app:layout_constraintStart_toEndOf="@+id/exclusion_W_10"
+            app:layout_constraintTop_toBottomOf="@+id/btn_W_11" />
 
         <TextView
             android:id="@+id/exclusion_W_12"
@@ -480,10 +472,10 @@
             android:autoSizeTextType="uniform"
             android:textAlignment="center"
             android:textColor="@color/red"
-            app:layout_constraintStart_toStartOf="@+id/btn_W_12"
             app:layout_constraintEnd_toEndOf="@+id/btn_W_12"
-            app:layout_constraintTop_toBottomOf="@+id/btn_W_12"
-            app:layout_constraintBottom_toBottomOf="@+id/exclusion_W_8" />
+            app:layout_constraintHeight_percent="0.05"
+            app:layout_constraintStart_toEndOf="@+id/exclusion_W_11"
+            app:layout_constraintTop_toBottomOf="@+id/btn_W_12" />
 
         <TextView
             android:id="@+id/exclusion_W_13"
@@ -493,10 +485,10 @@
             android:autoSizeTextType="uniform"
             android:textAlignment="center"
             android:textColor="@color/red"
-            app:layout_constraintStart_toStartOf="@+id/btn_W_13"
             app:layout_constraintEnd_toEndOf="@+id/btn_W_13"
-            app:layout_constraintTop_toBottomOf="@+id/btn_W_13"
-            app:layout_constraintBottom_toBottomOf="@+id/exclusion_W_8" />
+            app:layout_constraintHeight_percent="0.05"
+            app:layout_constraintStart_toEndOf="@+id/exclusion_W_12"
+            app:layout_constraintTop_toBottomOf="@+id/btn_W_13" />
 
         <Button
             android:id="@+id/btn_B_1"
@@ -509,10 +501,10 @@
             android:text="@string/B1"
             android:textColor="@color/white"
             app:backgroundTint="@color/blue"
-            app:layout_constraintHeight_percent="@dimen/game_player_btn_height_port"
+            app:layout_constraintEnd_toEndOf="@+id/exclusion_W_1"
+            app:layout_constraintHeight_percent="@dimen/game_player_btn_height"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btn_B_2"
-            app:layout_constraintTop_toBottomOf="@+id/exclusion_W_8" />
+            app:layout_constraintTop_toBottomOf="@+id/exclusion_W_1" />
 
         <Button
             android:id="@+id/btn_B_2"
@@ -525,10 +517,10 @@
             android:text="@string/B2"
             android:textColor="@color/white"
             app:backgroundTint="@color/blue"
+            app:layout_constraintEnd_toEndOf="@+id/exclusion_W_2"
+            app:layout_constraintHeight_percent="@dimen/game_player_btn_height"
             app:layout_constraintStart_toEndOf="@+id/btn_B_1"
-            app:layout_constraintEnd_toStartOf="@+id/btn_B_3"
-            app:layout_constraintTop_toBottomOf="@+id/exclusion_W_8"
-            app:layout_constraintBottom_toBottomOf="@+id/btn_B_1"/>
+            app:layout_constraintTop_toBottomOf="@+id/exclusion_W_2" />
 
         <Button
             android:id="@+id/btn_B_3"
@@ -541,10 +533,10 @@
             android:text="@string/B3"
             android:textColor="@color/white"
             app:backgroundTint="@color/blue"
+            app:layout_constraintEnd_toEndOf="@+id/exclusion_W_3"
+            app:layout_constraintHeight_percent="@dimen/game_player_btn_height"
             app:layout_constraintStart_toEndOf="@+id/btn_B_2"
-            app:layout_constraintEnd_toStartOf="@+id/btn_B_4"
-            app:layout_constraintTop_toBottomOf="@+id/exclusion_W_8"
-            app:layout_constraintBottom_toBottomOf="@+id/btn_B_1" />
+            app:layout_constraintTop_toBottomOf="@+id/exclusion_W_3" />
 
         <Button
             android:id="@+id/btn_B_4"
@@ -557,10 +549,10 @@
             android:text="@string/B4"
             android:textColor="@color/white"
             app:backgroundTint="@color/blue"
+            app:layout_constraintEnd_toEndOf="@+id/exclusion_W_4"
+            app:layout_constraintHeight_percent="@dimen/game_player_btn_height"
             app:layout_constraintStart_toEndOf="@+id/btn_B_3"
-            app:layout_constraintEnd_toStartOf="@+id/btn_B_5"
-            app:layout_constraintTop_toBottomOf="@+id/exclusion_W_8"
-            app:layout_constraintBottom_toBottomOf="@+id/btn_B_1" />
+            app:layout_constraintTop_toBottomOf="@+id/exclusion_W_4" />
 
         <Button
             android:id="@+id/btn_B_5"
@@ -573,10 +565,10 @@
             android:text="@string/B5"
             android:textColor="@color/white"
             app:backgroundTint="@color/blue"
+            app:layout_constraintEnd_toEndOf="@+id/exclusion_W_5"
+            app:layout_constraintHeight_percent="@dimen/game_player_btn_height"
             app:layout_constraintStart_toEndOf="@+id/btn_B_4"
-            app:layout_constraintEnd_toStartOf="@+id/btn_B_6"
-            app:layout_constraintTop_toBottomOf="@+id/exclusion_W_8"
-            app:layout_constraintBottom_toBottomOf="@+id/btn_B_1" />
+            app:layout_constraintTop_toBottomOf="@+id/exclusion_W_5" />
 
         <Button
             android:id="@+id/btn_B_6"
@@ -589,10 +581,10 @@
             android:text="@string/B6"
             android:textColor="@color/white"
             app:backgroundTint="@color/blue"
+            app:layout_constraintEnd_toEndOf="@+id/exclusion_W_6"
+            app:layout_constraintHeight_percent="@dimen/game_player_btn_height"
             app:layout_constraintStart_toEndOf="@+id/btn_B_5"
-            app:layout_constraintEnd_toStartOf="@+id/btn_B_7"
-            app:layout_constraintTop_toBottomOf="@+id/exclusion_W_8"
-            app:layout_constraintBottom_toBottomOf="@+id/btn_B_1" />
+            app:layout_constraintTop_toBottomOf="@+id/exclusion_W_6" />
 
         <Button
             android:id="@+id/btn_B_7"
@@ -605,101 +597,10 @@
             android:text="@string/B7"
             android:textColor="@color/white"
             app:backgroundTint="@color/blue"
+            app:layout_constraintEnd_toEndOf="@+id/exclusion_W_7"
+            app:layout_constraintHeight_percent="@dimen/game_player_btn_height"
             app:layout_constraintStart_toEndOf="@+id/btn_B_6"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/exclusion_W_8"
-            app:layout_constraintBottom_toBottomOf="@+id/btn_B_1" />
-
-        <TextView
-            android:id="@+id/exclusion_B_1"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:autoSizeMinTextSize="12sp"
-            android:autoSizeTextType="uniform"
-            android:textAlignment="center"
-            android:textColor="@color/red"
-            app:layout_constraintHeight_percent="0.05"
-            app:layout_constraintStart_toStartOf="@+id/btn_B_1"
-            app:layout_constraintEnd_toEndOf="@+id/btn_B_1"
-            app:layout_constraintTop_toBottomOf="@+id/btn_B_1"/>
-
-        <TextView
-            android:id="@+id/exclusion_B_2"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:autoSizeMinTextSize="12sp"
-            android:autoSizeTextType="uniform"
-            android:textAlignment="center"
-            android:textColor="@color/red"
-            app:layout_constraintStart_toStartOf="@+id/btn_B_2"
-            app:layout_constraintEnd_toEndOf="@+id/btn_B_2"
-            app:layout_constraintTop_toBottomOf="@+id/btn_B_2"
-            app:layout_constraintBottom_toBottomOf="@+id/exclusion_B_1" />
-
-        <TextView
-            android:id="@+id/exclusion_B_3"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:autoSizeMinTextSize="12sp"
-            android:autoSizeTextType="uniform"
-            android:textAlignment="center"
-            android:textColor="@color/red"
-            app:layout_constraintStart_toStartOf="@+id/btn_B_3"
-            app:layout_constraintEnd_toEndOf="@+id/btn_B_3"
-            app:layout_constraintTop_toBottomOf="@+id/btn_B_3"
-            app:layout_constraintBottom_toBottomOf="@+id/exclusion_B_1" />
-
-        <TextView
-            android:id="@+id/exclusion_B_4"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:autoSizeMinTextSize="12sp"
-            android:autoSizeTextType="uniform"
-            android:textAlignment="center"
-            android:textColor="@color/red"
-            app:layout_constraintStart_toStartOf="@+id/btn_B_4"
-            app:layout_constraintEnd_toEndOf="@+id/btn_B_4"
-            app:layout_constraintTop_toBottomOf="@+id/btn_B_4"
-            app:layout_constraintBottom_toBottomOf="@+id/exclusion_B_1" />
-
-        <TextView
-            android:id="@+id/exclusion_B_5"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:autoSizeMinTextSize="12sp"
-            android:autoSizeTextType="uniform"
-            android:textAlignment="center"
-            android:textColor="@color/red"
-            app:layout_constraintStart_toStartOf="@+id/btn_B_5"
-            app:layout_constraintEnd_toEndOf="@+id/btn_B_5"
-            app:layout_constraintTop_toBottomOf="@+id/btn_B_5"
-            app:layout_constraintBottom_toBottomOf="@+id/exclusion_B_1" />
-
-        <TextView
-            android:id="@+id/exclusion_B_6"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:autoSizeMinTextSize="12sp"
-            android:autoSizeTextType="uniform"
-            android:textAlignment="center"
-            android:textColor="@color/red"
-            app:layout_constraintStart_toStartOf="@+id/btn_B_6"
-            app:layout_constraintEnd_toEndOf="@+id/btn_B_6"
-            app:layout_constraintTop_toBottomOf="@+id/btn_B_6"
-            app:layout_constraintBottom_toBottomOf="@+id/exclusion_B_1" />
-
-        <TextView
-            android:id="@+id/exclusion_B_7"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:autoSizeMinTextSize="12sp"
-            android:autoSizeTextType="uniform"
-            android:textAlignment="center"
-            android:textColor="@color/red"
-            app:layout_constraintStart_toStartOf="@+id/btn_B_7"
-            app:layout_constraintEnd_toEndOf="@+id/btn_B_7"
-            app:layout_constraintTop_toBottomOf="@+id/btn_B_7"
-            app:layout_constraintBottom_toBottomOf="@+id/exclusion_B_1" />
+            app:layout_constraintTop_toBottomOf="@+id/exclusion_W_7" />
 
         <Button
             android:id="@+id/btn_B_8"
@@ -712,10 +613,10 @@
             android:text="@string/B8"
             android:textColor="@color/white"
             app:backgroundTint="@color/blue"
-            app:layout_constraintHeight_percent="@dimen/game_player_btn_height_port"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btn_B_9"
-            app:layout_constraintTop_toBottomOf="@+id/exclusion_B_1"/>
+            app:layout_constraintEnd_toEndOf="@+id/exclusion_W_8"
+            app:layout_constraintHeight_percent="@dimen/game_player_btn_height"
+            app:layout_constraintStart_toEndOf="@+id/btn_B_7"
+            app:layout_constraintTop_toBottomOf="@+id/exclusion_W_8" />
 
         <Button
             android:id="@+id/btn_B_9"
@@ -728,10 +629,10 @@
             android:text="@string/B9"
             android:textColor="@color/white"
             app:backgroundTint="@color/blue"
+            app:layout_constraintEnd_toEndOf="@+id/exclusion_W_9"
+            app:layout_constraintHeight_percent="@dimen/game_player_btn_height"
             app:layout_constraintStart_toEndOf="@+id/btn_B_8"
-            app:layout_constraintEnd_toStartOf="@+id/btn_B_10"
-            app:layout_constraintTop_toBottomOf="@+id/exclusion_B_1"
-            app:layout_constraintBottom_toBottomOf="@+id/btn_B_8" />
+            app:layout_constraintTop_toBottomOf="@+id/exclusion_W_9" />
 
         <Button
             android:id="@+id/btn_B_10"
@@ -742,13 +643,12 @@
             android:autoSizeTextType="uniform"
             android:onClick="@{clickListener}"
             android:text="@string/B10"
-            android:maxLines="2"
             android:textColor="@color/white"
             app:backgroundTint="@color/blue"
+            app:layout_constraintEnd_toEndOf="@+id/exclusion_W_10"
+            app:layout_constraintHeight_percent="@dimen/game_player_btn_height"
             app:layout_constraintStart_toEndOf="@+id/btn_B_9"
-            app:layout_constraintEnd_toStartOf="@+id/btn_B_11"
-            app:layout_constraintTop_toBottomOf="@+id/exclusion_B_1"
-            app:layout_constraintBottom_toBottomOf="@+id/btn_B_8"/>
+            app:layout_constraintTop_toBottomOf="@+id/exclusion_W_10" />
 
         <Button
             android:id="@+id/btn_B_11"
@@ -759,13 +659,12 @@
             android:autoSizeTextType="uniform"
             android:onClick="@{clickListener}"
             android:text="@string/B11"
-            android:maxLines="2"
             android:textColor="@color/white"
             app:backgroundTint="@color/blue"
+            app:layout_constraintEnd_toEndOf="@+id/exclusion_W_11"
+            app:layout_constraintHeight_percent="@dimen/game_player_btn_height"
             app:layout_constraintStart_toEndOf="@+id/btn_B_10"
-            app:layout_constraintEnd_toStartOf="@+id/btn_B_12"
-            app:layout_constraintTop_toBottomOf="@+id/exclusion_B_1"
-            app:layout_constraintBottom_toBottomOf="@+id/btn_B_8"/>
+            app:layout_constraintTop_toBottomOf="@+id/exclusion_W_11" />
 
         <Button
             android:id="@+id/btn_B_12"
@@ -776,13 +675,12 @@
             android:autoSizeTextType="uniform"
             android:onClick="@{clickListener}"
             android:text="@string/B12"
-            android:maxLines="2"
             android:textColor="@color/white"
             app:backgroundTint="@color/blue"
+            app:layout_constraintEnd_toEndOf="@+id/exclusion_W_12"
+            app:layout_constraintHeight_percent="@dimen/game_player_btn_height"
             app:layout_constraintStart_toEndOf="@+id/btn_B_11"
-            app:layout_constraintEnd_toStartOf="@+id/btn_B_13"
-            app:layout_constraintTop_toBottomOf="@+id/exclusion_B_1"
-            app:layout_constraintBottom_toBottomOf="@+id/btn_B_8"/>
+            app:layout_constraintTop_toBottomOf="@+id/exclusion_W_12" />
 
         <Button
             android:id="@+id/btn_B_13"
@@ -793,13 +691,103 @@
             android:autoSizeTextType="uniform"
             android:onClick="@{clickListener}"
             android:text="@string/B13"
-            android:maxLines="2"
             android:textColor="@color/white"
             app:backgroundTint="@color/blue"
+            app:layout_constraintEnd_toEndOf="@+id/exclusion_W_13"
+            app:layout_constraintHeight_percent="@dimen/game_player_btn_height"
             app:layout_constraintStart_toEndOf="@+id/btn_B_12"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/exclusion_B_1"
-            app:layout_constraintBottom_toBottomOf="@+id/btn_B_8" />
+            app:layout_constraintTop_toBottomOf="@+id/exclusion_W_13" />
+
+        <TextView
+            android:id="@+id/exclusion_B_1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeTextType="uniform"
+            android:textAlignment="center"
+            android:textColor="@color/red"
+            app:layout_constraintEnd_toEndOf="@+id/btn_B_1"
+            app:layout_constraintHeight_percent="0.05"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_B_1" />
+
+        <TextView
+            android:id="@+id/exclusion_B_2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeTextType="uniform"
+            android:textAlignment="center"
+            android:textColor="@color/red"
+            app:layout_constraintEnd_toEndOf="@+id/btn_B_2"
+            app:layout_constraintHeight_percent="0.05"
+            app:layout_constraintStart_toEndOf="@+id/exclusion_B_1"
+            app:layout_constraintTop_toBottomOf="@+id/btn_B_2" />
+
+        <TextView
+            android:id="@+id/exclusion_B_3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeTextType="uniform"
+            android:textAlignment="center"
+            android:textColor="@color/red"
+            app:layout_constraintEnd_toEndOf="@+id/btn_B_3"
+            app:layout_constraintHeight_percent="0.05"
+            app:layout_constraintStart_toEndOf="@+id/exclusion_B_2"
+            app:layout_constraintTop_toBottomOf="@+id/btn_B_3" />
+
+        <TextView
+            android:id="@+id/exclusion_B_4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeTextType="uniform"
+            android:textAlignment="center"
+            android:textColor="@color/red"
+            app:layout_constraintEnd_toEndOf="@+id/btn_B_4"
+            app:layout_constraintHeight_percent="0.05"
+            app:layout_constraintStart_toEndOf="@+id/exclusion_B_3"
+            app:layout_constraintTop_toBottomOf="@+id/btn_B_4" />
+
+        <TextView
+            android:id="@+id/exclusion_B_5"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeTextType="uniform"
+            android:textAlignment="center"
+            android:textColor="@color/red"
+            app:layout_constraintEnd_toEndOf="@+id/btn_B_5"
+            app:layout_constraintHeight_percent="0.05"
+            app:layout_constraintStart_toEndOf="@+id/exclusion_B_4"
+            app:layout_constraintTop_toBottomOf="@+id/btn_B_5" />
+
+        <TextView
+            android:id="@+id/exclusion_B_6"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeTextType="uniform"
+            android:textAlignment="center"
+            android:textColor="@color/red"
+            app:layout_constraintEnd_toEndOf="@+id/btn_B_6"
+            app:layout_constraintHeight_percent="0.05"
+            app:layout_constraintStart_toEndOf="@+id/exclusion_B_5"
+            app:layout_constraintTop_toBottomOf="@+id/btn_B_6" />
+
+        <TextView
+            android:id="@+id/exclusion_B_7"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeTextType="uniform"
+            android:textAlignment="center"
+            android:textColor="@color/red"
+            app:layout_constraintEnd_toEndOf="@+id/btn_B_7"
+            app:layout_constraintHeight_percent="0.05"
+            app:layout_constraintStart_toEndOf="@+id/exclusion_B_6"
+            app:layout_constraintTop_toBottomOf="@+id/btn_B_7" />
 
         <TextView
             android:id="@+id/exclusion_B_8"
@@ -809,10 +797,10 @@
             android:autoSizeTextType="uniform"
             android:textAlignment="center"
             android:textColor="@color/red"
-            app:layout_constraintHeight_percent="0.05"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/btn_B_8"
-            app:layout_constraintTop_toBottomOf="@+id/btn_B_8"/>
+            app:layout_constraintHeight_percent="0.05"
+            app:layout_constraintStart_toEndOf="@+id/exclusion_B_7"
+            app:layout_constraintTop_toBottomOf="@+id/btn_B_8" />
 
         <TextView
             android:id="@+id/exclusion_B_9"
@@ -822,10 +810,10 @@
             android:autoSizeTextType="uniform"
             android:textAlignment="center"
             android:textColor="@color/red"
-            app:layout_constraintStart_toStartOf="@+id/btn_B_9"
             app:layout_constraintEnd_toEndOf="@+id/btn_B_9"
-            app:layout_constraintTop_toBottomOf="@+id/btn_B_9"
-            app:layout_constraintBottom_toBottomOf="@+id/exclusion_B_8"/>
+            app:layout_constraintHeight_percent="0.05"
+            app:layout_constraintStart_toEndOf="@+id/exclusion_B_8"
+            app:layout_constraintTop_toBottomOf="@+id/btn_B_9" />
 
         <TextView
             android:id="@+id/exclusion_B_10"
@@ -835,10 +823,10 @@
             android:autoSizeTextType="uniform"
             android:textAlignment="center"
             android:textColor="@color/red"
-            app:layout_constraintStart_toStartOf="@+id/btn_B_10"
             app:layout_constraintEnd_toEndOf="@+id/btn_B_10"
-            app:layout_constraintTop_toBottomOf="@+id/btn_B_10"
-            app:layout_constraintBottom_toBottomOf="@+id/exclusion_B_8" />
+            app:layout_constraintHeight_percent="0.05"
+            app:layout_constraintStart_toEndOf="@+id/exclusion_B_9"
+            app:layout_constraintTop_toBottomOf="@+id/btn_B_10" />
 
         <TextView
             android:id="@+id/exclusion_B_11"
@@ -848,10 +836,10 @@
             android:autoSizeTextType="uniform"
             android:textAlignment="center"
             android:textColor="@color/red"
-            app:layout_constraintStart_toStartOf="@+id/btn_B_11"
             app:layout_constraintEnd_toEndOf="@+id/btn_B_11"
-            app:layout_constraintTop_toBottomOf="@+id/btn_B_11"
-            app:layout_constraintBottom_toBottomOf="@+id/exclusion_B_8" />
+            app:layout_constraintHeight_percent="0.05"
+            app:layout_constraintStart_toEndOf="@+id/exclusion_B_10"
+            app:layout_constraintTop_toBottomOf="@+id/btn_B_11" />
 
         <TextView
             android:id="@+id/exclusion_B_12"
@@ -861,10 +849,10 @@
             android:autoSizeTextType="uniform"
             android:textAlignment="center"
             android:textColor="@color/red"
-            app:layout_constraintStart_toStartOf="@+id/btn_B_12"
             app:layout_constraintEnd_toEndOf="@+id/btn_B_12"
-            app:layout_constraintTop_toBottomOf="@+id/btn_B_12"
-            app:layout_constraintBottom_toBottomOf="@+id/exclusion_B_8" />
+            app:layout_constraintHeight_percent="0.05"
+            app:layout_constraintStart_toEndOf="@+id/exclusion_B_11"
+            app:layout_constraintTop_toBottomOf="@+id/btn_B_12" />
 
         <TextView
             android:id="@+id/exclusion_B_13"
@@ -874,10 +862,10 @@
             android:autoSizeTextType="uniform"
             android:textAlignment="center"
             android:textColor="@color/red"
-            app:layout_constraintStart_toStartOf="@+id/btn_B_13"
             app:layout_constraintEnd_toEndOf="@+id/btn_B_13"
-            app:layout_constraintTop_toBottomOf="@+id/btn_B_13"
-            app:layout_constraintBottom_toBottomOf="@+id/exclusion_B_8" />
+            app:layout_constraintHeight_percent="0.05"
+            app:layout_constraintStart_toEndOf="@+id/exclusion_B_12"
+            app:layout_constraintTop_toBottomOf="@+id/btn_B_13" />
 
         <Button
             android:id="@+id/btn_event_exclusion_200"
@@ -888,10 +876,10 @@
             android:onClick="@{clickListener}"
             android:text="@string/exclusion"
             app:backgroundTint="@color/red"
-            app:layout_constraintHeight_percent="@dimen/exclusion_btn_height_port"
+            app:layout_constraintEnd_toEndOf="@id/exclusion_B_3"
+            app:layout_constraintHeight_percent="@dimen/exclusion_btn_height"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/exclusion_B_8"
-            app:layout_constraintTop_toBottomOf="@+id/exclusion_B_8" />
+            app:layout_constraintTop_toBottomOf="@+id/exclusion_B_2" />
 
         <Button
             android:id="@+id/btn_event_penalty_201"
@@ -903,7 +891,7 @@
             android:text="@string/penalty"
             app:backgroundTint="@color/red"
             app:layout_constraintEnd_toEndOf="@id/btn_event_exclusion_200"
-            app:layout_constraintHeight_percent="@dimen/exclusion_btn_height_port"
+            app:layout_constraintHeight_percent="@dimen/exclusion_btn_height"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_event_exclusion_200" />
 
@@ -917,7 +905,7 @@
             android:text="@string/rolle"
             app:backgroundTint="@color/red"
             app:layout_constraintEnd_toEndOf="@id/btn_event_penalty_201"
-            app:layout_constraintHeight_percent="@dimen/exclusion_btn_height_port"
+            app:layout_constraintHeight_percent="@dimen/exclusion_btn_height"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_event_penalty_201" />
 
@@ -931,7 +919,7 @@
             android:text="@string/rot_4_min"
             app:backgroundTint="@color/red"
             app:layout_constraintEnd_toEndOf="@id/btn_event_rolle_202"
-            app:layout_constraintHeight_percent="@dimen/exclusion_btn_height_port"
+            app:layout_constraintHeight_percent="@dimen/exclusion_btn_height"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_event_rolle_202" />
 
@@ -944,9 +932,9 @@
             android:text="@{mainMinutes}"
             android:textAlignment="center"
             android:textColor="#000000"
+            app:layout_constraintHeight_percent="@dimen/mainTime_height"
             app:layout_constraintStart_toEndOf="@+id/btn_event_exclusion_200"
-            app:layout_constraintTop_toTopOf="@+id/btn_event_exclusion_200"
-            app:layout_constraintBottom_toBottomOf="@+id/btn_event_exclusion_200"
+            app:layout_constraintTop_toBottomOf="@+id/exclusion_B_4"
             app:layout_constraintWidth_percent="0.04" />
 
         <TextView
@@ -955,12 +943,12 @@
             android:layout_height="0dp"
             android:autoSizeMinTextSize="12sp"
             android:autoSizeTextType="uniform"
-            android:text="@string/colonSeparator"
+            android:text=":"
             android:textAlignment="center"
             android:textColor="#000000"
+            app:layout_constraintHeight_percent="@dimen/mainTime_height"
             app:layout_constraintStart_toEndOf="@+id/mainMinutesView"
-            app:layout_constraintTop_toTopOf="@+id/mainMinutesView"
-            app:layout_constraintBottom_toBottomOf="@+id/mainMinutesView"
+            app:layout_constraintTop_toBottomOf="@+id/exclusion_B_4"
             app:layout_constraintWidth_percent="0.01" />
 
         <TextView
@@ -972,9 +960,9 @@
             android:text="@{mainSeconds}"
             android:textAlignment="center"
             android:textColor="#000000"
+            app:layout_constraintHeight_percent="@dimen/mainTime_height"
             app:layout_constraintStart_toEndOf="@+id/delimiter_1"
-            app:layout_constraintTop_toTopOf="@+id/delimiter_1"
-            app:layout_constraintBottom_toBottomOf="@+id/delimiter_1"
+            app:layout_constraintTop_toBottomOf="@+id/exclusion_B_4"
             app:layout_constraintWidth_percent="0.05" />
 
         <TextView
@@ -983,12 +971,12 @@
             android:layout_height="0dp"
             android:autoSizeMinTextSize="12sp"
             android:autoSizeTextType="uniform"
-            android:text="@string/dotSeparator"
+            android:text="."
             android:textAlignment="center"
             android:textColor="#000000"
+            app:layout_constraintHeight_percent="@dimen/mainTime_height"
             app:layout_constraintStart_toEndOf="@+id/mainSecondsView"
-            app:layout_constraintTop_toTopOf="@+id/mainSecondsView"
-            app:layout_constraintBottom_toBottomOf="@+id/mainSecondsView"
+            app:layout_constraintTop_toBottomOf="@+id/exclusion_B_4"
             app:layout_constraintWidth_percent="0.01" />
 
         <TextView
@@ -1000,9 +988,9 @@
             android:text="@{mainSecondsSmall}"
             android:textAlignment="center"
             android:textColor="#000000"
+            app:layout_constraintHeight_percent="@dimen/mainTime_height"
             app:layout_constraintStart_toEndOf="@+id/delimiter_2"
-            app:layout_constraintTop_toTopOf="@+id/delimiter_2"
-            app:layout_constraintBottom_toBottomOf="@+id/delimiter_2"
+            app:layout_constraintTop_toBottomOf="@+id/exclusion_B_4"
             app:layout_constraintWidth_percent="0.03" />
 
         <TextView
@@ -1014,10 +1002,9 @@
             android:text="@{shotclock}"
             android:textAlignment="center"
             android:textColor="#000000"
-            app:layout_constraintStart_toEndOf="@+id/btn_event_penalty_201"
-            app:layout_constraintTop_toTopOf="@+id/btn_event_penalty_201"
-            app:layout_constraintBottom_toBottomOf="@+id/btn_event_penalty_201"
-            app:layout_constraintEnd_toStartOf="@+id/delimiter_3"
+            app:layout_constraintHeight_percent="@dimen/mainTime_height"
+            app:layout_constraintStart_toStartOf="@+id/mainSecondsView"
+            app:layout_constraintTop_toBottomOf="@+id/mainSecondsView"
             app:layout_constraintWidth_percent="0.05" />
 
         <TextView
@@ -1026,13 +1013,12 @@
             android:layout_height="0dp"
             android:autoSizeMinTextSize="12sp"
             android:autoSizeTextType="uniform"
-            android:text="@string/dotSeparator"
+            android:text="."
             android:textAlignment="center"
             android:textColor="#000000"
-            app:layout_constraintStart_toEndOf="@+id/shotclockSecondsView"
-            app:layout_constraintTop_toTopOf="@+id/shotclockSecondsView"
-            app:layout_constraintBottom_toBottomOf="@+id/shotclockSecondsView"
-            app:layout_constraintEnd_toStartOf="@+id/shotclockSecondsSmallView"
+            app:layout_constraintHeight_percent="@dimen/mainTime_height"
+            app:layout_constraintStart_toStartOf="@+id/delimiter_2"
+            app:layout_constraintTop_toBottomOf="@+id/delimiter_2"
             app:layout_constraintWidth_percent="0.01" />
 
         <TextView
@@ -1044,10 +1030,9 @@
             android:text="@{shotclockSmall}"
             android:textAlignment="center"
             android:textColor="#000000"
-            app:layout_constraintStart_toEndOf="@+id/delimiter_3"
-            app:layout_constraintTop_toTopOf="@+id/delimiter_3"
-            app:layout_constraintBottom_toBottomOf="@+id/delimiter_3"
-            app:layout_constraintEnd_toStartOf="@+id/btn_event_goalDown_103"
+            app:layout_constraintHeight_percent="@dimen/mainTime_height"
+            app:layout_constraintStart_toStartOf="@+id/mainSecondsSmallView"
+            app:layout_constraintTop_toBottomOf="@+id/mainSecondsSmallView"
             app:layout_constraintWidth_percent="0.03" />
 
         <TextView
@@ -1060,9 +1045,10 @@
             android:text="@{goalsWhite}"
             android:textAlignment="center"
             android:textColor="#000000"
-            app:layout_constraintHeight_percent="@dimen/game_result_height_port"
+            app:layout_constraintHeight_percent="@dimen/game_result_height"
             app:layout_constraintStart_toEndOf="@+id/btn_event_rolle_202"
-            app:layout_constraintTop_toBottomOf="@+id/shotclockSecondsView" />
+            app:layout_constraintTop_toBottomOf="@+id/shotclockSecondsView"
+            app:layout_constraintWidth_percent="0.06" />
 
         <TextView
             android:id="@+id/delimiter_4"
@@ -1070,12 +1056,13 @@
             android:layout_height="0dp"
             android:autoSizeMinTextSize="12sp"
             android:autoSizeTextType="uniform"
-            android:text="@string/colonSeparator"
+            android:text=":"
             android:textAlignment="center"
             android:textColor="#000000"
+            app:layout_constraintHeight_percent="@dimen/game_result_height"
             app:layout_constraintStart_toEndOf="@+id/game_result_white"
-            app:layout_constraintTop_toTopOf="@+id/game_result_white"
-            app:layout_constraintBottom_toBottomOf="@+id/game_result_white"/>
+            app:layout_constraintTop_toBottomOf="@+id/shotclockSecondsView"
+            app:layout_constraintWidth_percent="0.02" />
 
         <TextView
             android:id="@+id/game_result_blue"
@@ -1087,9 +1074,10 @@
             android:text="@{goalsBlue}"
             android:textAlignment="center"
             android:textColor="@color/white"
+            app:layout_constraintHeight_percent="@dimen/game_result_height"
             app:layout_constraintStart_toEndOf="@+id/delimiter_4"
-            app:layout_constraintTop_toTopOf="@+id/game_result_white"
-            app:layout_constraintBottom_toBottomOf="@+id/game_result_white" />
+            app:layout_constraintTop_toBottomOf="@+id/shotclockSecondsView"
+            app:layout_constraintWidth_percent="0.06" />
 
         <TextView
             android:id="@+id/current_game_section"
@@ -1100,16 +1088,16 @@
             android:text="@{currentGameSectionView}"
             android:textAlignment="center"
             android:textColor="#000000"
-            app:layout_constraintHeight_percent="0.03"
+            app:layout_constraintHeight_percent="@dimen/game_result_height"
             app:layout_constraintStart_toEndOf="@+id/btn_event_rolle_202"
-            app:layout_constraintEnd_toStartOf="@+id/btn_event_goal_100"
-            app:layout_constraintTop_toBottomOf="@+id/game_result_white" />
+            app:layout_constraintTop_toBottomOf="@+id/game_result_white"
+            app:layout_constraintWidth_percent="0.14" />
 
         <TextView
             android:id="@+id/timeout_white"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:autoSizeMinTextSize="10sp"
+            android:autoSizeMinTextSize="12sp"
             android:autoSizeTextType="uniform"
             android:background="@color/white"
             android:text="@{timeoutWhiteValue}"
@@ -1117,37 +1105,37 @@
             android:textColor="#000000"
             app:layout_constraintHeight_percent="@dimen/game_result_height"
             app:layout_constraintStart_toEndOf="@+id/btn_event_red_203"
-            app:layout_constraintEnd_toStartOf="@+id/btn_time_timeout"
-            app:layout_constraintTop_toBottomOf="@+id/current_game_section" />
+            app:layout_constraintTop_toBottomOf="@+id/current_game_section"
+            app:layout_constraintWidth_percent="0.03" />
 
         <Button
             android:id="@+id/btn_time_timeout"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:autoSizeMinTextSize="10sp"
+            android:autoSizeMinTextSize="12sp"
             android:autoSizeTextType="uniform"
             android:onClick="@{clickListener}"
             android:text="timeout"
             app:backgroundTint="#28666E"
+            app:layout_constraintHeight_percent="@dimen/game_result_height"
             app:layout_constraintStart_toEndOf="@id/timeout_white"
-            app:layout_constraintEnd_toStartOf="@+id/timeout_blue"
-            app:layout_constraintTop_toTopOf="@+id/timeout_white"
-            app:layout_constraintBottom_toBottomOf="@+id/timeout_white" />
+            app:layout_constraintTop_toBottomOf="@+id/current_game_section"
+            app:layout_constraintWidth_percent="0.08" />
 
         <TextView
             android:id="@+id/timeout_blue"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:autoSizeMinTextSize="10sp"
+            android:autoSizeMinTextSize="12sp"
             android:autoSizeTextType="uniform"
             android:background="@color/blue"
             android:text="@{timeoutBlueValue}"
             android:textAlignment="center"
             android:textColor="@color/white"
+            app:layout_constraintHeight_percent="@dimen/game_result_height"
             app:layout_constraintStart_toEndOf="@+id/btn_time_timeout"
-            app:layout_constraintEnd_toStartOf="@+id/btn_event_goal_100"
-            app:layout_constraintTop_toTopOf="@+id/timeout_white"
-            app:layout_constraintBottom_toBottomOf="@+id/timeout_white" />
+            app:layout_constraintTop_toBottomOf="@+id/current_game_section"
+            app:layout_constraintWidth_percent="0.03" />
 
         <Button
             android:id="@+id/btn_event_goal_100"
@@ -1158,10 +1146,10 @@
             android:onClick="@{clickListener}"
             android:text="@string/goal"
             app:backgroundTint="@color/green"
-            app:layout_constraintHeight_percent="@dimen/goal_btn_height_port"
-            app:layout_constraintStart_toStartOf="@id/exclusion_B_10"
-            app:layout_constraintEnd_toEndOf="@id/exclusion_B_10"
-            app:layout_constraintTop_toBottomOf="@+id/exclusion_B_10" />
+            app:layout_constraintEnd_toEndOf="@id/exclusion_B_8"
+            app:layout_constraintHeight_percent="@dimen/goal_btn_height"
+            app:layout_constraintStart_toStartOf="@id/exclusion_B_6"
+            app:layout_constraintTop_toBottomOf="@+id/exclusion_B_7" />
 
         <Button
             android:id="@+id/btn_event_goalSix_101"
@@ -1172,9 +1160,9 @@
             android:onClick="@{clickListener}"
             android:text="@string/goalFreethrow"
             app:backgroundTint="@color/green"
-            app:layout_constraintHeight_percent="@dimen/goal_btn_height_port"
-            app:layout_constraintStart_toStartOf="@id/exclusion_B_10"
-            app:layout_constraintEnd_toEndOf="@id/exclusion_B_10"
+            app:layout_constraintEnd_toEndOf="@id/exclusion_B_8"
+            app:layout_constraintHeight_percent="@dimen/goal_btn_height"
+            app:layout_constraintStart_toStartOf="@id/exclusion_B_6"
             app:layout_constraintTop_toBottomOf="@+id/btn_event_goal_100" />
 
         <Button
@@ -1186,9 +1174,9 @@
             android:onClick="@{clickListener}"
             android:text="@string/goalManUp"
             app:backgroundTint="@color/green"
-            app:layout_constraintHeight_percent="@dimen/goal_btn_height_port"
-            app:layout_constraintStart_toStartOf="@id/exclusion_B_10"
-            app:layout_constraintEnd_toEndOf="@id/exclusion_B_10"
+            app:layout_constraintEnd_toEndOf="@id/exclusion_B_8"
+            app:layout_constraintHeight_percent="@dimen/goal_btn_height"
+            app:layout_constraintStart_toStartOf="@id/exclusion_B_6"
             app:layout_constraintTop_toBottomOf="@+id/btn_event_goalSix_101" />
 
         <Button
@@ -1200,9 +1188,9 @@
             android:onClick="@{clickListener}"
             android:text="@string/goalManDown"
             app:backgroundTint="@color/green"
-            app:layout_constraintHeight_percent="@dimen/goal_btn_height_port"
-            app:layout_constraintStart_toStartOf="@id/exclusion_B_10"
-            app:layout_constraintEnd_toEndOf="@id/exclusion_B_10"
+            app:layout_constraintEnd_toEndOf="@id/exclusion_B_8"
+            app:layout_constraintHeight_percent="@dimen/goal_btn_height"
+            app:layout_constraintStart_toStartOf="@id/exclusion_B_6"
             app:layout_constraintTop_toBottomOf="@+id/btn_event_goalUp_102" />
 
         <Button
@@ -1214,26 +1202,28 @@
             android:onClick="@{clickListener}"
             android:text="@string/goalPenalty"
             app:backgroundTint="@color/green"
-            app:layout_constraintHeight_percent="@dimen/goal_btn_height_port"
-            app:layout_constraintStart_toStartOf="@id/exclusion_B_10"
-            app:layout_constraintEnd_toEndOf="@id/exclusion_B_10"
+            app:layout_constraintEnd_toEndOf="@id/exclusion_B_8"
+            app:layout_constraintHeight_percent="@dimen/goal_btn_height"
+            app:layout_constraintStart_toStartOf="@id/exclusion_B_6"
             app:layout_constraintTop_toBottomOf="@+id/btn_event_goalDown_103" />
+
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/game_event_recyclerview"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginStart="@dimen/card_side_margin"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:layout_marginEnd="@dimen/card_side_margin"
             android:clipToPadding="false"
             app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+            app:layout_constraintBottom_toBottomOf="@id/btn_event_goalPenalty_104"
+            app:layout_constraintEnd_toEndOf="@id/exclusion_B_13"
+            app:layout_constraintStart_toStartOf="@id/exclusion_B_9"
+            app:layout_constraintTop_toBottomOf="@+id/exclusion_B_11"
             app:spanCount="1"
-            tools:listitem="@layout/list_item_game_event"
-            app:layout_constraintStart_toEndOf="@+id/btn_event_goal_100"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/btn_event_goal_100"
-            app:layout_constraintBottom_toBottomOf="@+id/btn_event_goalPenalty_104" />
+            tools:listitem="@layout/list_item_game_event" />
 
         <Button
             android:id="@+id/btn_time_StartStop"
@@ -1245,12 +1235,11 @@
             android:clickable="@{timeClickable}"
             android:onClick="@{clickListener}"
             android:text="@string/start_stop"
-            android:maxLines="2"
             app:backgroundTint="@color/green_2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/exclusion_B_5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/exclusion_B_9"
-            app:layout_constraintTop_toBottomOf="@+id/btn_event_goalPenalty_104"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/btn_event_goalPenalty_104" />
 
         <Button
             android:id="@+id/btn_time_ShotclockSmall"
@@ -1263,10 +1252,10 @@
             android:onClick="@{clickListener}"
             android:text="@string/shotclock_small"
             app:backgroundTint="#28666E"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/exclusion_B_9"
             app:layout_constraintStart_toEndOf="@id/btn_time_StartStop"
-            app:layout_constraintEnd_toEndOf="@id/exclusion_B_11"
-            app:layout_constraintTop_toTopOf="@+id/btn_time_StartStop"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@+id/btn_event_goalPenalty_104" />
 
         <Button
             android:id="@+id/btn_time_ShotclockBig"
@@ -1279,10 +1268,10 @@
             android:onClick="@{clickListener}"
             android:text="@string/shotclock_big"
             app:backgroundTint="#28666E"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/exclusion_B_13"
             app:layout_constraintStart_toEndOf="@id/btn_time_ShotclockSmall"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/btn_time_StartStop"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/btn_event_goalPenalty_104" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
