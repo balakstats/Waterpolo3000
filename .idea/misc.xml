@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.8390625" />
+        <entry key="app/src/main/res/drawable-v24/my_button_disabled.xml" value="0.55625" />
+        <entry key="app/src/main/res/drawable-v24/my_button_focused.xml" value="0.55625" />
+        <entry key="app/src/main/res/drawable-v24/my_button_pressed.xml" value="0.55625" />
+        <entry key="app/src/main/res/drawable/game_tab_selector.xml" value="0.8390625" />
+        <entry key="app/src/main/res/drawable/garden_tab_selector.xml" value="0.509375" />
+        <entry key="app/src/main/res/drawable/ic_3_dots.xml" value="0.5921875" />
+        <entry key="app/src/main/res/drawable/ic_3_menu.xml" value="0.8390625" />
+        <entry key="app/src/main/res/drawable/ic_all_connected.xml" value="0.36875" />
+        <entry key="app/src/main/res/drawable/ic_all_devices_connected.xml" value="0.51328125" />
+        <entry key="app/src/main/res/drawable/ic_baseline_close_24.xml" value="0.509375" />
+        <entry key="app/src/main/res/drawable/ic_baseline_settings_brightness_24.xml" value="0.40078125" />
+        <entry key="app/src/main/res/drawable/ic_bluetooth.xml" value="0.51328125" />
+        <entry key="app/src/main/res/drawable/ic_clock.xml" value="0.51328125" />
+        <entry key="app/src/main/res/drawable/ic_delete_game_event.xml" value="0.8390625" />
+        <entry key="app/src/main/res/drawable/ic_detail_back.xml" value="0.509375" />
+        <entry key="app/src/main/res/drawable/ic_detail_back_no_circle.xml" value="0.509375" />
+        <entry key="app/src/main/res/drawable/ic_detail_share.xml" value="0.8390625" />
+        <entry key="app/src/main/res/drawable/ic_edit_game_event.xml" value="0.8390625" />
+        <entry key="app/src/main/res/drawable/ic_exclsuion_active.xml" value="0.509375" />
+        <entry key="app/src/main/res/drawable/ic_exclusion_inactive.xml" value="0.509375" />
+        <entry key="app/src/main/res/drawable/ic_filter_list_24dp.xml" value="0.8390625" />
+        <entry key="app/src/main/res/drawable/ic_four_devices_connected.xml" value="0.51328125" />
+        <entry key="app/src/main/res/drawable/ic_four_shotclocks_connected.xml" value="0.40078125" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.509375" />
+        <entry key="app/src/main/res/drawable/ic_live_active.xml" value="0.51328125" />
+        <entry key="app/src/main/res/drawable/ic_live_inactive.xml" value="0.51328125" />
+        <entry key="app/src/main/res/drawable/ic_mainboard_connected.xml" value="0.5921875" />
+        <entry key="app/src/main/res/drawable/ic_mainboard_connection_lost.xml" value="0.40078125" />
+        <entry key="app/src/main/res/drawable/ic_mainboard_disconnected.xml" value="0.5921875" />
+        <entry key="app/src/main/res/drawable/ic_my_launcher.xml" value="0.8390625" />
+        <entry key="app/src/main/res/drawable/ic_new_game.xml" value="0.51328125" />
+        <entry key="app/src/main/res/drawable/ic_no_shotclock_connected.xml" value="0.5921875" />
+        <entry key="app/src/main/res/drawable/ic_one_device_connected.xml" value="0.51328125" />
+        <entry key="app/src/main/res/drawable/ic_one_shotclock_connected.xml" value="0.5921875" />
+        <entry key="app/src/main/res/drawable/ic_photo_library.xml" value="0.8390625" />
+        <entry key="app/src/main/res/drawable/ic_plus.xml" value="0.509375" />
+        <entry key="app/src/main/res/drawable/ic_settings.xml" value="0.51328125" />
+        <entry key="app/src/main/res/drawable/ic_shotclock_connected.xml" value="0.36875" />
+        <entry key="app/src/main/res/drawable/ic_shotclock_disconnected.xml" value="0.5921875" />
+        <entry key="app/src/main/res/drawable/ic_three_devices_connected.xml" value="0.51328125" />
+        <entry key="app/src/main/res/drawable/ic_three_shotclocks_connected.xml" value="0.5921875" />
+        <entry key="app/src/main/res/drawable/ic_timer.xml" value="0.83359375" />
+        <entry key="app/src/main/res/drawable/ic_two_devices_connected.xml" value="0.51328125" />
+        <entry key="app/src/main/res/drawable/ic_two_shotclocks_connected.xml" value="0.5921875" />
+        <entry key="app/src/main/res/drawable/led_tab_selector.xml" value="0.8390625" />
+        <entry key="app/src/main/res/drawable/my_button.xml" value="0.509375" />
+        <entry key="app/src/main/res/drawable/my_button_blue.xml" value="0.8375" />
+        <entry key="app/src/main/res/drawable/my_button_enabled.xml" value="0.4564102564102564" />
+        <entry key="app/src/main/res/drawable/plant_list_tab_selector.xml" value="0.48671875" />
+        <entry key="app/src/main/res/drawable/protocol_tab_selector.xml" value="0.57421875" />
+        <entry key="app/src/main/res/drawable/tab_icon_color_selector.xml" value="0.509375" />
+        <entry key="app/src/main/res/layout-land/fragment_game.xml" value="0.5" />
+        <entry key="app/src/main/res/layout-land/test.xml" value="0.5807228915662651" />
+        <entry key="app/src/main/res/layout-port/dialog_wait_for_bluetooth.xml" value="0.546875" />
+        <entry key="app/src/main/res/layout-port/test.xml" value="0.3765625" />
+        <entry key="app/src/main/res/layout/activity_garden.xml" value="0.48515625" />
+        <entry key="app/src/main/res/layout/activity_waterpolo.xml" value="0.48515625" />
+        <entry key="app/src/main/res/layout/dialog_brightness.xml" value="0.3765625" />
+        <entry key="app/src/main/res/layout/dialog_edit_settings.xml" value="0.528125" />
+        <entry key="app/src/main/res/layout/dialog_edit_shotclock.xml" value="0.52109375" />
+        <entry key="app/src/main/res/layout/dialog_edit_time.xml" value="0.528125" />
+        <entry key="app/src/main/res/layout/dialog_new_game.xml" value="0.56796875" />
+        <entry key="app/src/main/res/layout/dialog_select_game_event_time.xml" value="0.49296875" />
+        <entry key="app/src/main/res/layout/dialog_timeout.xml" value="0.81484375" />
+        <entry key="app/src/main/res/layout/dialog_wait_for_bluetooth.xml" value="0.48515625" />
+        <entry key="app/src/main/res/layout/fragment_gallery.xml" value="0.6670247046186896" />
+        <entry key="app/src/main/res/layout/fragment_game.xml" value="0.5295109612141653" />
+        <entry key="app/src/main/res/layout/fragment_game_delete.xml" value="0.47421875" />
+        <entry key="app/src/main/res/layout/fragment_garden.xml" value="0.67" />
+        <entry key="app/src/main/res/layout/fragment_led_board.xml" value="0.5617715617715617" />
+        <entry key="app/src/main/res/layout/fragment_plant_detail.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/fragment_plant_list.xml" value="0.81484375" />
+        <entry key="app/src/main/res/layout/fragment_protocol.xml" value="0.6572916666666667" />
+        <entry key="app/src/main/res/layout/fragment_protocol_x.xml" value="0.49296875" />
+        <entry key="app/src/main/res/layout/fragment_view_pager.xml" value="0.5557522123893806" />
+        <entry key="app/src/main/res/layout/just_try.xml" value="0.67" />
+        <entry key="app/src/main/res/layout/list_item_game_event.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/list_item_gamesection.xml" value="0.4859375" />
+        <entry key="app/src/main/res/layout/list_item_garden_planting.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/list_item_goal_success.xml" value="0.75" />
+        <entry key="app/src/main/res/layout/list_item_goals.xml" value="0.8902777777777777" />
+        <entry key="app/src/main/res/layout/list_item_persenal_foul.xml" value="0.67" />
+        <entry key="app/src/main/res/layout/list_item_personal_foul.xml" value="0.81484375" />
+        <entry key="app/src/main/res/layout/list_item_photo.xml" value="0.81484375" />
+        <entry key="app/src/main/res/layout/list_item_plant.xml" value="0.7708333333333334" />
+        <entry key="app/src/main/res/layout/list_item_player.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/list_item_protocol_edit_team.xml" value="0.7472222222222222" />
+        <entry key="app/src/main/res/layout/list_item_protocol_team.xml" value="0.9" />
+        <entry key="app/src/main/res/layout/myswitch_menu.xml" value="0.6970278044103547" />
+        <entry key="app/src/main/res/menu/menu_game.xml" value="0.67" />
+        <entry key="app/src/main/res/menu/menu_plant_detail.xml" value="0.81484375" />
+        <entry key="app/src/main/res/menu/menu_plant_list.xml" value="0.81484375" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.509375" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.509375" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

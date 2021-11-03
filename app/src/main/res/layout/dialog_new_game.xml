@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/myLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textview_min"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="min."
+            app:layout_constraintStart_toStartOf="@+id/numberpicker_min"
+            app:layout_constraintEnd_toEndOf="@+id/numberpicker_min"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <NumberPicker
+            android:id="@+id/numberpicker_min"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/numberpicker_sec"
+            app:layout_constraintTop_toBottomOf="@+id/textview_min" />
+
+        <TextView
+            android:id="@+id/textview_sec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="sek."
+            app:layout_constraintStart_toStartOf="@+id/numberpicker_sec"
+            app:layout_constraintEnd_toEndOf="@+id/numberpicker_sec"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <NumberPicker
+            android:id="@+id/numberpicker_sec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@+id/numberpicker_min"
+            app:layout_constraintEnd_toStartOf="@+id/numberpicker_break_big"
+            app:layout_constraintTop_toBottomOf="@+id/textview_sec" />
+
+        <TextView
+            android:id="@+id/textview_break_big"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="pause gross min."
+            app:layout_constraintStart_toStartOf="@+id/numberpicker_break_big"
+            app:layout_constraintEnd_toEndOf="@+id/numberpicker_break_big"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <NumberPicker
+            android:id="@+id/numberpicker_break_big"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            app:layout_constraintStart_toEndOf="@+id/numberpicker_sec"
+            app:layout_constraintEnd_toStartOf="@+id/numberpicker_break_small"
+            app:layout_constraintTop_toBottomOf="@+id/textview_break_big" />
+
+        <TextView
+            android:id="@+id/textview_break_small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="pause klein min."
+            app:layout_constraintStart_toStartOf="@+id/numberpicker_break_small"
+            app:layout_constraintEnd_toEndOf="@+id/numberpicker_break_small"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <NumberPicker
+            android:id="@+id/numberpicker_break_small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@+id/numberpicker_break_big"
+            app:layout_constraintEnd_toStartOf="@+id/numberpicker_timeout_length"
+            app:layout_constraintTop_toBottomOf="@+id/textview_break_small" />
+
+        <TextView
+            android:id="@+id/textview_timeout_length"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="timeout min."
+            app:layout_constraintStart_toStartOf="@+id/numberpicker_timeout_length"
+            app:layout_constraintEnd_toEndOf="@+id/numberpicker_timeout_length"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <NumberPicker
+            android:id="@+id/numberpicker_timeout_length"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            app:layout_constraintStart_toEndOf="@+id/numberpicker_break_small"
+            app:layout_constraintEnd_toStartOf="@+id/numberpicker_timeout_amount"
+            app:layout_constraintTop_toBottomOf="@+id/textview_timeout_length" />
+
+        <TextView
+            android:id="@+id/textview_timeout_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="timeout Anzahl"
+            app:layout_constraintStart_toStartOf="@+id/numberpicker_timeout_amount"
+            app:layout_constraintEnd_toEndOf="@+id/numberpicker_timeout_amount"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <NumberPicker
+            android:id="@+id/numberpicker_timeout_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@+id/numberpicker_timeout_length"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textview_timeout_amount" />
+
+        <Button
+            android:id="@+id/dialogBtnOK"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10sp"
+            android:layout_marginEnd="10sp"
+            android:text="Ok"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <Button
+            android:id="@+id/dialogBtnCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10sp"
+            android:text="Cancel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

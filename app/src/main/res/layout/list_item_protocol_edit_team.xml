@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="com.example.waterpolo3000.utilities.ConstantsKt" />
+
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="editTeam"
+            type="com.example.waterpolo3000.data.EditTeam" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20sp"
+        android:onClick="@{clickListener}">
+
+        <TextView
+            android:id="@+id/protocol_item_number"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{editTeam.number}"
+            android:textStyle="bold"
+            android:minEms="2"
+            android:maxEms="2"
+            android:textAlignment="center"
+            tools:text="13"
+            android:textColor="@{editTeam.cap.equalsIgnoreCase(ConstantsKt.WHITE) ? @color/black : @color/white}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/protocol_item_firstname"/>
+
+        <EditText
+            android:id="@+id/protocol_item_firstname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{editTeam.playerFirstName}"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            tools:text="firstname"
+            android:inputType="text"
+            android:autofillHints="Vorname"
+            android:lines="1"
+            android:textColor="@{editTeam.cap.equalsIgnoreCase(ConstantsKt.WHITE) ? @color/black : @color/white}"
+            app:layout_constraintStart_toEndOf="@+id/protocol_item_number"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/protocol_item_lastname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{editTeam.playerLastName}"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            tools:text="lastname"
+            android:inputType="text"
+            android:autofillHints="Nachname"
+            android:lines="1"
+            android:textColor="@{editTeam.cap.equalsIgnoreCase(ConstantsKt.WHITE) ? @color/black : @color/white}"
+            app:layout_constraintStart_toEndOf="@id/protocol_item_firstname"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/dummy_guid"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{editTeam.guid}"
+            android:textStyle="bold"
+            android:minEms="2"
+            android:maxEms="2"
+            android:textAlignment="viewEnd"
+            app:layout_constraintStart_toEndOf="@+id/protocol_item_lastname"
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="gone"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

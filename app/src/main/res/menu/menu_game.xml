@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.luasoftware.test.MainActivity">
+
+    <item
+        android:id="@+id/item_live"
+        android:icon="@drawable/ic_live_inactive"
+        android:title="live"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/led_boards_menu"
+        android:icon="@drawable/ic_no_shotclock_connected"
+        android:title="sh"
+        app:showAsAction="ifRoom">
+
+        <menu>
+            <item
+                android:id="@+id/brigthness_all_item"
+                android:icon="@drawable/ic_baseline_settings_brightness_24"
+                android:title="@string/brightness_all"
+                app:showAsAction="ifRoom"
+                android:enabled="false"/>
+
+            <item
+                android:id="@+id/connect_all_item"
+                android:icon="@drawable/ic_bluetooth"
+                android:title="@string/connected_all"
+                app:showAsAction="ifRoom"/>
+
+            <item
+                android:id="@+id/mainBoard_item"
+                android:icon="@drawable/ic_mainboard_disconnected"
+                android:title="@string/mainBoard"
+                app:showAsAction="ifRoom" >
+
+                <menu>
+                    <item
+                        android:id="@+id/mainboard_brigthness_item"
+                        android:icon="@drawable/ic_baseline_settings_brightness_24"
+                        android:title="@string/brightness"
+                        app:showAsAction="ifRoom"
+                        android:enabled="false" />
+
+                    <item
+                        android:id="@+id/mainboard_connect_item"
+                        android:icon="@drawable/ic_bluetooth"
+                        android:title="@string/connect"
+                        app:showAsAction="ifRoom"
+                        android:enabled="false" />
+                </menu>
+
+            </item>
+
+            <item
+                android:id="@+id/shotclock_1_item"
+                android:icon="@drawable/ic_shotclock_disconnected"
+                android:title="sh1"
+                app:showAsAction="ifRoom">
+
+                <menu>
+                    <item
+                        android:id="@+id/brigthness_shotclock_1_item"
+                        android:icon="@drawable/ic_baseline_settings_brightness_24"
+                        android:title="@string/brightness"
+                        app:showAsAction="ifRoom"
+                        android:enabled="false"/>
+
+                    <item
+                        android:id="@+id/shotclock1_connect_item"
+                        android:icon="@drawable/ic_bluetooth"
+                        android:title="@string/connect"
+                        app:showAsAction="ifRoom"
+                        android:enabled="false" />
+                </menu>
+
+            </item>
+
+            <item
+                android:id="@+id/shotclock_2_item"
+                android:icon="@drawable/ic_shotclock_disconnected"
+                android:title="sh2"
+                app:showAsAction="ifRoom">
+
+                <menu>
+                    <item
+                        android:id="@+id/brigthness_shotclock_2_item"
+                        android:icon="@drawable/ic_baseline_settings_brightness_24"
+                        android:title="@string/brightness"
+                        app:showAsAction="ifRoom"
+                        android:enabled="false"/>
+
+                    <item
+                        android:id="@+id/shotclock2_connect_item"
+                        android:icon="@drawable/ic_bluetooth"
+                        android:title="@string/connect"
+                        app:showAsAction="ifRoom"
+                        android:enabled="false" />
+                </menu>
+
+            </item>
+
+            <item
+                android:id="@+id/shotclock_3_item"
+                android:icon="@drawable/ic_shotclock_disconnected"
+                android:title="sh3"
+                app:showAsAction="ifRoom" >
+
+                <menu>
+                    <item
+                        android:id="@+id/brigthness_shotclock_3_item"
+                        android:icon="@drawable/ic_baseline_settings_brightness_24"
+                        android:title="@string/brightness"
+                        app:showAsAction="ifRoom"
+                        android:enabled="false"/>
+
+                    <item
+                        android:id="@+id/shotclock3_connect_item"
+                        android:icon="@drawable/ic_bluetooth"
+                        android:title="@string/connect"
+                        app:showAsAction="ifRoom"
+                        android:enabled="false" />
+                </menu>
+
+            </item>
+
+            <item
+                android:id="@+id/shotclock_4_item"
+                android:icon="@drawable/ic_shotclock_disconnected"
+                android:title="sh4"
+                app:showAsAction="ifRoom" >
+
+                <menu>
+                    <item
+                        android:id="@+id/brigthness_shotclock_4_item"
+                        android:icon="@drawable/ic_baseline_settings_brightness_24"
+                        android:title="@string/brightness"
+                        app:showAsAction="ifRoom"
+                        android:enabled="false"/>
+
+                    <item
+                        android:id="@+id/shotclock4_connect_item"
+                        android:icon="@drawable/ic_bluetooth"
+                        android:title="@string/connect"
+                        app:showAsAction="ifRoom"
+                        android:enabled="false" />
+                </menu>
+
+            </item>
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/overflowMenu"
+        android:icon="@drawable/ic_3_menu"
+        android:title=""
+        app:showAsAction="ifRoom">
+
+        <menu>
+            <item
+                android:id="@+id/item_new_game"
+                android:orderInCategory="100"
+                android:icon="@drawable/ic_new_game"
+                android:title="@string/new_game"
+                app:showAsAction="always" />
+
+            <item
+                android:id="@+id/item_load_game"
+                android:orderInCategory="100"
+                android:icon="@drawable/ic_load_game"
+                android:title="@string/load_game"
+                app:showAsAction="always" />
+
+            <item
+                android:id="@+id/item_edit_main_time"
+                android:orderInCategory="100"
+                android:icon="@drawable/ic_clock"
+                android:title="@string/main_time"
+                app:showAsAction="always" />
+
+            <item
+                android:id="@+id/item_edit_shotclock"
+                android:orderInCategory="100"
+                android:icon="@drawable/ic_timer"
+                android:title="@string/shotclock"
+                app:showAsAction="always" />
+
+            <item
+                android:id="@+id/item_game_settings"
+                android:orderInCategory="100"
+                android:icon="@drawable/ic_settings"
+                android:title="Spiel Einstellungen"
+                app:showAsAction="always" />
+
+        </menu>
+    </item>
+</menu>

@@ -1,0 +1,737 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="goalsWhite"
+            type="String" />
+
+        <variable
+            name="goalsBlue"
+            type="String" />
+
+        <variable
+            name="goalsWhiteFirst"
+            type="String" />
+
+        <variable
+            name="goalsWhiteSecond"
+            type="String" />
+
+        <variable
+            name="goalsWhiteThird"
+            type="String" />
+
+        <variable
+            name="goalsWhiteFourth"
+            type="String" />
+
+        <variable
+            name="goalsBlueFirst"
+            type="String" />
+
+        <variable
+            name="goalsBlueSecond"
+            type="String" />
+
+        <variable
+            name="goalsBlueThird"
+            type="String" />
+
+        <variable
+            name="goalsBlueFourth"
+            type="String" />
+
+        <variable
+            name="edit"
+            type="Boolean" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/teamWhiteName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:maxEms="16"
+            android:minEms="16"
+            android:text="team white"
+            android:textAlignment="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/teamWhiteNr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxEms="2"
+            android:minEms="2"
+            android:text="Nr."
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/teamWhiteName" />
+
+        <TextView
+            android:id="@+id/teamWhitePlayerName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxEms="6"
+            android:minEms="6"
+            android:text="Name"
+            app:layout_constraintStart_toEndOf="@+id/teamWhiteNr"
+            app:layout_constraintTop_toBottomOf="@+id/teamWhiteName"/>
+
+        <TextView
+            android:id="@+id/teamWhiteP1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxEms="2"
+            android:minEms="2"
+            android:text="P1"
+            app:layout_constraintStart_toEndOf="@+id/teamWhitePlayerName"
+            app:layout_constraintTop_toBottomOf="@+id/teamWhiteName"/>
+
+        <TextView
+            android:id="@+id/teamWhiteP2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxEms="2"
+            android:minEms="2"
+            android:text="P2"
+            app:layout_constraintStart_toEndOf="@+id/teamWhiteP1"
+            app:layout_constraintTop_toBottomOf="@+id/teamWhiteName"/>
+
+        <TextView
+            android:id="@+id/teamWhiteP3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxEms="2"
+            android:minEms="2"
+            android:text="P3"
+            app:layout_constraintStart_toEndOf="@+id/teamWhiteP2"
+            app:layout_constraintTop_toBottomOf="@+id/teamWhiteName"/>
+
+        <TextView
+            android:id="@+id/teamWhiteGoal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxEms="2"
+            android:minEms="2"
+            android:text="T"
+            android:textAlignment="center"
+            app:layout_constraintStart_toEndOf="@+id/teamWhiteP3"
+            app:layout_constraintTop_toBottomOf="@+id/teamWhiteName"/>
+
+
+        <TextView
+            android:id="@+id/teamBlueName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20sp"
+            android:maxEms="16"
+            android:minEms="16"
+            android:text="team blue"
+            android:textAlignment="center"
+            app:layout_constraintStart_toEndOf="@+id/teamWhiteName"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/teamBlueNr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxEms="2"
+            android:minEms="2"
+            android:text="Nr."
+            app:layout_constraintStart_toStartOf="@+id/teamBlueName"
+            app:layout_constraintTop_toBottomOf="@+id/teamBlueName" />
+
+        <TextView
+            android:id="@+id/teamBluePlayerName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxEms="6"
+            android:minEms="6"
+            android:text="Name"
+            app:layout_constraintStart_toEndOf="@+id/teamBlueNr"
+            app:layout_constraintTop_toBottomOf="@+id/teamBlueName"/>
+
+        <TextView
+            android:id="@+id/teamBlueP1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxEms="2"
+            android:minEms="2"
+            android:text="P1"
+            app:layout_constraintStart_toEndOf="@+id/teamBluePlayerName"
+            app:layout_constraintTop_toBottomOf="@+id/teamBlueName"/>
+
+        <TextView
+            android:id="@+id/teamBlueP2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxEms="2"
+            android:minEms="2"
+            android:text="P2"
+            app:layout_constraintStart_toEndOf="@+id/teamBlueP1"
+            app:layout_constraintTop_toBottomOf="@+id/teamBlueName"/>
+
+        <TextView
+            android:id="@+id/teamBlueP3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxEms="2"
+            android:minEms="2"
+            android:text="P3"
+            app:layout_constraintStart_toEndOf="@+id/teamBlueP2"
+            app:layout_constraintTop_toBottomOf="@+id/teamBlueName"/>
+
+        <TextView
+            android:id="@+id/teamBlueGoal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxEms="2"
+            android:minEms="2"
+            android:text="T"
+            android:textAlignment="center"
+            app:layout_constraintStart_toEndOf="@+id/teamBlueP3"
+            app:layout_constraintTop_toBottomOf="@+id/teamBlueName"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/team_white_recyclerview"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginBottom="20dp"
+            android:background="@color/white"
+            android:clipToPadding="false"
+            app:isGone="@{!edit}"
+            app:spanCount="1"
+            tools:listitem="@layout/list_item_protocol_team"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/teamWhiteNr"
+            app:layout_constraintBottom_toTopOf="@+id/btn_edit"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/edit_white_recyclerview"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginBottom="20dp"
+            android:background="@color/white"
+            android:clipToPadding="false"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="1"
+            tools:listitem="@layout/list_item_protocol_edit_team"
+            app:isGone="@{edit}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/teamWhiteNr"
+            app:layout_constraintBottom_toTopOf="@+id/btn_edit"/>
+
+        <Button
+            android:id="@+id/btn_edit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="namen bearbeiten"
+            app:backgroundTint="#28666E"
+            app:isGone="@{!edit}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/team_blue_recyclerview"
+            android:onClick="@{clickListener}"/>
+
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10sp"
+            android:text="speichern"
+            app:backgroundTint="#28666E"
+            app:isGone="@{edit}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/teamWhiteGoal"
+            android:onClick="@{clickListener}"/>
+
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="cancel"
+            app:backgroundTint="#28666E"
+            app:isGone="@{edit}"
+            app:layout_constraintStart_toStartOf="@+id/team_blue_recyclerview"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/teamBlueGoal"
+            android:onClick="@{clickListener}"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/team_blue_recyclerview"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginBottom="20dp"
+            android:background="@color/blue"
+            android:clipToPadding="false"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="1"
+            app:isGone="@{!edit}"
+            tools:listitem="@layout/list_item_protocol_team"
+            app:layout_constraintStart_toStartOf="@+id/teamBlueNr"
+            app:layout_constraintTop_toBottomOf="@+id/teamBlueNr"
+            app:layout_constraintBottom_toTopOf="@+id/btn_edit"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/edit_blue_recyclerview"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginBottom="20dp"
+            android:background="@color/blue"
+            android:clipToPadding="false"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="1"
+            tools:listitem="@layout/list_item_protocol_edit_team"
+            app:isGone="@{edit}"
+            app:layout_constraintStart_toStartOf="@+id/teamBlueNr"
+            app:layout_constraintTop_toBottomOf="@+id/teamBlueNr"
+            app:layout_constraintBottom_toTopOf="@+id/btn_edit"/>
+
+        <TextView
+            android:id="@+id/result_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_marginStart="20sp"
+            android:lines="1"
+            android:text="VIERTEL-ERGEBNISSE"
+            app:layout_constraintStart_toEndOf="@+id/teamBlueName"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/first_quarter_result_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20sp"
+            android:maxEms="3"
+            android:minEms="3"
+            android:text="I"
+            android:textSize="@dimen/resultTextSize"
+            app:layout_constraintStart_toStartOf="@+id/result_title"
+            app:layout_constraintTop_toBottomOf="@+id/result_title"/>
+
+        <TextView
+            android:id="@+id/second_quarter_result_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxEms="3"
+            android:minEms="3"
+            android:text="II"
+            android:textSize="@dimen/resultTextSize"
+            app:layout_constraintStart_toStartOf="@+id/result_title"
+            app:layout_constraintTop_toBottomOf="@+id/first_quarter_result_title"/>
+
+        <TextView
+            android:id="@+id/third_quarter_result_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxEms="3"
+            android:minEms="3"
+            android:text="III"
+            android:textSize="@dimen/resultTextSize"
+            app:layout_constraintStart_toStartOf="@+id/result_title"
+            app:layout_constraintTop_toBottomOf="@+id/second_quarter_result_title"/>
+
+        <TextView
+            android:id="@+id/fourth_quarter_result_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxEms="3"
+            android:minEms="3"
+            android:text="IV"
+            android:textSize="@dimen/resultTextSize"
+            app:layout_constraintStart_toStartOf="@+id/result_title"
+            app:layout_constraintTop_toBottomOf="@+id/third_quarter_result_title"/>
+
+        <TextView
+            android:id="@+id/first_quarter_result_white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:layout_marginTop="20sp"
+            android:hint="0"
+            android:maxEms="1"
+            android:minEms="1"
+            android:text="@{goalsWhiteFirst}"
+            android:textAlignment="center"
+            android:textSize="@dimen/resultTextSize"
+            app:layout_constraintStart_toEndOf="@+id/first_quarter_result_title"
+            app:layout_constraintTop_toBottomOf="@+id/result_title"/>
+
+        <TextView
+            android:id="@+id/delimiter_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20sp"
+            android:text=":"
+            android:textAlignment="center"
+            android:textSize="@dimen/resultTextSize"
+            app:layout_constraintStart_toEndOf="@+id/first_quarter_result_white"
+            app:layout_constraintTop_toBottomOf="@+id/result_title"/>
+
+        <TextView
+            android:id="@+id/first_quarter_result_blue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20sp"
+            android:background="@color/blue"
+            android:hint="0"
+            android:maxEms="1"
+            android:minEms="1"
+            android:text="@{goalsBlueFirst}"
+            android:textAlignment="center"
+            android:textSize="@dimen/resultTextSize"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toEndOf="@+id/delimiter_1"
+            app:layout_constraintTop_toBottomOf="@+id/result_title"/>
+
+        <TextView
+            android:id="@+id/second_quarter_result_white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:hint="0"
+            android:maxEms="1"
+            android:minEms="1"
+            android:text="@{goalsWhiteSecond}"
+            android:textAlignment="center"
+            android:textSize="@dimen/resultTextSize"
+            app:layout_constraintStart_toEndOf="@+id/second_quarter_result_title"
+            app:layout_constraintTop_toBottomOf="@+id/first_quarter_result_white"/>
+
+        <TextView
+            android:id="@+id/delimiter_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=":"
+            android:textSize="@dimen/resultTextSize"
+            app:layout_constraintStart_toEndOf="@+id/second_quarter_result_white"
+            app:layout_constraintTop_toBottomOf="@+id/delimiter_1"/>
+
+        <TextView
+            android:id="@+id/second_quarter_result_blue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/blue"
+            android:hint="0"
+            android:maxEms="1"
+            android:minEms="1"
+            android:text="@{goalsBlueSecond}"
+            android:textAlignment="center"
+            android:textSize="@dimen/resultTextSize"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toEndOf="@+id/delimiter_2"
+            app:layout_constraintTop_toBottomOf="@+id/first_quarter_result_blue"/>
+
+        <TextView
+            android:id="@+id/third_quarter_result_white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:hint="0"
+            android:maxEms="1"
+            android:minEms="1"
+            android:text="@{goalsWhiteSecond}"
+            android:textAlignment="center"
+            android:textSize="@dimen/resultTextSize"
+            app:layout_constraintStart_toEndOf="@+id/third_quarter_result_title"
+            app:layout_constraintTop_toBottomOf="@+id/second_quarter_result_white"/>
+
+        <TextView
+            android:id="@+id/delimiter_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=":"
+            android:textSize="@dimen/resultTextSize"
+            app:layout_constraintStart_toEndOf="@+id/third_quarter_result_white"
+            app:layout_constraintTop_toBottomOf="@+id/delimiter_2"/>
+
+        <TextView
+            android:id="@+id/third_quarter_result_blue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/blue"
+            android:hint="0"
+            android:maxEms="1"
+            android:minEms="1"
+            android:text="@{goalsBlueSecond}"
+            android:textAlignment="center"
+            android:textSize="@dimen/resultTextSize"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toEndOf="@+id/delimiter_3"
+            app:layout_constraintTop_toBottomOf="@+id/second_quarter_result_blue"/>
+
+        <TextView
+            android:id="@+id/fourth_quarter_result_white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:hint="0"
+            android:maxEms="1"
+            android:minEms="1"
+            android:text="@{goalsWhiteSecond}"
+            android:textAlignment="center"
+            android:textSize="@dimen/resultTextSize"
+            app:layout_constraintStart_toEndOf="@+id/fourth_quarter_result_title"
+            app:layout_constraintTop_toBottomOf="@+id/third_quarter_result_white"/>
+
+        <TextView
+            android:id="@+id/delimiter_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=":"
+            android:textSize="@dimen/resultTextSize"
+            app:layout_constraintStart_toEndOf="@+id/fourth_quarter_result_white"
+            app:layout_constraintTop_toBottomOf="@+id/delimiter_3"/>
+
+        <TextView
+            android:id="@+id/fourth_quarter_result_blue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/blue"
+            android:hint="0"
+            android:maxEms="1"
+            android:minEms="1"
+            android:text="@{goalsBlueSecond}"
+            android:textAlignment="center"
+            android:textSize="@dimen/resultTextSize"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toEndOf="@+id/delimiter_4"
+            app:layout_constraintTop_toBottomOf="@+id/third_quarter_result_blue"/>
+
+        <TextView
+            android:id="@+id/final_result_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20sp"
+            android:maxEms="3"
+            android:minEms="3"
+            android:text="ENDE"
+            android:textSize="@dimen/resultTextSize"
+            app:layout_constraintStart_toStartOf="@+id/fourth_quarter_result_title"
+            app:layout_constraintTop_toBottomOf="@+id/fourth_quarter_result_title"/>
+
+        <TextView
+            android:id="@+id/final_result_white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:layout_marginTop="20sp"
+            android:hint="0"
+            android:maxEms="1"
+            android:minEms="1"
+            android:text="@{goalsWhite}"
+            android:textAlignment="center"
+            android:textSize="@dimen/resultTextSize"
+            app:layout_constraintStart_toEndOf="@+id/final_result_title"
+            app:layout_constraintTop_toBottomOf="@+id/fourth_quarter_result_white"/>
+
+        <TextView
+            android:id="@+id/delimiter_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20sp"
+            android:text=":"
+            android:textSize="@dimen/resultTextSize"
+            app:layout_constraintStart_toEndOf="@+id/final_result_white"
+            app:layout_constraintTop_toBottomOf="@+id/delimiter_4"/>
+
+        <TextView
+            android:id="@+id/final_result_blue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20sp"
+            android:background="@color/blue"
+            android:hint="0"
+            android:maxEms="1"
+            android:minEms="1"
+            android:text="@{goalsBlue}"
+            android:textAlignment="center"
+            android:textSize="@dimen/resultTextSize"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toEndOf="@+id/delimiter_5"
+            app:layout_constraintTop_toBottomOf="@+id/fourth_quarter_result_blue"/>
+
+        <TextView
+            android:id="@+id/personal_foul_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20sp"
+            android:maxEms="11"
+            android:minEms="11"
+            android:text="Persönliche Fehler"
+            android:textAlignment="center"
+            app:layout_constraintStart_toEndOf="@+id/result_title"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/personal_foul_time_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxEms="5"
+            android:minEms="5"
+            android:text="Zeit"
+            app:layout_constraintStart_toStartOf="@+id/personal_foul_title"
+            app:layout_constraintTop_toBottomOf="@+id/personal_foul_title"/>
+
+        <TextView
+            android:id="@+id/personal_foul_white_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxEms="2"
+            android:minEms="2"
+            android:text="W"
+            app:layout_constraintStart_toEndOf="@+id/personal_foul_time_title"
+            app:layout_constraintTop_toBottomOf="@+id/personal_foul_title"/>
+
+        <TextView
+            android:id="@+id/personal_foul_blue_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxEms="2"
+            android:minEms="2"
+            android:text="B"
+            app:layout_constraintStart_toEndOf="@+id/personal_foul_white_title"
+            app:layout_constraintTop_toBottomOf="@+id/personal_foul_title"/>
+
+        <TextView
+            android:id="@+id/personal_foul_type_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxEms="2"
+            android:minEms="2"
+            android:text="Art"
+            app:layout_constraintStart_toEndOf="@+id/personal_foul_blue_title"
+            app:layout_constraintTop_toBottomOf="@+id/personal_foul_title"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/personal_foul_recyclerview"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:clipToPadding="false"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="1"
+            tools:listitem="@layout/list_item_personal_foul"
+            app:layout_constraintStart_toStartOf="@+id/personal_foul_time_title"
+            app:layout_constraintTop_toBottomOf="@+id/personal_foul_time_title"/>
+
+        <TextView
+            android:id="@+id/goals_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20sp"
+            android:maxEms="11"
+            android:minEms="11"
+            android:text="Tore"
+            android:textAlignment="center"
+            app:layout_constraintStart_toEndOf="@+id/personal_foul_title"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/goals_order_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxEms="4"
+            android:minEms="4"
+            android:text="Torfolge"
+            android:textAlignment="center"
+            app:layout_constraintStart_toEndOf="@+id/goals_title"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/goals_time_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxEms="5"
+            android:minEms="5"
+            android:text="Zeit"
+            app:layout_constraintStart_toStartOf="@+id/goals_title"
+            app:layout_constraintTop_toBottomOf="@+id/goals_title"/>
+
+        <TextView
+            android:id="@+id/goals_white_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxEms="2"
+            android:minEms="2"
+            android:text="W"
+            app:layout_constraintStart_toEndOf="@+id/goals_time_title"
+            app:layout_constraintTop_toBottomOf="@+id/goals_title"/>
+
+        <TextView
+            android:id="@+id/goals_blue_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxEms="2"
+            android:minEms="2"
+            android:text="B"
+            app:layout_constraintStart_toEndOf="@+id/goals_white_title"
+            app:layout_constraintTop_toBottomOf="@+id/goals_title"/>
+
+        <TextView
+            android:id="@+id/goals_type_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxEms="2"
+            android:minEms="2"
+            android:text="Art"
+            app:layout_constraintStart_toEndOf="@+id/goals_blue_title"
+            app:layout_constraintTop_toBottomOf="@+id/goals_title"/>
+
+        <TextView
+            android:id="@+id/goals_order_white_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxEms="2"
+            android:minEms="2"
+            android:text="W"
+            android:textAlignment="center"
+            app:layout_constraintStart_toEndOf="@+id/goals_type_title"
+            app:layout_constraintTop_toBottomOf="@+id/goals_order_title"/>
+
+        <TextView
+            android:id="@+id/goals_order_blue_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxEms="2"
+            android:minEms="2"
+            android:text="B"
+            android:textAlignment="center"
+            app:layout_constraintStart_toEndOf="@+id/goals_order_white_title"
+            app:layout_constraintTop_toBottomOf="@+id/goals_order_title"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/goals_recyclerview"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:clipToPadding="false"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="1"
+            tools:listitem="@layout/list_item_goals"
+            app:layout_constraintStart_toStartOf="@+id/goals_time_title"
+            app:layout_constraintTop_toBottomOf="@+id/goals_time_title"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -1,0 +1,1293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="androidx.core.content.ContextCompat" />
+<!--        <import type="com.example.waterpolo3000.utilities.ConstantsKt" />-->
+
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="mainMinutes"
+            type="String" />
+
+        <variable
+            name="mainSeconds"
+            type="String" />
+
+        <variable
+            name="mainSecondsSmall"
+            type="String" />
+
+        <variable
+            name="shotclock"
+            type="String" />
+
+        <variable
+            name="shotclockSmall"
+            type="String" />
+
+        <variable
+            name="goalsBlue"
+            type="String" />
+
+        <variable
+            name="goalsWhite"
+            type="String" />
+
+        <variable
+            name="timeoutWhiteValue"
+            type="String" />
+
+        <variable
+            name="timeoutBlueValue"
+            type="String" />
+
+        <variable
+            name="currentGameSectionView"
+            type="String" />
+
+        <variable
+            name="timeClickable"
+            type="Boolean" />
+
+        <variable
+            name="viewModel"
+            type="com.example.waterpolo3000.viewmodels.GameViewModel" />
+
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ProgressBar
+            android:id="@+id/bluetooth_connection_progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="20dp"
+            android:maxHeight="200dp"
+            android:minHeight="200dp"
+            android:minWidth="200dp"
+            android:maxWidth="200dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/bluetooth_connection_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="21dp"
+            android:text="@string/wait_for_connection"
+            android:textColor="@color/black"
+            android:background="@color/white"
+            android:textSize="30sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:visibility="gone" />
+
+        <!--        player 1 white-->
+        <Button
+            android:id="@+id/btn_W_1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="1sp"
+            android:autoSizeMinTextSize="@dimen/playerBtnTextSizeMin"
+            android:autoSizeTextType="uniform"
+            android:onClick="@{clickListener}"
+            android:text="@string/W1"
+            android:textColor="@color/black"
+            app:backgroundTint="@color/white"
+            app:layout_constraintHeight_percent="@dimen/game_player_btn_height"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btn_W_2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btn_W_2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="1sp"
+            android:autoSizeMinTextSize="@dimen/playerBtnTextSizeMin"
+            android:autoSizeTextType="uniform"
+            android:onClick="@{clickListener}"
+            android:text="@string/W2"
+            android:textColor="@color/black"
+            app:backgroundTint="@color/white"
+            app:layout_constraintHeight_percent="@dimen/game_player_btn_height"
+            app:layout_constraintStart_toEndOf="@+id/btn_W_1"
+            app:layout_constraintEnd_toStartOf="@+id/btn_W_3"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btn_W_3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="1sp"
+            android:autoSizeMinTextSize="@dimen/playerBtnTextSizeMin"
+            android:autoSizeTextType="uniform"
+            android:onClick="@{clickListener}"
+            android:text="@string/W3"
+            android:textColor="@color/black"
+            app:backgroundTint="@color/white"
+            app:layout_constraintHeight_percent="@dimen/game_player_btn_height"
+            app:layout_constraintStart_toEndOf="@+id/btn_W_2"
+            app:layout_constraintEnd_toStartOf="@+id/btn_W_4"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btn_W_4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="1sp"
+            android:autoSizeMinTextSize="@dimen/playerBtnTextSizeMin"
+            android:autoSizeTextType="uniform"
+            android:onClick="@{clickListener}"
+            android:text="@string/W4"
+            android:textColor="@color/black"
+            app:backgroundTint="@color/white"
+            app:layout_constraintHeight_percent="@dimen/game_player_btn_height"
+            app:layout_constraintStart_toEndOf="@+id/btn_W_3"
+            app:layout_constraintEnd_toStartOf="@+id/btn_W_5"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btn_W_5"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="1sp"
+            android:autoSizeMinTextSize="@dimen/playerBtnTextSizeMin"
+            android:autoSizeTextType="uniform"
+            android:onClick="@{clickListener}"
+            android:text="@string/W5"
+            android:textColor="@color/black"
+            app:backgroundTint="@color/white"
+            app:layout_constraintHeight_percent="@dimen/game_player_btn_height"
+            app:layout_constraintStart_toEndOf="@+id/btn_W_4"
+            app:layout_constraintEnd_toStartOf="@+id/btn_W_6"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btn_W_6"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="1sp"
+            android:autoSizeMinTextSize="@dimen/playerBtnTextSizeMin"
+            android:autoSizeTextType="uniform"
+            android:onClick="@{clickListener}"
+            android:text="@string/W6"
+            android:textColor="@color/black"
+            app:backgroundTint="@color/white"
+            app:layout_constraintHeight_percent="@dimen/game_player_btn_height"
+            app:layout_constraintStart_toEndOf="@+id/btn_W_5"
+            app:layout_constraintEnd_toStartOf="@+id/btn_W_7"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btn_W_7"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="1sp"
+            android:autoSizeMinTextSize="@dimen/playerBtnTextSizeMin"
+            android:autoSizeTextType="uniform"
+            android:onClick="@{clickListener}"
+            android:text="@string/W7"
+            android:textColor="@color/black"
+            app:backgroundTint="@color/white"
+            app:layout_constraintHeight_percent="@dimen/game_player_btn_height"
+            app:layout_constraintStart_toEndOf="@+id/btn_W_6"
+            app:layout_constraintEnd_toStartOf="@+id/btn_W_8"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btn_W_8"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="1sp"
+            android:autoSizeMinTextSize="@dimen/playerBtnTextSizeMin"
+            android:autoSizeTextType="uniform"
+            android:onClick="@{clickListener}"
+            android:text="@string/W8"
+            android:textColor="@color/black"
+            app:backgroundTint="@color/white"
+            app:layout_constraintHeight_percent="@dimen/game_player_btn_height"
+            app:layout_constraintStart_toEndOf="@+id/btn_W_7"
+            app:layout_constraintEnd_toStartOf="@+id/btn_W_9"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btn_W_9"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="1sp"
+            android:autoSizeMinTextSize="@dimen/playerBtnTextSizeMin"
+            android:autoSizeTextType="uniform"
+            android:onClick="@{clickListener}"
+            android:text="@string/W9"
+            android:textColor="@color/black"
+            app:backgroundTint="@color/white"
+            app:layout_constraintHeight_percent="@dimen/game_player_btn_height"
+            app:layout_constraintStart_toEndOf="@+id/btn_W_8"
+            app:layout_constraintEnd_toStartOf="@+id/btn_W_10"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btn_W_10"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="1sp"
+            android:autoSizeMinTextSize="@dimen/playerBtnTextSizeMin"
+            android:autoSizeTextType="uniform"
+            android:onClick="@{clickListener}"
+            android:text="@string/W10"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            app:backgroundTint="@color/white"
+            app:layout_constraintHeight_percent="@dimen/game_player_btn_height"
+            app:layout_constraintStart_toEndOf="@+id/btn_W_9"
+            app:layout_constraintEnd_toStartOf="@+id/btn_W_11"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btn_W_11"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="1sp"
+            android:autoSizeMinTextSize="@dimen/playerBtnTextSizeMin"
+            android:autoSizeTextType="uniform"
+            android:onClick="@{clickListener}"
+            android:text="@string/W11"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            app:backgroundTint="@color/white"
+            app:layout_constraintHeight_percent="@dimen/game_player_btn_height"
+            app:layout_constraintStart_toEndOf="@+id/btn_W_10"
+            app:layout_constraintEnd_toStartOf="@+id/btn_W_12"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btn_W_12"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="1sp"
+            android:autoSizeMinTextSize="@dimen/playerBtnTextSizeMin"
+            android:autoSizeTextType="uniform"
+            android:onClick="@{clickListener}"
+            android:text="@string/W12"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            app:backgroundTint="@color/white"
+            app:layout_constraintHeight_percent="@dimen/game_player_btn_height"
+            app:layout_constraintStart_toEndOf="@+id/btn_W_11"
+            app:layout_constraintEnd_toStartOf="@+id/btn_W_13"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btn_W_13"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="1sp"
+            android:autoSizeMinTextSize="@dimen/playerBtnTextSizeMin"
+            android:autoSizeTextType="uniform"
+            android:onClick="@{clickListener}"
+            android:text="@string/W13"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            app:backgroundTint="@color/white"
+            app:layout_constraintHeight_percent="@dimen/game_player_btn_height"
+            app:layout_constraintStart_toEndOf="@+id/btn_W_12"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/exclusion_W_1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeTextType="uniform"
+            android:textAlignment="center"
+            android:textColor="@color/red"
+            app:layout_constraintEnd_toEndOf="@+id/btn_W_1"
+            app:layout_constraintHeight_percent="0.05"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_W_1" />
+
+        <TextView
+            android:id="@+id/exclusion_W_2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeTextType="uniform"
+            android:textAlignment="center"
+            android:textColor="@color/red"
+            app:layout_constraintEnd_toEndOf="@+id/btn_W_2"
+            app:layout_constraintHeight_percent="0.05"
+            app:layout_constraintStart_toEndOf="@+id/exclusion_W_1"
+            app:layout_constraintTop_toBottomOf="@+id/btn_W_2" />
+
+        <TextView
+            android:id="@+id/exclusion_W_3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeTextType="uniform"
+            android:textAlignment="center"
+            android:textColor="@color/red"
+            app:layout_constraintEnd_toEndOf="@+id/btn_W_3"
+            app:layout_constraintHeight_percent="0.05"
+            app:layout_constraintStart_toEndOf="@+id/exclusion_W_2"
+            app:layout_constraintTop_toBottomOf="@+id/btn_W_3" />
+
+        <TextView
+            android:id="@+id/exclusion_W_4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeTextType="uniform"
+            android:textAlignment="center"
+            android:textColor="@color/red"
+            app:layout_constraintEnd_toEndOf="@+id/btn_W_4"
+            app:layout_constraintHeight_percent="0.05"
+            app:layout_constraintStart_toEndOf="@+id/exclusion_W_3"
+            app:layout_constraintTop_toBottomOf="@+id/btn_W_4" />
+
+        <TextView
+            android:id="@+id/exclusion_W_5"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeTextType="uniform"
+            android:textAlignment="center"
+            android:textColor="@color/red"
+            app:layout_constraintEnd_toEndOf="@+id/btn_W_5"
+            app:layout_constraintHeight_percent="0.05"
+            app:layout_constraintStart_toEndOf="@+id/exclusion_W_4"
+            app:layout_constraintTop_toBottomOf="@+id/btn_W_5" />
+
+        <TextView
+            android:id="@+id/exclusion_W_6"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeTextType="uniform"
+            android:textAlignment="center"
+            android:textColor="@color/red"
+            app:layout_constraintEnd_toEndOf="@+id/btn_W_6"
+            app:layout_constraintHeight_percent="0.05"
+            app:layout_constraintStart_toEndOf="@+id/exclusion_W_5"
+            app:layout_constraintTop_toBottomOf="@+id/btn_W_6" />
+
+        <TextView
+            android:id="@+id/exclusion_W_7"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeTextType="uniform"
+            android:textAlignment="center"
+            android:textColor="@color/red"
+            app:layout_constraintEnd_toEndOf="@+id/btn_W_7"
+            app:layout_constraintHeight_percent="0.05"
+            app:layout_constraintStart_toEndOf="@+id/exclusion_W_6"
+            app:layout_constraintTop_toBottomOf="@+id/btn_W_7" />
+
+        <TextView
+            android:id="@+id/exclusion_W_8"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeTextType="uniform"
+            android:textAlignment="center"
+            android:textColor="@color/red"
+            app:layout_constraintEnd_toEndOf="@+id/btn_W_8"
+            app:layout_constraintHeight_percent="0.05"
+            app:layout_constraintStart_toEndOf="@+id/exclusion_W_7"
+            app:layout_constraintTop_toBottomOf="@+id/btn_W_8" />
+
+        <TextView
+            android:id="@+id/exclusion_W_9"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeTextType="uniform"
+            android:textAlignment="center"
+            android:textColor="@color/red"
+            app:layout_constraintEnd_toEndOf="@+id/btn_W_9"
+            app:layout_constraintHeight_percent="0.05"
+            app:layout_constraintStart_toEndOf="@+id/exclusion_W_8"
+            app:layout_constraintTop_toBottomOf="@+id/btn_W_9" />
+
+        <TextView
+            android:id="@+id/exclusion_W_10"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeTextType="uniform"
+            android:textAlignment="center"
+            android:textColor="@color/red"
+            app:layout_constraintEnd_toEndOf="@+id/btn_W_10"
+            app:layout_constraintHeight_percent="0.05"
+            app:layout_constraintStart_toEndOf="@+id/exclusion_W_9"
+            app:layout_constraintTop_toBottomOf="@+id/btn_W_10" />
+
+        <TextView
+            android:id="@+id/exclusion_W_11"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeTextType="uniform"
+            android:textAlignment="center"
+            android:textColor="@color/red"
+            app:layout_constraintEnd_toEndOf="@+id/btn_W_11"
+            app:layout_constraintHeight_percent="0.05"
+            app:layout_constraintStart_toEndOf="@+id/exclusion_W_10"
+            app:layout_constraintTop_toBottomOf="@+id/btn_W_11" />
+
+        <TextView
+            android:id="@+id/exclusion_W_12"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeTextType="uniform"
+            android:textAlignment="center"
+            android:textColor="@color/red"
+            app:layout_constraintEnd_toEndOf="@+id/btn_W_12"
+            app:layout_constraintHeight_percent="0.05"
+            app:layout_constraintStart_toEndOf="@+id/exclusion_W_11"
+            app:layout_constraintTop_toBottomOf="@+id/btn_W_12" />
+
+        <TextView
+            android:id="@+id/exclusion_W_13"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeTextType="uniform"
+            android:textAlignment="center"
+            android:textColor="@color/red"
+            app:layout_constraintEnd_toEndOf="@+id/btn_W_13"
+            app:layout_constraintHeight_percent="0.05"
+            app:layout_constraintStart_toEndOf="@+id/exclusion_W_12"
+            app:layout_constraintTop_toBottomOf="@+id/btn_W_13" />
+
+        <!--        player 1 blue-->
+        <Button
+            android:id="@+id/btn_B_1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="1sp"
+            android:autoSizeMinTextSize="@dimen/playerBtnTextSizeMin"
+            android:autoSizeTextType="uniform"
+            android:onClick="@{clickListener}"
+            android:text="@string/B1"
+            android:textColor="@color/white"
+            app:backgroundTint="@color/blue"
+            app:layout_constraintHeight_percent="@dimen/game_player_btn_height"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btn_B_2"
+            app:layout_constraintTop_toBottomOf="@+id/exclusion_W_1" />
+
+        <Button
+            android:id="@+id/btn_B_2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="1sp"
+            android:autoSizeMinTextSize="@dimen/playerBtnTextSizeMin"
+            android:autoSizeTextType="uniform"
+            android:onClick="@{clickListener}"
+            android:text="@string/B2"
+            android:textColor="@color/white"
+            app:backgroundTint="@color/blue"
+            app:layout_constraintHeight_percent="@dimen/game_player_btn_height"
+            app:layout_constraintStart_toEndOf="@+id/btn_B_1"
+            app:layout_constraintEnd_toStartOf="@+id/btn_B_3"
+            app:layout_constraintTop_toBottomOf="@+id/exclusion_W_2" />
+
+        <Button
+            android:id="@+id/btn_B_3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="1sp"
+            android:autoSizeMinTextSize="@dimen/playerBtnTextSizeMin"
+            android:autoSizeTextType="uniform"
+            android:onClick="@{clickListener}"
+            android:text="@string/B3"
+            android:textColor="@color/white"
+            app:backgroundTint="@color/blue"
+            app:layout_constraintHeight_percent="@dimen/game_player_btn_height"
+            app:layout_constraintStart_toEndOf="@+id/btn_B_2"
+            app:layout_constraintEnd_toStartOf="@+id/btn_B_4"
+            app:layout_constraintTop_toBottomOf="@+id/exclusion_W_3" />
+
+        <Button
+            android:id="@+id/btn_B_4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="1sp"
+            android:autoSizeMinTextSize="@dimen/playerBtnTextSizeMin"
+            android:autoSizeTextType="uniform"
+            android:onClick="@{clickListener}"
+            android:text="@string/B4"
+            android:textColor="@color/white"
+            app:backgroundTint="@color/blue"
+            app:layout_constraintHeight_percent="@dimen/game_player_btn_height"
+            app:layout_constraintStart_toEndOf="@+id/btn_B_3"
+            app:layout_constraintEnd_toStartOf="@+id/btn_B_5"
+            app:layout_constraintTop_toBottomOf="@+id/exclusion_W_4" />
+
+        <Button
+            android:id="@+id/btn_B_5"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="1sp"
+            android:autoSizeMinTextSize="@dimen/playerBtnTextSizeMin"
+            android:autoSizeTextType="uniform"
+            android:onClick="@{clickListener}"
+            android:text="@string/B5"
+            android:textColor="@color/white"
+            app:backgroundTint="@color/blue"
+            app:layout_constraintHeight_percent="@dimen/game_player_btn_height"
+            app:layout_constraintStart_toEndOf="@+id/btn_B_4"
+            app:layout_constraintEnd_toStartOf="@+id/btn_B_6"
+            app:layout_constraintTop_toBottomOf="@+id/exclusion_W_5" />
+
+        <Button
+            android:id="@+id/btn_B_6"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="1sp"
+            android:autoSizeMinTextSize="@dimen/playerBtnTextSizeMin"
+            android:autoSizeTextType="uniform"
+            android:onClick="@{clickListener}"
+            android:text="@string/B6"
+            android:textColor="@color/white"
+            app:backgroundTint="@color/blue"
+            app:layout_constraintHeight_percent="@dimen/game_player_btn_height"
+            app:layout_constraintStart_toEndOf="@+id/btn_B_5"
+            app:layout_constraintEnd_toStartOf="@+id/btn_B_7"
+            app:layout_constraintTop_toBottomOf="@+id/exclusion_W_6" />
+
+        <Button
+            android:id="@+id/btn_B_7"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="1sp"
+            android:autoSizeMinTextSize="@dimen/playerBtnTextSizeMin"
+            android:autoSizeTextType="uniform"
+            android:onClick="@{clickListener}"
+            android:text="@string/B7"
+            android:textColor="@color/white"
+            app:backgroundTint="@color/blue"
+            app:layout_constraintHeight_percent="@dimen/game_player_btn_height"
+            app:layout_constraintStart_toEndOf="@+id/btn_B_6"
+            app:layout_constraintEnd_toStartOf="@+id/btn_B_8"
+            app:layout_constraintTop_toBottomOf="@+id/exclusion_W_7" />
+
+        <Button
+            android:id="@+id/btn_B_8"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="1sp"
+            android:autoSizeMinTextSize="@dimen/playerBtnTextSizeMin"
+            android:autoSizeTextType="uniform"
+            android:onClick="@{clickListener}"
+            android:text="@string/B8"
+            android:textColor="@color/white"
+            app:backgroundTint="@color/blue"
+            app:layout_constraintHeight_percent="@dimen/game_player_btn_height"
+            app:layout_constraintStart_toEndOf="@+id/btn_B_7"
+            app:layout_constraintEnd_toStartOf="@+id/btn_B_9"
+            app:layout_constraintTop_toBottomOf="@+id/exclusion_W_8" />
+
+        <Button
+            android:id="@+id/btn_B_9"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="1sp"
+            android:autoSizeMinTextSize="@dimen/playerBtnTextSizeMin"
+            android:autoSizeTextType="uniform"
+            android:onClick="@{clickListener}"
+            android:text="@string/B9"
+            android:textColor="@color/white"
+            app:backgroundTint="@color/blue"
+            app:layout_constraintHeight_percent="@dimen/game_player_btn_height"
+            app:layout_constraintStart_toEndOf="@+id/btn_B_8"
+            app:layout_constraintEnd_toStartOf="@+id/btn_B_10"
+            app:layout_constraintTop_toBottomOf="@+id/exclusion_W_9" />
+
+        <Button
+            android:id="@+id/btn_B_10"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="1sp"
+            android:autoSizeMinTextSize="@dimen/playerBtnTextSizeMin"
+            android:autoSizeTextType="uniform"
+            android:onClick="@{clickListener}"
+            android:text="@string/B10"
+            android:maxLines="1"
+            android:textColor="@color/white"
+            app:backgroundTint="@color/blue"
+            app:layout_constraintHeight_percent="@dimen/game_player_btn_height"
+            app:layout_constraintStart_toEndOf="@+id/btn_B_9"
+            app:layout_constraintEnd_toStartOf="@+id/btn_B_11"
+            app:layout_constraintTop_toBottomOf="@+id/exclusion_W_10" />
+
+        <Button
+            android:id="@+id/btn_B_11"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="1sp"
+            android:autoSizeMinTextSize="@dimen/playerBtnTextSizeMin"
+            android:autoSizeTextType="uniform"
+            android:onClick="@{clickListener}"
+            android:text="@string/B11"
+            android:maxLines="1"
+            android:textColor="@color/white"
+            app:backgroundTint="@color/blue"
+            app:layout_constraintHeight_percent="@dimen/game_player_btn_height"
+            app:layout_constraintStart_toEndOf="@+id/btn_B_10"
+            app:layout_constraintEnd_toStartOf="@+id/btn_B_12"
+            app:layout_constraintTop_toBottomOf="@+id/exclusion_W_11" />
+
+        <Button
+            android:id="@+id/btn_B_12"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="1sp"
+            android:autoSizeMinTextSize="@dimen/playerBtnTextSizeMin"
+            android:autoSizeTextType="uniform"
+            android:onClick="@{clickListener}"
+            android:text="@string/B12"
+            android:maxLines="1"
+            android:textColor="@color/white"
+            app:backgroundTint="@color/blue"
+            app:layout_constraintHeight_percent="@dimen/game_player_btn_height"
+            app:layout_constraintStart_toEndOf="@+id/btn_B_11"
+            app:layout_constraintEnd_toStartOf="@+id/btn_B_13"
+            app:layout_constraintTop_toBottomOf="@+id/exclusion_W_12" />
+
+        <Button
+            android:id="@+id/btn_B_13"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="1sp"
+            android:autoSizeMinTextSize="@dimen/playerBtnTextSizeMin"
+            android:autoSizeTextType="uniform"
+            android:onClick="@{clickListener}"
+            android:text="@string/B13"
+            android:maxLines="1"
+            android:textColor="@color/white"
+            app:backgroundTint="@color/blue"
+            app:layout_constraintHeight_percent="@dimen/game_player_btn_height"
+            app:layout_constraintStart_toEndOf="@+id/btn_B_12"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/exclusion_W_13" />
+
+        <TextView
+            android:id="@+id/exclusion_B_1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeTextType="uniform"
+            android:textAlignment="center"
+            android:textColor="@color/red"
+            app:layout_constraintEnd_toEndOf="@+id/btn_B_1"
+            app:layout_constraintHeight_percent="0.05"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_B_1" />
+
+        <TextView
+            android:id="@+id/exclusion_B_2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeTextType="uniform"
+            android:textAlignment="center"
+            android:textColor="@color/red"
+            app:layout_constraintEnd_toEndOf="@+id/btn_B_2"
+            app:layout_constraintHeight_percent="0.05"
+            app:layout_constraintStart_toEndOf="@+id/exclusion_B_1"
+            app:layout_constraintTop_toBottomOf="@+id/btn_B_2" />
+
+        <TextView
+            android:id="@+id/exclusion_B_3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeTextType="uniform"
+            android:textAlignment="center"
+            android:textColor="@color/red"
+            app:layout_constraintEnd_toEndOf="@+id/btn_B_3"
+            app:layout_constraintHeight_percent="0.05"
+            app:layout_constraintStart_toEndOf="@+id/exclusion_B_2"
+            app:layout_constraintTop_toBottomOf="@+id/btn_B_3" />
+
+        <TextView
+            android:id="@+id/exclusion_B_4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeTextType="uniform"
+            android:textAlignment="center"
+            android:textColor="@color/red"
+            app:layout_constraintEnd_toEndOf="@+id/btn_B_4"
+            app:layout_constraintHeight_percent="0.05"
+            app:layout_constraintStart_toEndOf="@+id/exclusion_B_3"
+            app:layout_constraintTop_toBottomOf="@+id/btn_B_4" />
+
+        <TextView
+            android:id="@+id/exclusion_B_5"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeTextType="uniform"
+            android:textAlignment="center"
+            android:textColor="@color/red"
+            app:layout_constraintEnd_toEndOf="@+id/btn_B_5"
+            app:layout_constraintHeight_percent="0.05"
+            app:layout_constraintStart_toEndOf="@+id/exclusion_B_4"
+            app:layout_constraintTop_toBottomOf="@+id/btn_B_5" />
+
+        <TextView
+            android:id="@+id/exclusion_B_6"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeTextType="uniform"
+            android:textAlignment="center"
+            android:textColor="@color/red"
+            app:layout_constraintEnd_toEndOf="@+id/btn_B_6"
+            app:layout_constraintHeight_percent="0.05"
+            app:layout_constraintStart_toEndOf="@+id/exclusion_B_5"
+            app:layout_constraintTop_toBottomOf="@+id/btn_B_6" />
+
+        <TextView
+            android:id="@+id/exclusion_B_7"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeTextType="uniform"
+            android:textAlignment="center"
+            android:textColor="@color/red"
+            app:layout_constraintEnd_toEndOf="@+id/btn_B_7"
+            app:layout_constraintHeight_percent="0.05"
+            app:layout_constraintStart_toEndOf="@+id/exclusion_B_6"
+            app:layout_constraintTop_toBottomOf="@+id/btn_B_7" />
+
+        <TextView
+            android:id="@+id/exclusion_B_8"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeTextType="uniform"
+            android:textAlignment="center"
+            android:textColor="@color/red"
+            app:layout_constraintEnd_toEndOf="@+id/btn_B_8"
+            app:layout_constraintHeight_percent="0.05"
+            app:layout_constraintStart_toEndOf="@+id/exclusion_B_7"
+            app:layout_constraintTop_toBottomOf="@+id/btn_B_8" />
+
+        <TextView
+            android:id="@+id/exclusion_B_9"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeTextType="uniform"
+            android:textAlignment="center"
+            android:textColor="@color/red"
+            app:layout_constraintEnd_toEndOf="@+id/btn_B_9"
+            app:layout_constraintHeight_percent="0.05"
+            app:layout_constraintStart_toEndOf="@+id/exclusion_B_8"
+            app:layout_constraintTop_toBottomOf="@+id/btn_B_9" />
+
+        <TextView
+            android:id="@+id/exclusion_B_10"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeTextType="uniform"
+            android:textAlignment="center"
+            android:textColor="@color/red"
+            app:layout_constraintEnd_toEndOf="@+id/btn_B_10"
+            app:layout_constraintHeight_percent="0.05"
+            app:layout_constraintStart_toEndOf="@+id/exclusion_B_9"
+            app:layout_constraintTop_toBottomOf="@+id/btn_B_10" />
+
+        <TextView
+            android:id="@+id/exclusion_B_11"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeTextType="uniform"
+            android:textAlignment="center"
+            android:textColor="@color/red"
+            app:layout_constraintEnd_toEndOf="@+id/btn_B_11"
+            app:layout_constraintHeight_percent="0.05"
+            app:layout_constraintStart_toEndOf="@+id/exclusion_B_10"
+            app:layout_constraintTop_toBottomOf="@+id/btn_B_11" />
+
+        <TextView
+            android:id="@+id/exclusion_B_12"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeTextType="uniform"
+            android:textAlignment="center"
+            android:textColor="@color/red"
+            app:layout_constraintEnd_toEndOf="@+id/btn_B_12"
+            app:layout_constraintHeight_percent="0.05"
+            app:layout_constraintStart_toEndOf="@+id/exclusion_B_11"
+            app:layout_constraintTop_toBottomOf="@+id/btn_B_12" />
+
+        <TextView
+            android:id="@+id/exclusion_B_13"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeTextType="uniform"
+            android:textAlignment="center"
+            android:textColor="@color/red"
+            app:layout_constraintEnd_toEndOf="@+id/btn_B_13"
+            app:layout_constraintHeight_percent="0.05"
+            app:layout_constraintStart_toEndOf="@+id/exclusion_B_12"
+            app:layout_constraintTop_toBottomOf="@+id/btn_B_13" />
+
+        <Button
+            android:id="@+id/btn_event_exclusion_200"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="@dimen/exclusionBtnTextSizeMin"
+            android:autoSizeTextType="uniform"
+            android:onClick="@{clickListener}"
+            android:text="@string/exclusion"
+            app:backgroundTint="@color/red"
+            app:layout_constraintHeight_percent="@dimen/exclusion_btn_height"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/exclusion_B_3"
+            app:layout_constraintTop_toBottomOf="@+id/exclusion_B_2" />
+
+        <Button
+            android:id="@+id/btn_event_penalty_201"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="@dimen/exclusionBtnTextSizeMin"
+            android:autoSizeTextType="uniform"
+            android:onClick="@{clickListener}"
+            android:text="@string/penalty"
+            app:backgroundTint="@color/red"
+            app:layout_constraintEnd_toEndOf="@id/btn_event_exclusion_200"
+            app:layout_constraintHeight_percent="@dimen/exclusion_btn_height"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_event_exclusion_200" />
+
+        <Button
+            android:id="@+id/btn_event_rolle_202"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="@dimen/exclusionBtnTextSizeMin"
+            android:autoSizeTextType="uniform"
+            android:onClick="@{clickListener}"
+            android:text="@string/rolle"
+            app:backgroundTint="@color/red"
+            app:layout_constraintEnd_toEndOf="@id/btn_event_penalty_201"
+            app:layout_constraintHeight_percent="@dimen/exclusion_btn_height"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_event_penalty_201" />
+
+        <Button
+            android:id="@+id/btn_event_red_203"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="@dimen/exclusionBtnTextSizeMin"
+            android:autoSizeTextType="uniform"
+            android:onClick="@{clickListener}"
+            android:text="@string/rot_4_min"
+            app:backgroundTint="@color/red"
+            app:layout_constraintEnd_toEndOf="@id/btn_event_rolle_202"
+            app:layout_constraintHeight_percent="@dimen/exclusion_btn_height"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_event_rolle_202" />
+
+        <TextView
+            android:id="@+id/mainMinutesView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeTextType="uniform"
+            android:text="@{mainMinutes}"
+            tools:text="8"
+            android:gravity="bottom|center"
+            android:textColor="#000000"
+            app:layout_constraintHeight_percent="@dimen/mainTime_height"
+            app:layout_constraintStart_toEndOf="@+id/btn_event_exclusion_200"
+            app:layout_constraintTop_toBottomOf="@+id/exclusion_B_4"
+            app:layout_constraintWidth_percent="0.04" />
+
+        <TextView
+            android:id="@+id/delimiter_1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeTextType="uniform"
+            android:text=":"
+            android:gravity="bottom|center"
+            android:textColor="#000000"
+            app:layout_constraintHeight_percent="@dimen/mainTime_height"
+            app:layout_constraintStart_toEndOf="@+id/mainMinutesView"
+            app:layout_constraintTop_toBottomOf="@+id/exclusion_B_4"
+            app:layout_constraintWidth_percent="0.01" />
+
+        <TextView
+            android:id="@+id/mainSecondsView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeTextType="uniform"
+            android:text="@{mainSeconds}"
+            tools:text="00"
+            android:gravity="bottom|center"
+            android:textColor="#000000"
+            app:layout_constraintHeight_percent="@dimen/mainTime_height"
+            app:layout_constraintStart_toEndOf="@+id/delimiter_1"
+            app:layout_constraintTop_toBottomOf="@+id/exclusion_B_4"
+            app:layout_constraintWidth_percent="0.05" />
+
+        <TextView
+            android:id="@+id/delimiter_2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeTextType="uniform"
+            android:text="."
+            android:gravity="bottom|center"
+            android:textColor="#000000"
+            app:layout_constraintHeight_percent="@dimen/mainTime_height"
+            app:layout_constraintStart_toEndOf="@+id/mainSecondsView"
+            app:layout_constraintTop_toBottomOf="@+id/exclusion_B_4"
+            app:layout_constraintWidth_percent="0.01" />
+
+        <TextView
+            android:id="@+id/mainSecondsSmallView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeMaxTextSize="40sp"
+            android:autoSizeTextType="uniform"
+            android:text="@{mainSecondsSmall}"
+            tools:text="0"
+            android:gravity="bottom|center"
+            android:textColor="#000000"
+            app:layout_constraintHeight_percent="@dimen/mainTime_height"
+            app:layout_constraintStart_toEndOf="@+id/delimiter_2"
+            app:layout_constraintTop_toBottomOf="@+id/exclusion_B_4"
+            app:layout_constraintWidth_percent="0.03" />
+
+        <TextView
+            android:id="@+id/shotclockSecondsView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeTextType="uniform"
+            android:text="@{shotclock}"
+            tools:text="30"
+            android:gravity="bottom|center"
+            android:textColor="#000000"
+            app:layout_constraintHeight_percent="@dimen/mainTime_height"
+            app:layout_constraintStart_toStartOf="@+id/mainSecondsView"
+            app:layout_constraintTop_toBottomOf="@+id/mainSecondsView"
+            app:layout_constraintWidth_percent="0.05" />
+
+        <TextView
+            android:id="@+id/delimiter_3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeTextType="uniform"
+            android:text="."
+            android:gravity="bottom|center"
+            android:textColor="#000000"
+            app:layout_constraintHeight_percent="@dimen/mainTime_height"
+            app:layout_constraintStart_toStartOf="@+id/delimiter_2"
+            app:layout_constraintTop_toBottomOf="@+id/delimiter_2"
+            app:layout_constraintWidth_percent="0.01" />
+
+        <TextView
+            android:id="@+id/shotclockSecondsSmallView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeMaxTextSize="40sp"
+            android:autoSizeTextType="uniform"
+            android:text="@{shotclockSmall}"
+            tools:text="0"
+            android:gravity="bottom|center"
+            android:textColor="#000000"
+            app:layout_constraintStart_toEndOf="@+id/delimiter_3"
+            app:layout_constraintTop_toTopOf="@+id/shotclockSecondsView"
+            app:layout_constraintBottom_toBottomOf="@+id/shotclockSecondsView"
+            app:layout_constraintWidth_percent="0.03" />
+
+        <TextView
+            android:id="@+id/game_result_white"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeTextType="uniform"
+            android:background="@color/white"
+            android:text="@{goalsWhite}"
+            tools:text="10"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            app:layout_constraintWidth_percent="0.06"
+            app:layout_constraintHeight_percent="@dimen/game_result_height"
+            app:layout_constraintStart_toEndOf="@+id/btn_event_rolle_202"
+            app:layout_constraintEnd_toStartOf="@+id/delimiter_4"
+            app:layout_constraintTop_toBottomOf="@+id/shotclockSecondsView" />
+
+        <TextView
+            android:id="@+id/delimiter_4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeTextType="uniform"
+            android:text=":"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            app:layout_constraintHeight_percent="@dimen/game_result_height"
+            app:layout_constraintWidth_percent="0.02"
+            app:layout_constraintStart_toEndOf="@+id/game_result_white"
+            app:layout_constraintTop_toBottomOf="@+id/shotclockSecondsView"
+            app:layout_constraintEnd_toStartOf="@+id/game_result_blue" />
+
+        <TextView
+            android:id="@+id/game_result_blue"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeTextType="uniform"
+            android:background="@color/blue"
+            android:text="@{goalsBlue}"
+            tools:text="10"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            app:layout_constraintHeight_percent="@dimen/game_result_height"
+            app:layout_constraintWidth_percent="0.06"
+            app:layout_constraintStart_toEndOf="@+id/delimiter_4"
+            app:layout_constraintTop_toBottomOf="@+id/shotclockSecondsView"
+            app:layout_constraintEnd_toStartOf="@+id/btn_event_goalDown_103" />
+
+        <TextView
+            android:id="@+id/current_game_section"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeTextType="uniform"
+            android:text="@{currentGameSectionView}"
+            tools:text="1"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            app:layout_constraintHeight_percent="@dimen/game_result_height"
+            app:layout_constraintStart_toEndOf="@+id/btn_event_rolle_202"
+            app:layout_constraintTop_toBottomOf="@+id/game_result_white"
+            app:layout_constraintWidth_percent="0.14" />
+
+        <TextView
+            android:id="@+id/timeout_white"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeTextType="uniform"
+            android:background="@color/white"
+            android:text="@{timeoutWhiteValue}"
+            tools:text="0"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            app:layout_constraintHeight_percent="@dimen/game_result_height"
+            app:layout_constraintWidth_percent="0.03"
+            app:layout_constraintStart_toEndOf="@+id/btn_event_red_203"
+            app:layout_constraintTop_toBottomOf="@+id/current_game_section"
+            app:layout_constraintEnd_toStartOf="@+id/btn_time_timeout" />
+
+        <Button
+            android:id="@+id/btn_time_timeout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeTextType="uniform"
+            android:onClick="@{clickListener}"
+            android:text="timeout"
+            app:backgroundTint="@color/green_2"
+            app:layout_constraintHeight_percent="@dimen/game_result_height"
+            app:layout_constraintWidth_percent="0.08"
+            app:layout_constraintStart_toEndOf="@id/timeout_white"
+            app:layout_constraintTop_toBottomOf="@+id/current_game_section"
+            app:layout_constraintEnd_toStartOf="@+id/timeout_blue" />
+
+        <TextView
+            android:id="@+id/timeout_blue"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeTextType="uniform"
+            android:background="@color/blue"
+            android:text="@{timeoutBlueValue}"
+            tools:text="0"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            app:layout_constraintHeight_percent="@dimen/game_result_height"
+            app:layout_constraintWidth_percent="0.03"
+            app:layout_constraintStart_toEndOf="@+id/btn_time_timeout"
+            app:layout_constraintTop_toBottomOf="@+id/current_game_section"
+            app:layout_constraintEnd_toStartOf="@+id/btn_event_goalPenalty_104" />
+
+        <Button
+            android:id="@+id/btn_event_goal_100"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="@dimen/goalBtnTextSizeMin"
+            android:autoSizeTextType="uniform"
+            android:onClick="@{clickListener}"
+            android:text="@string/goal"
+            app:backgroundTint="@color/green"
+            app:layout_constraintHeight_percent="@dimen/goal_btn_height"
+            app:layout_constraintStart_toStartOf="@+id/exclusion_B_6"
+            app:layout_constraintEnd_toEndOf="@id/exclusion_B_8"
+            app:layout_constraintTop_toBottomOf="@+id/exclusion_B_7" />
+
+        <Button
+            android:id="@+id/btn_event_goalSix_101"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="@dimen/goalBtnTextSizeMin"
+            android:autoSizeTextType="uniform"
+            android:onClick="@{clickListener}"
+            android:text="@string/goalFreethrow"
+            app:backgroundTint="@color/green"
+            app:layout_constraintHeight_percent="@dimen/goal_btn_height"
+            app:layout_constraintStart_toStartOf="@id/exclusion_B_6"
+            app:layout_constraintEnd_toEndOf="@id/exclusion_B_8"
+            app:layout_constraintTop_toBottomOf="@+id/btn_event_goal_100" />
+
+        <Button
+            android:id="@+id/btn_event_goalUp_102"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="@dimen/goalBtnTextSizeMin"
+            android:autoSizeTextType="uniform"
+            android:onClick="@{clickListener}"
+            android:text="@string/goalManUp"
+            app:backgroundTint="@color/green"
+            app:layout_constraintEnd_toEndOf="@id/exclusion_B_8"
+            app:layout_constraintHeight_percent="@dimen/goal_btn_height"
+            app:layout_constraintStart_toStartOf="@id/exclusion_B_6"
+            app:layout_constraintTop_toBottomOf="@+id/btn_event_goalSix_101" />
+
+        <Button
+            android:id="@+id/btn_event_goalDown_103"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="@dimen/goalBtnTextSizeMin"
+            android:autoSizeTextType="uniform"
+            android:onClick="@{clickListener}"
+            android:text="@string/goalManDown"
+            app:backgroundTint="@color/green"
+            app:layout_constraintEnd_toEndOf="@id/exclusion_B_8"
+            app:layout_constraintHeight_percent="@dimen/goal_btn_height"
+            app:layout_constraintStart_toStartOf="@id/exclusion_B_6"
+            app:layout_constraintTop_toBottomOf="@+id/btn_event_goalUp_102" />
+
+        <Button
+            android:id="@+id/btn_event_goalPenalty_104"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMinTextSize="@dimen/goalBtnTextSizeMin"
+            android:autoSizeTextType="uniform"
+            android:onClick="@{clickListener}"
+            android:text="@string/goalPenalty"
+            app:backgroundTint="@color/green"
+            app:layout_constraintEnd_toEndOf="@id/exclusion_B_8"
+            app:layout_constraintHeight_percent="@dimen/goal_btn_height"
+            app:layout_constraintStart_toStartOf="@id/exclusion_B_6"
+            app:layout_constraintTop_toBottomOf="@+id/btn_event_goalDown_103" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/game_event_recyclerview"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:layout_marginEnd="5dp"
+            android:clipToPadding="false"
+            app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+            app:layout_constraintStart_toEndOf="@id/btn_event_goal_100"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/btn_event_goal_100"
+            app:layout_constraintBottom_toTopOf="@id/btn_time_ShotclockBig"
+            app:spanCount="1"
+            tools:listitem="@layout/list_item_game_event" />
+
+        <Button
+            android:id="@+id/btn_time_StartStop"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="2sp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeTextType="uniform"
+            android:clickable="@{timeClickable}"
+            android:onClick="@{clickListener}"
+            android:text="@string/start_stop"
+            app:backgroundTint="@color/green_2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/exclusion_B_5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_event_goalPenalty_104" />
+
+        <Button
+            android:id="@+id/btn_time_ShotclockSmall"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="2sp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeTextType="uniform"
+            android:clickable="@{timeClickable}"
+            android:onClick="@{clickListener}"
+            android:text="@string/shotclock_small"
+            app:backgroundTint="#28666E"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/exclusion_B_9"
+            app:layout_constraintStart_toEndOf="@id/btn_time_StartStop"
+            app:layout_constraintTop_toBottomOf="@+id/btn_event_goalPenalty_104" />
+
+        <Button
+            android:id="@+id/btn_time_ShotclockBig"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="2sp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeTextType="uniform"
+            android:clickable="@{timeClickable}"
+            android:onClick="@{clickListener}"
+            android:text="@string/shotclock_big"
+            app:backgroundTint="#28666E"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/exclusion_B_13"
+            app:layout_constraintStart_toEndOf="@id/btn_time_ShotclockSmall"
+            app:layout_constraintTop_toBottomOf="@+id/btn_event_goalPenalty_104" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
